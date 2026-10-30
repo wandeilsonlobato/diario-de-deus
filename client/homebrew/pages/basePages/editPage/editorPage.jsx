@@ -12,11 +12,12 @@ import BrewRenderer     from '../../../brewRenderer/brewRenderer.jsx';
 import LockNotification from '../../editPage/lockNotification/lockNotification.jsx';
 import loginUrl         from '../../../utils/loginUrl.js';
 import downloadBrew     from '../../../utils/downloadBrew.js';
+import { isPhone }      from '../../../utils/device.js';
 const Meta = Headtags.Meta;
 
 //===---- Navbar
 import Nav            from '@navbar/nav.jsx';
-import Navbar         from '@navbar/navbar.jsx';
+import Navbar, { Credits } from '@navbar/navbar.jsx';
 import NewBrewItem    from '@navbar/newbrew.navitem.jsx';
 import AccountNavItem from '@navbar/account.navitem.jsx';
 import ErrorNavItem   from '@navbar/error-navitem.jsx';
@@ -59,6 +60,12 @@ const EditorPage = (props)=>{
 	const [warnUnsavedChanges, setWarnUnsavedChanges] = useState(true);
 	const [unsavedChanges, setUnsavedChanges]         = useState(false);
 	const [themeBundle, setThemeBundle]               = useState({});
+	const [workspace, setWorkspace]                   = useState(()=>{
+		if(!isPhone()) return 'both';
+		return pageName == 'homePage' ? 'read' : 'write';
+	});
+	const [phoneMenuOpen, setPhoneMenuOpen]           = useState(false);
+	const [phoneBlocksOpen, setPhoneBlocksOpen]       = useState(false);
 	const [HTMLErrors, setHTMLErrors]                 = useState(hbfm.validate(currentBrew.text));
 	const [saveGoogle, setSaveGoogle]                 = useState(currentBrew.googleId);
 	const [error, setError]                           = useState(null);
@@ -383,12 +390,55 @@ const EditorPage = (props)=>{
 		</Nav.dropdown>;
 	};
 
+	const showWorkspace = (mode)=>{
+		setWorkspace(mode);
+		setPhoneBlocksOpen(false);
+	};
+
+	const closeBlocksOnPick = (e)=>{
+		if(e.target.closest('.menu-list button:not([popovertarget])')) setPhoneBlocksOpen(false);
+	};
+
+	const WORKSPACES = [
+		{ mode: 'write', label: 'Escrever', icon: 'fas fa-pen-nib' },
+		{ mode: 'both',  label: 'Lado a lado', icon: 'fas fa-columns' },
+		{ mode: 'read',  label: 'Ver', icon: 'fas fa-book-open' },
+	];
+
+	const renderWorkspaceSwitch = ()=>(
+		<div className='workspaceSwitch' role='group' aria-label='Modo de trabalho'>
+			{WORKSPACES.map(({ mode, label, icon })=>(
+				<button key={mode} className={workspace === mode ? 'active' : ''} aria-pressed={workspace === mode} onClick={()=>showWorkspace(mode)}>
+					<i className={icon} /> {label}
+				</button>
+			))}
+		</div>
+	);
+
+	const renderPhoneTabs = ()=>(
+		<div className='phoneTabs'>
+			<button className={workspace !== 'read' && !phoneBlocksOpen ? 'active' : ''} onClick={()=>showWorkspace('write')}>
+				<i className='fas fa-pen-nib' /> Escrever
+			</button>
+			<button className={phoneBlocksOpen ? 'active' : ''} onClick={()=>{ setWorkspace('write'); setPhoneBlocksOpen(!phoneBlocksOpen); }}>
+				<i className='fas fa-plus-circle' /> Blocos
+			</button>
+			<button className={workspace === 'read' ? 'active' : ''} onClick={()=>showWorkspace('read')}>
+				<i className='fas fa-book-open' /> Ver
+			</button>
+		</div>
+	);
+
 	const renderNavbar = ()=>(
 		<Navbar>
 			<Nav.section>
 				<Nav.item className='brewTitle'>{currentBrew.title}</Nav.item>
+				{renderWorkspaceSwitch()}
 			</Nav.section>
-			<Nav.section>
+			<button className='phoneMenuButton' aria-label='Menu' aria-expanded={phoneMenuOpen} onClick={()=>setPhoneMenuOpen(!phoneMenuOpen)}>
+				<i className={phoneMenuOpen ? 'fas fa-times' : 'fas fa-bars'} />
+			</button>
+			<Nav.section className={phoneMenuOpen ? 'navActions open' : 'navActions'}>
 				{(pageName == 'editPage') && renderGoogleDriveIcon()}
 				{renderSaveArea()}
 				<NewBrewItem />
@@ -398,6 +448,7 @@ const EditorPage = (props)=>{
 				{(pageName == 'editPage') && <ShareNavItem brew={currentBrew} currentPage={currentBrewRendererPageNum} />}
 				{!isStaticSite && <RecentNavItem brew={currentBrew} storageKey={(pageName == 'editPage') ? 'edit' : undefined} />}
 				{!isStaticSite && <AccountNavItem />}
+				<Credits />
 			</Nav.section>
 		</Navbar>
 	);
@@ -420,7 +471,7 @@ const EditorPage = (props)=>{
 	);
 
 	return (
-		<div className= {`${pageName} sitePage`}>
+		<div className={`${pageName} sitePage workspace-${workspace}${phoneBlocksOpen ? ' blocksOpen' : ''}`} onClick={closeBlocksOnPick}>
 			<Meta name='google-site-verification' content='NwnAQSSJZzAT7N-p5MY6ydQ7Njm67dtbu73ZSyE5Fy4' />
 			{(pageName == 'editPage') && <Meta name='robots' content='noindex, nofollow' />}
 			{renderNavbar()}
@@ -457,6 +508,7 @@ const EditorPage = (props)=>{
 				</SplitPane>
 			</div>
 			{showFloatingButtons && renderFloatingSaveButtons()}
+			{renderPhoneTabs()}
 		</div>
 	);
 };

@@ -12,6 +12,7 @@ import ToolBar  from './toolBar/toolBar.jsx';
 
 //TODO: move to the brew renderer
 import RenderWarnings from '@components/renderWarnings/renderWarnings.jsx';
+import { isPhone } from '../utils/device.js';
 import NotificationPopup from './notificationPopup/notificationPopup.jsx';
 import Frame from 'react-frame-component';
 import dedent from 'dedent';
@@ -86,6 +87,11 @@ const BrewPage = (props)=>{
 let renderedPages = [];
 const pageTemplates = [];
 let rawPages      = [];
+
+const PAGE_WIDTH_PX = 816;
+
+// On phones the page always fits the screen width
+const phoneZoom = ()=>(isPhone() ? Math.floor((window.innerWidth - 12) / PAGE_WIDTH_PX * 100) : null);
 
 const BrewRenderer = (props)=>{
 	props = {
@@ -295,7 +301,7 @@ const BrewRenderer = (props)=>{
 	};
 
 	const pagesStyle = {
-		zoom      : `${displayOptions.zoomLevel}%`,
+		zoom      : `${phoneZoom() ?? displayOptions.zoomLevel}%`,
 		columnGap : `${displayOptions.columnGap}px`,
 		rowGap    : `${displayOptions.rowGap}px`
 	};

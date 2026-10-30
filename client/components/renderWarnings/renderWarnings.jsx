@@ -43,7 +43,7 @@ const RenderWarnings = createReactClass({
 		});
 	},
 	render : function(){
-		if(_.isEmpty(this.state.warnings)) return null;
+		if(_.isEmpty(this.state.warnings) || global.config?.staticSite) return null;
 
 		const DISMISS_KEY = 'dismiss_render_warning';
 		const DISMISS_TEXT = <i className='fas fa-times dismiss' />;

@@ -12,6 +12,8 @@
 @sangue   : #C2152F;
 @sangueC  : #E0263F;
 @navAltura : 46px;
+@railLargura : 78px;
+@abasAltura : 58px;
 
 body .homebrew {
 	font-family      : 'Overpass', 'Open Sans', sans-serif;
@@ -197,6 +199,250 @@ body .homebrew {
 			background-color : @painel;
 			border           : 1px solid @linha;
 			&:hover { background-color : @linha; }
+		}
+	}
+
+	//*****************************
+	// *      MODOS DE TRABALHO
+	// *****************************/
+	.workspaceSwitch {
+		display       : flex;
+		flex-shrink   : 0;
+		gap           : 2px;
+		padding       : 3px;
+		margin-left   : auto;
+		background    : @tinta;
+		border        : 1px solid @linha;
+		border-radius : 8px;
+		button {
+			padding       : 5px 12px;
+			font-family   : 'Overpass', sans-serif;
+			font-size     : 13px;
+			color         : @cinza;
+			white-space   : nowrap;
+			cursor        : pointer;
+			background    : transparent;
+			border        : none;
+			border-radius : 6px;
+			i { margin-right : 5px; }
+			&:hover { color : @osso; }
+			&.active {
+				color      : #FFFFFF;
+				background : @sangue;
+			}
+		}
+	}
+
+	.sitePage.workspace-read .splitPane {
+		> .pane:first-child { display : none; }
+		> .divider { display : none; }
+	}
+	.sitePage.workspace-write .splitPane {
+		> .pane:first-child {
+			flex  : 1 !important;
+			width : auto !important;
+		}
+		> .pane:last-child { display : none; }
+		> .divider { display : none; }
+	}
+
+	//*****************************
+	// *        BARRA LATERAL
+	// *****************************/
+	.sitePage:not(.workspace-read) .content { margin-left : @railLargura; }
+
+	.editor .snippetBar .snippets {
+		position   : fixed;
+		top        : @navAltura + 1px;
+		bottom     : 0;
+		left       : 0;
+		z-index    : 3;
+		flex       : none;
+		flex-flow  : column;
+		gap        : 2px;
+		justify-content : flex-start;
+		width      : @railLargura;
+		min-width  : 0;
+		padding    : 8px 0;
+		overflow-y : auto;
+		background : @capa;
+		border-right : 1px solid @linha;
+
+		.menu-wrapper:has(> button[aria-label='Agentes'])    { order : -3; }
+		.menu-wrapper:has(> button[aria-label='Outro Lado']) { order : -2; }
+		.menu-wrapper:has(> button[aria-label='Caso'])       { order : -1; }
+		.menu-wrapper:has(> button[aria-label='Licenças'])   { display : none; }
+		.menu-wrapper:has(> button:disabled)                 { display : none; }
+
+		> .menu-wrapper > .menu-item {
+			flex-flow     : column;
+			gap           : 5px;
+			justify-content : center;
+			width         : 100%;
+			min-width     : 0;
+			padding       : 10px 4px;
+			font-size     : 11px;
+			line-height   : 1.15;
+			white-space   : normal;
+			border-left   : 3px solid transparent;
+			i {
+				min-width : 0;
+				height    : auto;
+				font-size : 19px;
+			}
+			i.caret { display : none; }
+			.menu-name {
+				flex       : none;
+				text-align : center;
+			}
+			&:hover { border-left-color : @sangueC; }
+		}
+	}
+
+	.editor .snippetBar .menu-wrapper:has(> .menu-list:popover-open) > button { border-left-color : @sangueC; }
+
+	.snippets > .menu-wrapper > .menu-list {
+		top           : anchor(top);
+		left          : anchor(right);
+		border        : 1px solid @linha;
+		border-radius : 0 8px 8px 0;
+		position-try  : flip-block;
+	}
+
+	.editor .snippetBar .editors { margin-left : auto; }
+
+	//*****************************
+	// *           CELULAR
+	// *****************************/
+	.phoneTabs, .phoneMenuButton { display : none; }
+	nav .navActions .creditos { display : none; }
+
+	@media (max-width : 760px) {
+		nav {
+			.navLogo { margin-left : 10px; }
+			.navLogo .name { font-size : 18px; }
+			.navSection:has(.brewTitle), .workspaceSwitch { display : none; }
+			> .navSection > .creditos { display : none; }
+
+			.navActions {
+				position   : fixed;
+				top        : @navAltura + 1px;
+				right      : 0;
+				left       : 0;
+				z-index    : 20;
+				display    : none;
+				flex-flow  : column;
+				align-items: stretch;
+				padding    : 8px;
+				background : @capa;
+				border-bottom : 1px solid @linha;
+				&.open { display : flex; }
+				.navItem {
+					justify-content : flex-start;
+					min-height      : 46px;
+					font-size       : 15px;
+				}
+				.creditos {
+					display     : flex;
+					gap         : 16px;
+					padding     : 12px 13px 6px;
+					border-top  : 1px solid @linha;
+					.credito { margin : 0; font-size : 14px; }
+				}
+			}
+		}
+
+		.phoneMenuButton {
+			display     : block;
+			width       : @navAltura;
+			height      : @navAltura;
+			margin-left : auto;
+			font-size   : 20px;
+			color       : @osso;
+			cursor      : pointer;
+			background  : transparent;
+			border      : none;
+		}
+
+		.phoneTabs {
+			position              : fixed;
+			right                 : 0;
+			bottom                : 0;
+			left                  : 0;
+			z-index               : 30;
+			display               : grid;
+			grid-template-columns : repeat(3, 1fr);
+			height                : @abasAltura;
+			background            : @capa;
+			border-top            : 1px solid @linha;
+			button {
+				display         : flex;
+				flex-flow       : column;
+				gap             : 3px;
+				align-items     : center;
+				justify-content : center;
+				font-family     : 'Overpass', sans-serif;
+				font-size       : 12px;
+				color           : @cinza;
+				background      : transparent;
+				border          : none;
+				i { font-size : 19px; }
+				&.active { color : @sangueC; }
+			}
+		}
+
+		.sitePage .content {
+			flex          : 1;
+			height        : auto;
+			min-height    : 0;
+			margin-bottom : @abasAltura;
+		}
+		.sitePage:not(.workspace-read) .content { margin-left : 0; }
+
+		.sitePage.workspace-both .splitPane {
+			> .pane:first-child {
+				flex  : 1 !important;
+				width : auto !important;
+			}
+			> .pane:last-child, > .divider { display : none; }
+		}
+		.sitePage.workspace-read .splitPane > .pane:last-child { flex : 1; }
+
+		.toolBar { display : none; }
+		.cm-content { font-size : 16px !important; }
+
+		.editor .snippetBar .snippets {
+			top                   : auto;
+			right                 : 0;
+			bottom                : @abasAltura;
+			display               : none;
+			grid-template-columns : repeat(3, 1fr);
+			width                 : auto;
+			max-height            : 55vh;
+			border-top            : 1px solid @linha;
+			border-right          : none;
+			> .menu-wrapper > .menu-item {
+				min-height  : 68px;
+				font-size   : 13px;
+				border-left : none;
+			}
+		}
+		.sitePage.blocksOpen .editor .snippetBar .snippets { display : grid; }
+
+		.menu-list, .snippets > .menu-wrapper > .menu-list {
+			inset         : auto 0 @abasAltura 0 !important;
+			width         : 100%;
+			max-height    : 60vh;
+			margin        : 0;
+			overflow-y    : auto;
+			font-size     : 15px;
+			border-radius : 12px 12px 0 0;
+			.menu-item { min-height : 46px; }
+		}
+
+		.homePage a.floatingNewButton {
+			right  : 16px;
+			bottom : @abasAltura + 14px;
 		}
 	}
 }

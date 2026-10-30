@@ -50,7 +50,7 @@ const SplitPane = (props)=>{
 	const handleMove = (e)=>{
 		if(!isDragging) return;
 		e.preventDefault();
-		setDividerPos(limitPosition(e.pageX));
+		setDividerPos(limitPosition(e.pageX - e.currentTarget.getBoundingClientRect().left));
 	};
 
 	const liveScrollToggle = ()=>{
