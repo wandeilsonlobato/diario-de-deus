@@ -149,7 +149,7 @@ const printCurrentBrew = async ()=>{
 const fetchThemeBundle = async (setError = ()=>{}, setThemeBundle = ()=>{}, renderer, theme)=>{
 	if(!renderer || !theme) return;
 	const res = await request
-			.get(`/api/theme/${renderer}/${theme}`)
+			.get(global.config?.staticSite ? `/theme-bundles/${_.upperFirst(renderer)}/${theme}.json` : `/api/theme/${renderer}/${theme}`)
 			.catch((err)=>{
 				setError(err);
 			});

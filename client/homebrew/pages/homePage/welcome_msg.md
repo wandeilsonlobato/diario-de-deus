@@ -22,8 +22,8 @@ Use os botões acima do editor para inserir blocos prontos:
 - {{fas,fa-eye}} **Outro Lado:** rituais, ameaças e itens amaldiçoados.
 - {{fas,fa-folder-open}} **Caso:** capa, documentos, notas e texto para leitura.
 
-### Editar e compartilhar
-Cada documento tem um *link de edição*, que permite alterá-lo, e um *link de compartilhamento*, somente leitura. Sem login, qualquer pessoa com o link de edição pode alterar o documento, então cuidado com quem o recebe.
+### Salvar seu trabalho
+O que você escreve em **novo** fica guardado neste navegador. Para não perder nada ou continuar em outro aparelho, clique em **baixar arquivo** e depois reabra em **novo → de arquivo**.
 
 {{note
 ##### Gerar PDF

@@ -10,9 +10,9 @@ const Navbar = ({ children })=>{
 		<Nav.base>
 			<Nav.section>
 				<Nav.logo />
-				<Nav.item newTab={true} href='/changelog' color='purple' icon='far fa-file-alt'>
+				{!global.config?.staticSite && <Nav.item newTab={true} href='/changelog' color='purple' icon='far fa-file-alt'>
 					{`v${version}`}
-				</Nav.item>
+				</Nav.item>}
 				{/* this.renderChromeWarning() */}
 			</Nav.section>
 			{children}

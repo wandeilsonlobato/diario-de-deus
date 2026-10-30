@@ -13,7 +13,7 @@ const NotificationPopup = ()=>{
 	const [error, setError] = useState(null);
 
 	useEffect(()=>{
-		getNotifications();
+		if(!global.config?.staticSite) getNotifications();
 	}, []);
 
 	const getNotifications = async ()=>{

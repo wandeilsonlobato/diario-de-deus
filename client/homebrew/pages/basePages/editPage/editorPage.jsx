@@ -11,6 +11,7 @@ import Editor           from '../../../editor/editor.jsx';
 import BrewRenderer     from '../../../brewRenderer/brewRenderer.jsx';
 import LockNotification from '../../editPage/lockNotification/lockNotification.jsx';
 import loginUrl         from '../../../utils/loginUrl.js';
+import downloadBrew     from '../../../utils/downloadBrew.js';
 const Meta = Headtags.Meta;
 
 //===---- Navbar
@@ -76,6 +77,10 @@ const EditorPage = (props)=>{
 	const lastSavedBrew      = useRef(_.cloneDeep(currentBrew));
 	const saveTimeout        = useRef(null);
 	const editorRef          = useRef(null);
+	const latestBrew         = useRef(currentBrew);    // keyboard shortcut lives outside React and needs the current brew
+	const isStaticSite       = global.config?.staticSite;
+
+	latestBrew.current = currentBrew;
 
 	//==--------- Page setup ----------==//
 	useEffect(()=>{
@@ -87,7 +92,7 @@ const EditorPage = (props)=>{
 
 		const handleControlKeys = (e)=>{
 			if(!(e.ctrlKey || e.metaKey)) return;
-			if(e.keyCode === 83) trySave(true, true, saveGoogle);
+			if(e.keyCode === 83) isStaticSite ? downloadBrew(latestBrew.current) : trySave(true, true, saveGoogle);
 			if(e.keyCode === 80) printCurrentBrew();
 			if([83, 80].includes(e.keyCode)) {
 				e.stopPropagation();
@@ -96,7 +101,7 @@ const EditorPage = (props)=>{
 		};
 		document.addEventListener('keydown', handleControlKeys);
 		window.onbeforeunload = ()=>{
-			if(unsavedChangesRef.current)
+			if(unsavedChangesRef.current && !isStaticSite)
 				return 'You have unsaved changes!';
 		};
 		return ()=>{
@@ -365,6 +370,19 @@ const EditorPage = (props)=>{
 	);
 
 	//======----- Navbar -----======
+	const renderSaveArea = ()=>{
+		if(isStaticSite)
+			return <Nav.item color='blue' icon='fas fa-download' onClick={()=>downloadBrew(currentBrew)}>baixar arquivo</Nav.item>;
+
+		if(error)
+			return <ErrorNavItem error={error} clearError={clearError} />;
+
+		return <Nav.dropdown className='save-menu'>
+			{renderSaveButton()}
+			{(pageName == 'editPage') && renderAutoSaveButton()}
+		</Nav.dropdown>;
+	};
+
 	const renderNavbar = ()=>(
 		<Navbar>
 			<Nav.section>
@@ -372,19 +390,14 @@ const EditorPage = (props)=>{
 			</Nav.section>
 			<Nav.section>
 				{(pageName == 'editPage') && renderGoogleDriveIcon()}
-				{error
-					? <ErrorNavItem error={error} clearError={clearError} />
-					: <Nav.dropdown className='save-menu'>
-						{renderSaveButton()}
-						{(pageName == 'editPage') && renderAutoSaveButton()}
-					</Nav.dropdown>}
+				{renderSaveArea()}
 				<NewBrewItem />
 				<PrintNavItem />
-				<HelpNavItem />
-				<VaultNavItem />
+				{!isStaticSite && <HelpNavItem />}
+				{!isStaticSite && <VaultNavItem />}
 				{(pageName == 'editPage') && <ShareNavItem brew={currentBrew} currentPage={currentBrewRendererPageNum} />}
-				<RecentNavItem brew={currentBrew} storageKey={(pageName == 'editPage') ? 'edit' : undefined} />
-				<AccountNavItem />
+				{!isStaticSite && <RecentNavItem brew={currentBrew} storageKey={(pageName == 'editPage') ? 'edit' : undefined} />}
+				{!isStaticSite && <AccountNavItem />}
 			</Nav.section>
 		</Navbar>
 	);
@@ -397,9 +410,9 @@ const EditorPage = (props)=>{
 
 	const renderFloatingSaveButtons = ()=>(
 		<>
-			<div className={`floatingSaveButton${unsavedChanges ? ' show' : ''}`} onClick={()=>trySave(true, true, saveGoogle)}>
+			{!isStaticSite && <div className={`floatingSaveButton${unsavedChanges ? ' show' : ''}`} onClick={()=>trySave(true, true, saveGoogle)}>
 				Salvar agora <i className='fas fa-save' />
-			</div>
+			</div>}
 			<a href='/new' className='floatingNewButton'>
 				Criar o seu <i className='fas fa-magic' />
 			</a>
