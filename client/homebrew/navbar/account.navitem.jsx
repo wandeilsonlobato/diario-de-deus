@@ -2,6 +2,7 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import request from 'superagent';
 import Nav from './nav.jsx';
+import loginUrl from '../utils/loginUrl.js';
 
 const Account = createReactClass({
 	displayName     : 'AccountNavItem',
@@ -19,8 +20,9 @@ const Account = createReactClass({
 		}
 	},
 
-	handleLogout : function(){
-		if(confirm('Are you sure you want to log out?')) {
+	handleLogout : async function(){
+		if(confirm('Deseja mesmo sair?')) {
+			await request.post('/auth/logout').catch((err)=>{ console.warn(err); });
 			// Reset divider position
 			window.localStorage.removeItem('naturalcrit-pane-split');
 			// Clear login cookie
@@ -96,8 +98,8 @@ const Account = createReactClass({
 		}
 
 		//  Logged out
-		//  LOCAL ONLY
-		if(global.config?.local) {
+		//  LOCAL ONLY, while Google login is not configured
+		if(global.config?.local && !global.config?.googleLogin) {
 			return <Nav.item color='teal' icon='fas fa-sign-in-alt' onClick={this.localLogin}>
 				entrar
 			</Nav.item>;
@@ -105,7 +107,7 @@ const Account = createReactClass({
 
 		// Logged out
 		// Production site
-		return <Nav.item href={`https://www.naturalcrit.com/login?redirect=${this.state.url}`} color='teal' icon='fas fa-sign-in-alt'>
+		return <Nav.item href={loginUrl()} color='teal' icon='fas fa-sign-in-alt'>
 			entrar
 		</Nav.item>;
 	}

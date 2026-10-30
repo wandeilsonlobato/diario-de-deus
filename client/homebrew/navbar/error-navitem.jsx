@@ -1,6 +1,7 @@
 import './error-navitem.less';
 import React from 'react';
 import Nav from './nav.jsx';
+import loginUrl from '../utils/loginUrl.js';
 
 const ErrorNavItem = ({ error = '', clearError })=>{
 	const response    = error.response;
@@ -44,7 +45,7 @@ const ErrorNavItem = ({ error = '', clearError })=>{
 				window? Visit our log in page, then try again!
 				<br></br>
 				<a target='_blank' rel='noopener noreferrer'
-					href={`https://www.naturalcrit.com/login?redirect=${window.location.href}`}>
+					href={loginUrl()}>
 					<div className='confirm'>
 						Sign In
 					</div>
@@ -75,7 +76,7 @@ const ErrorNavItem = ({ error = '', clearError })=>{
 				then try saving again!
 				<br></br>
 				<a target='_blank' rel='noopener noreferrer'
-					href={`https://www.naturalcrit.com/login?redirect=${window.location.href}`}>
+					href={loginUrl()}>
 					<div className='confirm'>
 						Sign In
 					</div>

@@ -10,6 +10,7 @@ import SplitPane        from '@components/splitPane/splitPane.jsx';
 import Editor           from '../../../editor/editor.jsx';
 import BrewRenderer     from '../../../brewRenderer/brewRenderer.jsx';
 import LockNotification from '../../editPage/lockNotification/lockNotification.jsx';
+import loginUrl         from '../../../utils/loginUrl.js';
 const Meta = Headtags.Meta;
 
 //===---- Navbar
@@ -335,7 +336,7 @@ const EditorPage = (props)=>{
 			{alertNoGoogleToTransfer && (
 				<div className='errorContainer'>
 					You must be signed in to a Google account to transfer between Diário de Deus and Google Drive!
-					<a target='_blank' rel='noopener noreferrer' href={`https://www.naturalcrit.com/login?redirect=${window.location.href}`}>
+					<a target='_blank' rel='noopener noreferrer' href={loginUrl()}>
 						<div className='confirm' onClick={closeAlerts}> Sign In </div>
 					</a>
 					<div className='deny'  onClick={closeAlerts}>      Not Now </div>

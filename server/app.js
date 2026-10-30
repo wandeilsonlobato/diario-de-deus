@@ -21,6 +21,7 @@ const { homebrewApi, getBrew, getCSS } = api;
 import adminApi                    from './admin.api.js';
 import vaultApi                    from './vault.api.js';
 import streamApi                   from './stream.api.js';
+import authApi, { isGoogleLoginConfigured } from './auth.api.js';
 import pageRoutes from './page-routes.js';
 
 import serveCompressedStaticAssets from './static-assets.mv.js';
@@ -116,6 +117,7 @@ export default async function createApp(vite) {
 	app.use(adminApi(vite));
 	app.use(vaultApi);
 	app.use(streamApi);
+	app.use(authApi);
 
 	String.prototype.replaceAll = function(s, r){return this.split(s).join(r);};
 
@@ -231,7 +233,8 @@ export default async function createApp(vite) {
 			baseUrl          : `${req.protocol}://${req.get('host')}`,
 			environment      : nodeEnv,
 			deployment       : config.get('heroku_app_name') ?? '',
-			developmentStyle : config.get('development_style')
+			developmentStyle : config.get('development_style'),
+			googleLogin      : isGoogleLoginConfigured()
 		};
 		const props = {
 			version     : version,
