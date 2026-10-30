@@ -1,7 +1,7 @@
 {
   "framework": null,
   "installCommand": "npm install --ignore-scripts",
-  "buildCommand": "npm run build && mkdir -p vercel-public",
+  "buildCommand": "npm run build && mkdir -p vercel-public && cp robots.txt vercel-public/",
   "outputDirectory": "vercel-public",
   "rewrites": [{ "source": "/(.*)", "destination": "/api/index" }],
   "functions": {
