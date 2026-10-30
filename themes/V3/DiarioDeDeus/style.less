@@ -288,6 +288,31 @@
 		}
 	}
 
+	// Selo da Licença da Comunidade: opaco e legível; o fundo claro destaca o selo preto na página escura
+	.licenca {
+		position    : absolute;
+		right       : 1.2cm;
+		bottom      : 1.2cm;
+		z-index     : 3;
+		display     : flex;
+		gap         : 0.3cm;
+		align-items : center;
+		max-width   : 8cm;
+		font-size   : 0.27cm;
+		line-height : 1.2em;
+		color       : var(--HB_Color_Text);
+		text-align  : right;
+		img {
+			flex-shrink   : 0;
+			order         : 2;
+			width         : 2.6cm;
+			padding       : 0.1cm;
+			background    : #FFFFFF;
+			border-radius : 50%;
+		}
+		p { margin : 0; }
+	}
+
 	.pageNumber { color : var(--HB_Color_TextMuted); }
 	.footnote {
 		position       : absolute;

@@ -3,6 +3,9 @@ import AmeacaGen from './snippets/ameaca.gen.js';
 import AgenteGen from './snippets/agente.gen.js';
 import dedent    from 'dedent';
 
+// Mandatory on the cover by the Licença da Comunidade: seal at 10% of the width or more, AI notice beside it
+const SELO_LICENCA = '{{licenca\n![Selo da Licença da Comunidade](/assets/selo-licenca.png)\n\nContém material gerado por inteligência artificial\n}}';
+
 export default [
 	/************************* AGENTES ********************/
 	{
@@ -76,7 +79,17 @@ export default [
 			{
 				name : 'Capa do Caso',
 				icon : 'fas fa-book',
-				gen  : '{{capa\n{{selo}}\n# Nome do Caso\n## Arquivo da Ordem\n{{classificado Confidencial}}\n}}\n\n\\page\n\n',
+				gen  : `{{capa\n{{selo}}\n# Nome do Caso\n## Arquivo Ordo Realitas\n{{classificado Confidencial}}\n${SELO_LICENCA}\n}}\n\n\\page\n\n`,
+			},
+			{
+				name : 'Selo da Licença',
+				icon : 'fas fa-stamp',
+				gen  : `${SELO_LICENCA}\n\n`,
+			},
+			{
+				name : 'Aviso da Licença (só texto)',
+				icon : 'fas fa-balance-scale',
+				gen  : 'Este é um conteúdo não oficial, publicado sob a Licença da Comunidade de Ordem Paranormal.\n\n',
 			},
 			{
 				name : 'Documento',

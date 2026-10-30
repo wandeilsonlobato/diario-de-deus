@@ -1,17 +1,23 @@
 {{capa
 ![Diário de Deus](/assets/logo.png) {width:11cm}
 
-## Crie casos, rituais e ameaças para Ordem Paranormal RPG
+## Crie casos, rituais e ameaças para a sua mesa
 {{classificado Acesso Liberado}}
+
+{{licenca
+![Selo da Licença da Comunidade](/assets/selo-licenca.png)
+
+Contém material gerado por inteligência artificial
+}}
 }}
 
 \page
 
 # Bem-vindo, agente
-A realidade está mais frágil do que parece. Registre aqui o que você viu: as criaturas que atravessaram a Membrana, os rituais que nunca deveriam ter sido escritos e os casos que a Ordem preferiria manter em segredo.
+A realidade está mais frágil do que parece. Registre aqui o que você viu: as criaturas que atravessaram a Membrana, os rituais que nunca deveriam ter sido escritos e os casos que a Ordo Realitas preferiria manter em segredo.
 
 ### O que é isto?
-**Diário de Deus** é um editor para criar material de fã para *Ordem Paranormal RPG*. Você escreve em [Markdown](https://help.github.com/articles/markdown-basics/) à esquerda e vê o documento pronto à direita, *atualizado em tempo real*.
+**Diário de Deus** é um editor gratuito para criar material de fã de horror paranormal. Você escreve em [Markdown](https://help.github.com/articles/markdown-basics/) à esquerda e vê o documento pronto à direita, *atualizado em tempo real*.
 
 **Experimente!** Edite o texto ao lado. Para começar um documento seu, clique em **novo** {{fas,fa-plus-square}} na barra superior.
 
@@ -58,7 +64,11 @@ Blocos de documento servem para pistas e arquivos entregues aos jogadores.
 }}
 
 ### Aviso legal
-Projeto de fã, não oficial, baseado no código aberto do [The Homebrewery](https://github.com/naturalcrit/homebrewery) (licença MIT). *Ordem Paranormal* pertence aos seus respectivos autores e não tem relação com este projeto.
+Este é um conteúdo não oficial, publicado sob a [Licença da Comunidade de Ordem Paranormal](https://ordemparanormal.com.br/licenca). Contém material gerado por inteligência artificial.
+
+**Aviso de conteúdo:** este site trata de horror e violência.
+
+Feito com o código aberto do [The Homebrewery](https://github.com/naturalcrit/homebrewery) (licença MIT).
 
 {{pageNumber 1}}
 {{footnote DIÁRIO DE DEUS}}

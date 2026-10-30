@@ -1,8 +1,5 @@
 export const tagSuggestionList = [
 	// ############################## Systems
-	// Ordem Paranormal
-	'system:Ordem Paranormal RPG',
-
 	// D&D
 	'system:D&D Original',
 	'system:D&D Basic',

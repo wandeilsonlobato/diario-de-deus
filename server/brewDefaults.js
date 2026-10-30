@@ -11,7 +11,7 @@ const DEFAULT_BREW = {
 	createdAt    : undefined,
 	updatedAt    : undefined,
 	renderer     : 'V3',
-	theme        : 'OrdemParanormal',
+	theme        : 'DiarioDeDeus',
 	authors      : [],
 	tags         : [],
 	lang         : 'pt-BR',

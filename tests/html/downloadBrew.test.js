@@ -3,14 +3,14 @@ import { splitTextStyleAndMetadata } from '../../shared/helpers.js';
 
 describe('brewToFileText', ()=>{
 	it('produces a file the "de arquivo" import reads back', ()=>{
-		const brew = { title: 'Caso: A Fenda', renderer: 'V3', theme: 'OrdemParanormal', lang: 'pt-BR', style: '.page { color: red; }', text: '# Título\n\nTexto' };
+		const brew = { title: 'Caso: A Fenda', renderer: 'V3', theme: 'DiarioDeDeus', lang: 'pt-BR', style: '.page { color: red; }', text: '# Título\n\nTexto' };
 
 		const imported = { text: brewToFileText(brew), style: '' };
 		expect(imported.text.startsWith('```metadata')).toBe(true);
 		splitTextStyleAndMetadata(imported);
 
 		expect(imported.title).toBe('Caso: A Fenda');
-		expect(imported.theme).toBe('OrdemParanormal');
+		expect(imported.theme).toBe('DiarioDeDeus');
 		expect(imported.style.trim()).toBe('.page { color: red; }');
 		expect(imported.text).toBe('# Título\n\nTexto');
 	});

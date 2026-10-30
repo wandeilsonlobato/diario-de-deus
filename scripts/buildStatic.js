@@ -37,7 +37,7 @@ for (const renderer of Object.keys(themes)) {
 const home = {
 	text     : fs.readFileSync('client/homebrew/pages/homePage/welcome_msg.md', 'utf8'),
 	renderer : 'V3',
-	theme    : 'OrdemParanormal',
+	theme    : 'DiarioDeDeus',
 };
 splitTextStyleAndMetadata(home);
 

@@ -123,9 +123,9 @@ export default async function createApp(vite) {
 	String.prototype.replaceAll = function(s, r){return this.split(s).join(r);};
 
 	const defaultMetaTags = {
-		site_name   : 'Diário de Deus - Crie material para Ordem Paranormal RPG',
+		site_name   : 'Diário de Deus - Editor de casos paranormais',
 		title       : 'Diário de Deus',
-		description : 'Crie casos, rituais e ameaças para Ordem Paranormal RPG usando Markdown.',
+		description : 'Crie casos, rituais e ameaças para a sua mesa usando Markdown.',
 		image       : `${config.get('publicUrl')}/thumbnail.png`,
 		type        : 'website'
 	};

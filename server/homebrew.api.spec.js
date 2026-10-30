@@ -351,7 +351,7 @@ describe('Tests for api', ()=>{
 				lang        : 'pt-BR',
 				shareId     : undefined,
 				tags        : [],
-				theme       : 'OrdemParanormal',
+				theme       : 'DiarioDeDeus',
 				thumbnail   : '',
 				textBin     : undefined,
 				version     : undefined,
@@ -710,7 +710,7 @@ describe('Tests for api', ()=>{
 								'```\n' +
 								'\n' +
     							'asdf',
-				theme       : 'OrdemParanormal',
+				theme       : 'DiarioDeDeus',
 				thumbnail   : '',
 				title       : 'asdf',
 				trashed     : false,
@@ -805,7 +805,7 @@ describe('Tests for api', ()=>{
 				tags      : [],
 				text      : undefined,
 				textBin   : undefined,
-				theme     : 'OrdemParanormal',
+				theme     : 'DiarioDeDeus',
 				thumbnail : '',
 				title     : 'asdf',
 				trashed   : false,

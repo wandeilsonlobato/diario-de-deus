@@ -15,7 +15,7 @@ import V3_5ePHB   from '@themes/V3/5ePHB/snippets.js';
 import V3_5eDMG   from '@themes/V3/5eDMG/snippets.js';
 import V3_Journal from '@themes/V3/Journal/snippets.js';
 import V3_Blank  from '@themes/V3/Blank/snippets.js';
-import V3_OrdemParanormal from '@themes/V3/OrdemParanormal/snippets.js';
+import V3_DiarioDeDeus from '@themes/V3/DiarioDeDeus/snippets.js';
 
 const ThemeSnippets = {
 	Legacy_5ePHB       : Legacy5ePHB,
@@ -23,7 +23,7 @@ const ThemeSnippets = {
 	V3_5eDMG           : V3_5eDMG,
 	V3_Journal         : V3_Journal,
 	V3_Blank           : V3_Blank,
-	V3_OrdemParanormal : V3_OrdemParanormal,
+	V3_DiarioDeDeus : V3_DiarioDeDeus,
 };
 /*eslint-enable camelcase */
 
