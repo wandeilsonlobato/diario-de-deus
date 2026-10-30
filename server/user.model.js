@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
 	username  : { type: String, required: true, index: { unique: true } },
 	email     : { type: String, default: '' },
 	createdAt : { type: Date, default: Date.now },
-}, { versionKey: false });
+}, { versionKey: false, autoIndex: true }); // Uniqueness depends on these indexes, also in production
 
 const slugify = (text = '')=>text
 	.normalize('NFD')

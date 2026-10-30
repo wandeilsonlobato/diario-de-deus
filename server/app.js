@@ -34,7 +34,6 @@ import bodyParser         from 'body-parser';
 import cookieParser       from 'cookie-parser';
 import forceSSL           from './forcessl.mw.js';
 
-import dbCheck            from './middleware/dbCheck.js';
 
 import cors from 'cors';
 
@@ -67,7 +66,7 @@ export default async function createApp(vite) {
 	app.use(forceSSL);
 
 
-	const corsOptions = {
+	const corsOptions = (req)=>({
 		origin : (origin, callback)=>{
 
 			const allowedOrigins = [
@@ -81,7 +80,9 @@ export default async function createApp(vite) {
 
 			const herokuRegex = /^https:\/\/(?:homebrewery-pr-\d+\.herokuapp\.com|naturalcrit-pr-\d+\.herokuapp\.com)$/; // Matches any Heroku app
 
-			if(!origin || allowedOrigins.includes(origin) || herokuRegex.test(origin) || (isLocalEnvironment && localNetworkRegex.test(origin))) {
+			const sameOrigin = origin === `${req.protocol}://${req.get('host')}`;
+
+			if(!origin || sameOrigin || allowedOrigins.includes(origin) || herokuRegex.test(origin) || (isLocalEnvironment && localNetworkRegex.test(origin))) {
 				callback(null, true);
 			} else {
 				console.log(origin, 'not allowed');
@@ -90,9 +91,9 @@ export default async function createApp(vite) {
 		},
 		methods     : ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 		credentials : true,
-	};
+	});
 
-	app.use(cors(corsOptions));
+	app.use((req, res, next)=>cors(corsOptions(req))(req, res, next));
 
 	//Account Middleware
 	app.use((req, res, next)=>{
@@ -168,35 +169,6 @@ export default async function createApp(vite) {
 
 	//Serve brew styling
 	app.get('/css/:id', asyncHandler(getBrew('share')), (req, res)=>{getCSS(req, res);});
-
-	//Change author name on brews
-	app.put('/api/user/rename', dbCheck, async (req, res)=>{
-		const { username, newUsername } = req.body;
-		const ownAccount = req.account && (req.account.username == newUsername);
-
-		if(!username || !newUsername)
-			return res.status(400).json({ error: 'Username and newUsername are required.' });
-		if(!ownAccount)
-			return res.status(403).json({ error: 'Must be logged in to change your username' });
-		try {
-			const brews = await HomebrewModel.getByUser(username, true, ['authors']);
-			const renamePromises = brews.map(async (brew)=>{
-				const updatedAuthors = brew.authors.map((author)=>author === username ? newUsername : author
-				);
-				return HomebrewModel.updateOne(
-					{ _id: brew._id },
-					{ $set: { authors: updatedAuthors } }
-				);
-			});
-			await Promise.all(renamePromises);
-
-			return res.json({ success: true, message: `Brews for ${username} renamed to ${newUsername}.` });
-		} catch (error) {
-			console.error('Error renaming brews:', error);
-			return res.status(500).json({ error: 'Failed to rename brews.' });
-		}
-	});
-
 
 	// Local only
 	if(isLocalEnvironment){

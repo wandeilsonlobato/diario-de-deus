@@ -1,0 +1,12 @@
+{
+  "framework": null,
+  "installCommand": "npm install --ignore-scripts",
+  "buildCommand": "npm run build && mkdir -p vercel-public",
+  "outputDirectory": "vercel-public",
+  "rewrites": [{ "source": "/(.*)", "destination": "/api/index" }],
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "{build/**,config/**,themes/**,client/homebrew/pages/homePage/*.md,changelog.md,faq.md,index.html}"
+    }
+  }
+}
