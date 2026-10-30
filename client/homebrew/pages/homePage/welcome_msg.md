@@ -25,8 +25,11 @@ A realidade está mais frágil do que parece. Registre aqui o que você viu: as 
 Use os botões acima do editor para inserir blocos prontos:
 
 - {{fas,fa-user-secret}} **Agentes:** dossiê, trilha, origem e tabela de NEX.
-- {{fas,fa-eye}} **Outro Lado:** rituais, ameaças e itens amaldiçoados.
+- {{fas,fa-eye}} **Outro Lado:** rituais, ameaças, itens amaldiçoados e {{sigilos sigilos}}.
 - {{fas,fa-folder-open}} **Caso:** capa, documentos, notas e texto para leitura.
+
+### Fontes e sigilos
+Em **Fontes**, escolha uma fonte e ela muda todo o documento. A opção **Sigilos** transforma cada letra digitada no sigilo correspondente. Para usar só em um trecho, escolha **Outro Lado → Texto em Sigilos**.
 
 ### Salvar seu trabalho
 O que você escreve em **novo** fica guardado neste navegador. Para não perder nada ou continuar em outro aparelho, clique em **baixar arquivo** e depois reabra em **novo → de arquivo**.
@@ -62,6 +65,9 @@ Assim fica um ritual gerado pelo botão **Outro Lado → Ritual**.
 ##### RELATÓRIO DE MISSÃO
 Blocos de documento servem para pistas e arquivos entregues aos jogadores.
 }}
+
+### Criado por
+Montagem e criação de **Wander**: [@w.ander7 no Instagram](https://www.instagram.com/w.ander7/) e [@fluxo_naruto no Twitter](https://x.com/fluxo_naruto).
 
 ### Aviso legal
 Este é um conteúdo não oficial, publicado sob a [Licença da Comunidade de Ordem Paranormal](https://ordemparanormal.com.br/licenca). Contém material gerado por inteligência artificial.

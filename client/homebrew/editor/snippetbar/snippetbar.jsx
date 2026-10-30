@@ -8,6 +8,7 @@ import cx from 'classnames';
 
 import { loadHistory } from '../../utils/versionHistory.js';
 import { brewSnippetsToJSON } from '@shared/helpers.js';
+import { fontFromSnippet } from '../../utils/documentFont.js';
 
 /*eslint-disable camelcase*/
 import Legacy5ePHB from '@themes/Legacy/5ePHB/snippets.js';
@@ -37,6 +38,7 @@ const SnippetBar = ({
 	view            = 'text',
 	onViewChange    = ()=>{},
 	onInject        = ()=>{},
+	onFontSelect    = ()=>{},
 	onToggle        = ()=>{},
 	showEditButtons = true,
 	renderer        = 'legacy',
@@ -114,7 +116,10 @@ const SnippetBar = ({
 		updateHistory();
 	}, [brew]);
 
-	const handleSnippetClick = (injectedText)=>onInject(injectedText);
+	const handleSnippetClick = (injectedText, groupName)=>{
+		const font = groupName === 'Fontes' && fontFromSnippet(injectedText);
+		return font ? onFontSelect(font) : onInject(injectedText);
+	};
 
 	const renderSnippetGroups = ()=>{
 		const currentSnippets = snippets.filter((snippetGroup)=>snippetGroup.view === view);
@@ -265,7 +270,7 @@ const SnippetGroup = (props)=>{
 	} = props;
 
 	const handleSnippetClick = (e, snippet)=>{
-		onSnippetClick(execute(snippet.gen, props));
+		onSnippetClick(execute(snippet.gen, props), groupName);
 	};
 	const renderSnippets = (snippets)=>{
 		return _.map(snippets, (snippet)=>{

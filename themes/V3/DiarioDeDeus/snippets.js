@@ -53,6 +53,11 @@ export default [
 				gen  : RitualGen.listaRituais,
 			},
 			{
+				name : 'Texto em Sigilos',
+				icon : 'fas fa-language',
+				gen  : '{{sigilos O Outro Lado observa}}',
+			},
+			{
 				name : 'Ameaça',
 				icon : 'fas fa-spider',
 				gen  : AmeacaGen.ameaca('ameaca,frame'),

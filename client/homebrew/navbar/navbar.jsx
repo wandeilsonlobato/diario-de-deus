@@ -14,6 +14,12 @@ const Navbar = ({ children })=>{
 					title='Este é um conteúdo não oficial, publicado sob a Licença da Comunidade de Ordem Paranormal'>
 					<img src='/assets/selo-licenca.png' alt='Selo da Licença da Comunidade' />
 				</a>
+				<a className='credito' href='https://www.instagram.com/w.ander7/' target='_blank' rel='noopener noreferrer' title='Instagram do criador'>
+					<i className='fab fa-instagram' /> @w.ander7
+				</a>
+				<a className='credito' href='https://x.com/fluxo_naruto' target='_blank' rel='noopener noreferrer' title='Twitter do criador'>
+					<i className='fab fa-twitter' /> @fluxo_naruto
+				</a>
 				{!global.config?.staticSite && <Nav.item newTab={true} href='/changelog' color='purple' icon='far fa-file-alt'>
 					{`v${version}`}
 				</Nav.item>}

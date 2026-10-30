@@ -817,6 +817,16 @@ export default [
 		view   	  : 'text',
 		snippets  : [
 			{
+				name : 'Padrão do tema',
+				icon : 'fas fa-rotate-left',
+				gen	 : dedent`{{font-family:unset Dummy Text}}`
+			},
+			{
+				name : 'Sigilos',
+				icon : 'font Sigilos',
+				gen	 : dedent`{{font-family:Sigilos Dummy Text}}`
+			},
+			{
 				name : 'Open Sans',
 				icon : 'font OpenSans',
 				gen	 : dedent`{{font-family:OpenSans Dummy Text}}`
