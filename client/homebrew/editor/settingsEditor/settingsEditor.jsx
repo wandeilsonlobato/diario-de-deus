@@ -37,11 +37,11 @@ const SettingsEditor = ({ settings, updateSettings = ()=>{}, EditorThemeNameList
 
 	return (
 		<div className='settingsEditor uiEditor'>
-			<h1>Editor Settings</h1>
+			<h1>Configurações do editor</h1>
 
 			<div className='field'>
 				<label htmlFor='changeEditorTheme'>
-					Select your Editor Theme
+					Tema do editor
 				</label>
 				<div className='value'>
 					<select id='changeEditorTheme' value={settings.editorTheme} onChange={(e)=>handleFieldChange('editorTheme', e)} >
@@ -54,7 +54,7 @@ const SettingsEditor = ({ settings, updateSettings = ()=>{}, EditorThemeNameList
 
 			<div className='field'>
 				<label htmlFor='autoCloseBrackets'>
-					Automatically close brackets
+					Fechar chaves automaticamente
 				</label>
 				<div className='value'>
 					<input
@@ -69,7 +69,7 @@ const SettingsEditor = ({ settings, updateSettings = ()=>{}, EditorThemeNameList
 
 			<div className='field'>
 				<label htmlFor='showImagePreviews'>
-					Show Image Previews when hovering a link
+					Mostrar prévia de imagem ao passar o mouse no link
 				</label>
 				<div className='value'>
 					<input
@@ -84,7 +84,7 @@ const SettingsEditor = ({ settings, updateSettings = ()=>{}, EditorThemeNameList
 
 			<div className='field'>
 				<label htmlFor='activeLineShading'>
-					Background shading of active line
+					Destacar a linha ativa
 				</label>
 				<div className='value'>
 					<input
@@ -99,7 +99,7 @@ const SettingsEditor = ({ settings, updateSettings = ()=>{}, EditorThemeNameList
 			</div>
 
 			<div className='field'>
-				<label htmlFor='lineNumbers'>Show Line Numbers</label>
+				<label htmlFor='lineNumbers'>Mostrar números das linhas</label>
 				<div className='value'>
 					<input
 						id='lineNumbers'
@@ -113,11 +113,11 @@ const SettingsEditor = ({ settings, updateSettings = ()=>{}, EditorThemeNameList
 
 			<div className='field'>
 				<label htmlFor='fontSize'>
-					Editor Font Size
+					Tamanho da fonte do editor
 				</label>
 
 				<div className='value'>
-					<small style={{ fontSize: `${settings.fontSize || 1}em` }}>from 7px to 26px</small>
+					<small style={{ fontSize: `${settings.fontSize || 1}em` }}>de 7px a 26px</small>
 					<input
 						id='fontSize'
 						type='range'

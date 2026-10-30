@@ -161,16 +161,16 @@ const SnippetBar = ({
 					const diffMs = new Date() - saveTime;
 					const diffSecs = Math.floor(diffMs / 1000);
 
-					let diffString = `about ${diffSecs} seconds ago`;
+					let diffString = `há ${diffSecs} segundos`;
 
 					if(diffSecs > 60)
-						diffString = `about ${Math.floor(diffSecs / 60)} minutes ago`;
+						diffString = `há ${Math.floor(diffSecs / 60)} minutos`;
 					if(diffSecs > (60 * 60))
-						diffString = `about ${Math.floor(diffSecs / (60 * 60))} hours ago`;
+						diffString = `há ${Math.floor(diffSecs / (60 * 60))} horas`;
 					if(diffSecs > (24 * 60 * 60))
-						diffString = `about ${Math.floor(diffSecs / (24 * 60 * 60))} days ago`;
+						diffString = `há ${Math.floor(diffSecs / (24 * 60 * 60))} dias`;
 					if(diffSecs > (7 * 24 * 60 * 60))
-						diffString = `about ${Math.floor(diffSecs / (7 * 24 * 60 * 60))} weeks ago`;
+						diffString = `há ${Math.floor(diffSecs / (7 * 24 * 60 * 60))} semanas`;
 
 					return (
 						<li key={index} role='none'>

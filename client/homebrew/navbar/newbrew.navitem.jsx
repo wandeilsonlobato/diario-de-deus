@@ -2,6 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import Nav from './nav.jsx';
 import { splitTextStyleAndMetadata } from '@shared/helpers.js';
+import { startNewCase } from '../utils/caseLibrary.js';
 
 const BREWKEY  = 'HB_newPage_content';
 const STYLEKEY = 'HB_newPage_style';
@@ -12,7 +13,7 @@ const NewBrew = ()=>{
 		const file = e.target.files[0];
 		if(!file) return;
 
-		if(!confirmLocalStorageChange()) return;
+		if(!global.config?.staticSite && !confirmLocalStorageChange()) return;
 
 		const reader = new FileReader();
 		reader.onload = (e)=>{
@@ -21,6 +22,7 @@ const NewBrew = ()=>{
 
 			if(fileContent.startsWith('```metadata')) {
 				splitTextStyleAndMetadata(newBrew);
+				if(global.config?.staticSite) startNewCase();
 				localStorage.setItem(BREWKEY, newBrew.text);
 				localStorage.setItem(STYLEKEY, newBrew.style);
 				localStorage.setItem(METAKEY, JSON.stringify(
@@ -32,7 +34,7 @@ const NewBrew = ()=>{
 
 			const type = file.name.split('.').pop().toLowerCase();
 
-			alert(`This file is invalid: ${!type ? 'Missing file extension' :`.${type} files are not supported`}. Only .txt files exported from the Homebrewery are allowed.`);
+			alert(`Arquivo inválido: ${!type ? 'sem extensão' :`arquivos .${type} não são aceitos`}. Use um arquivo .txt baixado do Diário de Deus.`);
 
 			console.log(file);
 		};
@@ -48,11 +50,16 @@ const NewBrew = ()=>{
 		// TRUE if data in any local storage key AND approval given
 		// FALSE if data in any local storage key AND approval declined
 		return (!(currentText || currentStyle || currentMeta) || confirm(
-			`You have made changes in the new brew space. If you continue, that information will be PERMANENTLY LOST.\nAre you sure you wish to continue?`
+			`Você tem alterações neste documento. Se continuar, elas serão PERDIDAS.\nDeseja continuar?`
 		));
 	};
 
 	const clearLocalStorage = ()=>{
+		if(global.config?.staticSite) {
+			startNewCase();
+			window.location.href = '/new';
+			return;
+		}
 		if(!confirmLocalStorageChange()) return;
 
 		localStorage.removeItem(BREWKEY);
@@ -72,14 +79,14 @@ const NewBrew = ()=>{
 				icon='fa-solid fa-plus-square'>
 					novo
 			</Nav.item>
-			<Nav.item
+			{!global.config?.staticSite && <Nav.item
 				className='new'
 				href='/new'
 				newTab={true}
 				color='purple'
 				icon='fa-solid fa-file'>
 					retomar rascunho
-			</Nav.item>
+			</Nav.item>}
 			<Nav.item
 				className='fromBlank'
 				newTab={true}

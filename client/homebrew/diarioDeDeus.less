@@ -249,7 +249,19 @@ body .homebrew {
 	//*****************************
 	// *        BARRA LATERAL
 	// *****************************/
-	.sitePage:not(.workspace-read) .content { margin-left : @railLargura; }
+	.sitePage:not(.workspace-read) .content {
+		margin-left : @railLargura;
+		&::before {
+			position     : fixed;
+			top          : @navAltura + 1px;
+			bottom       : 0;
+			left         : 0;
+			width        : @railLargura;
+			content      : '';
+			background   : @capa;
+			border-right : 1px solid @linha;
+		}
+	}
 
 	.editor .snippetBar .snippets {
 		position   : fixed;
@@ -312,6 +324,102 @@ body .homebrew {
 	.editor .snippetBar .editors { margin-left : auto; }
 
 	//*****************************
+	// *         MEUS CASOS
+	// *****************************/
+	.casesOverlay {
+		position        : fixed;
+		inset           : 0;
+		z-index         : 2000;
+		display         : flex;
+		align-items     : flex-start;
+		justify-content : center;
+		padding         : 70px 16px 16px;
+		background      : #000000AA;
+	}
+	.casesPanel {
+		box-sizing    : border-box;
+		display       : flex;
+		flex-flow     : column;
+		width         : 100%;
+		max-width     : 560px;
+		max-height    : 100%;
+		padding       : 18px 20px;
+		color         : @osso;
+		background    : @capa;
+		border        : 1px solid @linha;
+		border-radius : 10px;
+		header {
+			display         : flex;
+			align-items     : center;
+			justify-content : space-between;
+		}
+		h2 {
+			margin      : 0;
+			font-family : 'FrederickaTheGreat', serif;
+			font-size   : 26px;
+			font-weight : normal;
+		}
+		button {
+			font-family : 'Overpass', sans-serif;
+			color       : @osso;
+			cursor      : pointer;
+			background  : transparent;
+			border      : none;
+		}
+		.fechar { font-size : 20px; }
+		.aviso, .vazio {
+			margin    : 8px 0 12px;
+			font-size : 13px;
+			color     : @cinza;
+		}
+		.novoCaso {
+			align-self    : flex-start;
+			padding       : 9px 14px;
+			margin-bottom : 12px;
+			font-size     : 14px;
+			font-weight   : 600;
+			background    : @sangue;
+			border-radius : 6px;
+			&:hover { background : @sangueC; }
+		}
+		ul {
+			padding    : 0;
+			margin     : 0;
+			overflow-y : auto;
+			list-style : none;
+		}
+		li {
+			display     : flex;
+			align-items : center;
+			border-top  : 1px solid @linha;
+			&.atual { background : @painel; }
+			> button {
+				min-width : 44px;
+				min-height: 48px;
+				color     : @cinza;
+				&:hover { color : @sangueC; }
+			}
+		}
+		.abrir {
+			display        : flex;
+			flex           : 1;
+			flex-flow      : column;
+			gap            : 3px;
+			min-width      : 0;
+			padding        : 9px 8px;
+			text-align     : left;
+			strong {
+				overflow      : hidden;
+				font-size     : 15px;
+				color         : @osso;
+				text-overflow : ellipsis;
+				white-space   : nowrap;
+			}
+			small { font-size : 12px; color : @cinza; }
+		}
+	}
+
+	//*****************************
 	// *           CELULAR
 	// *****************************/
 	.phoneTabs, .phoneMenuButton { display : none; }
@@ -337,10 +445,19 @@ body .homebrew {
 				background : @capa;
 				border-bottom : 1px solid @linha;
 				&.open { display : flex; }
-				.navItem {
-					justify-content : flex-start;
+				.navItem, .navDropdownContainer .navDropdown .navItem {
+					justify-content : flex-end; // Itens em row-reverse: alinha à esquerda
+					width           : 100%;
 					min-height      : 46px;
 					font-size       : 15px;
+				}
+				.navDropdownContainer .navDropdown {
+					position      : static;
+					align-items   : stretch;
+					width         : 100%;
+					padding-left  : 18px;
+					background    : transparent;
+					border        : none;
 				}
 				.creditos {
 					display     : flex;
@@ -397,7 +514,10 @@ body .homebrew {
 			min-height    : 0;
 			margin-bottom : @abasAltura;
 		}
-		.sitePage:not(.workspace-read) .content { margin-left : 0; }
+		.sitePage:not(.workspace-read) .content {
+			margin-left : 0;
+			&::before { display : none; }
+		}
 
 		.sitePage.workspace-both .splitPane {
 			> .pane:first-child {
@@ -440,9 +560,11 @@ body .homebrew {
 			.menu-item { min-height : 46px; }
 		}
 
+		.homePage.sitePage .content { margin-bottom : 0; }
 		.homePage a.floatingNewButton {
 			right  : 16px;
-			bottom : @abasAltura + 14px;
+			bottom : 20px;
 		}
+		.casesOverlay { padding : 54px 8px 8px; }
 	}
 }

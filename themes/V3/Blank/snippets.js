@@ -35,27 +35,27 @@ export default [
 				icon        : 'fas fa-bookmark',
 				subsnippets : [
 					{
-						name : 'Page Number',
+						name : 'Número da página',
 						icon : 'fas fa-bookmark',
 						gen  : '{{pageNumber 1}}\n'
 					},
 					{
-						name : 'Auto-incrementing Page Number',
+						name : 'Número automático',
 						icon : 'fas fa-sort-numeric-down',
 						gen  : '{{pageNumber,auto}}\n'
 					},
 					{
-						name : 'Variable Auto Page Number',
+						name : 'Número automático variável',
 						icon : 'fas fa-sort-numeric-down',
 						gen  : '{{pageNumber $[HB_pageNumber]}}\n'
 					},
 					{
-						name : 'Skip Page Number Increment this Page',
+						name : 'Pular número nesta página',
 						icon : 'fas fa-xmark',
 						gen  : '{{skipCounting}}\n'
 					},
 					{
-						name : 'Restart Numbering',
+						name : 'Reiniciar numeração',
 						icon : 'fas fa-arrow-rotate-left',
 						gen  : '{{resetCounting}}\n'
 					},
@@ -67,32 +67,32 @@ export default [
 				gen         : FooterGen.createFooterFunc(),
 				subsnippets : [
 					{
-						name : 'Footer from H1',
+						name : 'Rodapé do título 1',
 						icon : 'fas fa-dice-one',
 						gen  : FooterGen.createFooterFunc(1)
 					},
 					{
-						name : 'Footer from H2',
+						name : 'Rodapé do título 2',
 						icon : 'fas fa-dice-two',
 						gen  : FooterGen.createFooterFunc(2)
 					},
 					{
-						name : 'Footer from H3',
+						name : 'Rodapé do título 3',
 						icon : 'fas fa-dice-three',
 						gen  : FooterGen.createFooterFunc(3)
 					},
 					{
-						name : 'Footer from H4',
+						name : 'Rodapé do título 4',
 						icon : 'fas fa-dice-four',
 						gen  : FooterGen.createFooterFunc(4)
 					},
 					{
-						name : 'Footer from H5',
+						name : 'Rodapé do título 5',
 						icon : 'fas fa-dice-five',
 						gen  : FooterGen.createFooterFunc(5)
 					},
 					{
-						name : 'Footer from H6',
+						name : 'Rodapé do título 6',
 						icon : 'fas fa-dice-six',
 						gen  : FooterGen.createFooterFunc(6)
 					}
@@ -121,7 +121,7 @@ export default [
 					\n`
 			},
 			{
-				name : 'QR Code',
+				name : 'Código QR',
 				icon : 'fas fa-qrcode',
 				gen  : (brew)=>{
 					return `![]` +
@@ -131,7 +131,7 @@ export default [
 				}
 			},
 			{
-				name : 'Link to page',
+				name : 'Link para página',
 				icon : 'fas fa-link',
 				gen  : '[Click here](#p3) to go to page 3\n'
 			},
@@ -141,7 +141,7 @@ export default [
 				gen  : '<!-- This is a comment that will not be rendered into your brew. Hotkey (Ctrl/Cmd + /). -->'
 			},
 			{
-				name : 'Homebrewery Credit',
+				name : 'Crédito ao Homebrewery',
 				icon : 'fas fa-dice-d20',
 				gen  : function(){
 					return dedent`
@@ -168,26 +168,26 @@ export default [
 						experimental : true
 					},
 					{
-						name : 'Include in ToC up to H3',
+						name : 'Incluir até o título 3',
 						icon : 'fas fa-dice-three',
 						gen  : dedent `\n{{tocDepthH3
 							}}\n`,
 
 					},
 					{
-						name : 'Include in ToC up to H4',
+						name : 'Incluir até o título 4',
 						icon : 'fas fa-dice-four',
 						gen  : dedent `\n{{tocDepthH4
 							}}\n`,
 					},
 					{
-						name : 'Include in ToC up to H5',
+						name : 'Incluir até o título 5',
 						icon : 'fas fa-dice-five',
 						gen  : dedent `\n{{tocDepthH5
 							}}\n`,
 					},
 					{
-						name : 'Include in ToC up to H6',
+						name : 'Incluir até o título 6',
 						icon : 'fas fa-dice-six',
 						gen  : dedent `\n{{tocDepthH6
 							}}\n`,
@@ -648,92 +648,92 @@ export default [
 					![Bird with autumn foliage by L. Prang & Co.](${domain}/assets/bird.webp) {width:325px}`
 			},
 			{
-				name : 'Image Wrap Left',
+				name : 'Imagem com texto à esquerda',
 				icon : 'fac image-wrap-left',
 				gen  : dedent`
 					![homebrewery_mug](${domain}/assets/homebrewerymug.png) {width:280px,margin-right:-3cm,wrapLeft}`
 			},
 			{
-				name : 'Image Wrap Right',
+				name : 'Imagem com texto à direita',
 				icon : 'fac image-wrap-right',
 				gen  : dedent`
 					![homebrewery_mug](${domain}/assets/homebrewerymug.png) {width:280px,margin-left:-3cm,wrapRight}`
 			},
 			{
-				name : 'Background Image',
+				name : 'Imagem de fundo',
 				icon : 'fas fa-tree',
 				gen  : dedent`
 					![homebrew mug](${domain}/assets/homebrewerymug.png) {position:absolute,top:50px,right:30px,width:280px}`
 			},
 			{
-				name : 'Watercolor Splatter',
+				name : 'Mancha de aquarela',
 				icon : 'fas fa-fill-drip',
 				gen  : WatercolorGen,
 			},
 			{
-				name         : 'Watercolor Center',
+				name         : 'Aquarela central',
 				icon         : 'fac mask-center',
 				gen          : ImageMaskGen.center,
 				experimental : true,
 			},
 			{
-				name         : 'Watercolor Edge',
+				name         : 'Aquarela na borda',
 				icon         : 'fac mask-edge',
 				gen          : ImageMaskGen.edge('bottom'),
 				experimental : true,
 				subsnippets  : [
 					{
-						name : 'Top',
+						name : 'Topo',
 						icon : 'fac position-top',
 						gen  : ImageMaskGen.edge('top'),
 					},
 					{
-						name : 'Right',
+						name : 'Direita',
 						icon : 'fac position-right',
 						gen  : ImageMaskGen.edge('right'),
 					},
 					{
-						name : 'Bottom',
+						name : 'Base',
 						icon : 'fac position-bottom',
 						gen  : ImageMaskGen.edge('bottom'),
 					},
 					{
-						name : 'Left',
+						name : 'Esquerda',
 						icon : 'fac position-left',
 						gen  : ImageMaskGen.edge('left'),
 					},
 				]
 			},
 			{
-				name         : 'Watercolor Corner',
+				name         : 'Aquarela no canto',
 				icon         : 'fac mask-corner',
 				gen          : ImageMaskGen.corner,
 				experimental : true,
 				subsnippets  : [
 					{
-						name : 'Top-Left',
+						name : 'Superior esquerdo',
 						icon : 'fac position-top-left',
 						gen  : ImageMaskGen.corner('top', 'left'),
 					},
 					{
-						name : 'Top-Right',
+						name : 'Superior direito',
 						icon : 'fac position-top-right',
 						gen  : ImageMaskGen.corner('top', 'right'),
 					},
 					{
-						name : 'Bottom-Left',
+						name : 'Inferior esquerdo',
 						icon : 'fac position-bottom-left',
 						gen  : ImageMaskGen.corner('bottom', 'left'),
 					},
 					{
-						name : 'Bottom-Right',
+						name : 'Inferior direito',
 						icon : 'fac position-bottom-right',
 						gen  : ImageMaskGen.corner('bottom', 'right'),
 					}
 				]
 			},
 			{
-				name : 'Watermark',
+				name : 'Marca-d\'água',
 				icon : 'fas fa-id-card',
 				gen  : dedent`
 				{{watermark Homebrewery}}\n`
@@ -787,7 +787,7 @@ export default [
 				}
 			},
 			{
-				name : 'Split Table',
+				name : 'Tabela dividida',
 				icon : 'fas fa-th-large',
 				gen  : function(){
 					return dedent`
@@ -927,7 +927,7 @@ export default [
 		view      : 'style',
 		snippets  : [
 			{
-				name : 'US Letter Page Size',
+				name : 'Página Carta (EUA)',
 				icon : 'far fa-file',
 				gen  : dedent`/* US Letter Page Size */
 					.page {
@@ -936,7 +936,7 @@ export default [
 					}\n\n`,
 			},
 			{
-				name : 'A3 Page Size',
+				name : 'Página A3',
 				icon : 'far fa-file',
 				gen  : dedent`/* A3 Page Size */
 					.page {
@@ -954,7 +954,7 @@ export default [
 					}\n\n`
 			},
 			{
-				name : 'A5 Page Size',
+				name : 'Página A5',
 				icon : 'far fa-file',
 				gen  : dedent`/* A5 Page Size */
 					.page {
@@ -963,7 +963,7 @@ export default [
 				}\n\n`,
 			},
 			{
-				name : 'Square Page Size',
+				name : 'Página quadrada',
 				icon : 'far fa-file',
 				gen  : dedent`/* Square Page Size */
 					.page {
@@ -974,7 +974,7 @@ export default [
 					}\n\n`
 			},
 			{
-				name : 'Card Page Size',
+				name : 'Página cartão',
 				icon : 'far fa-file',
 				gen  : dedent`/* Card Size */
 					.page {

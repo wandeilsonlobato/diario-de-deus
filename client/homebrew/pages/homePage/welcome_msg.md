@@ -17,12 +17,12 @@ Contém material gerado por inteligência artificial
 A realidade está mais frágil do que parece. Registre aqui o que você viu: as criaturas que atravessaram a Membrana, os rituais que nunca deveriam ter sido escritos e os casos que a Ordo Realitas preferiria manter em segredo.
 
 ### O que é isto?
-**Diário de Deus** é um editor gratuito para criar material de fã de horror paranormal. Você escreve em [Markdown](https://help.github.com/articles/markdown-basics/) à esquerda e vê o documento pronto à direita, *atualizado em tempo real*.
+**Diário de Deus** é um editor gratuito para criar material de fã de horror paranormal. Você escreve em [Markdown](https://help.github.com/articles/markdown-basics/) e vê o documento pronto *em tempo real*.
 
-**Experimente!** Edite o texto ao lado. Para começar um documento seu, clique em **novo** {{fas,fa-plus-square}} na barra superior.
+**Experimente!** Clique em **Criar o seu** para abrir o editor.
 
 ### Como criar
-Use os botões acima do editor para inserir blocos prontos:
+Use a barra lateral do editor (no celular, a aba **Blocos**) para inserir blocos prontos:
 
 - {{fas,fa-user-secret}} **Agentes:** dossiê, trilha, origem e tabela de NEX.
 - {{fas,fa-eye}} **Outro Lado:** rituais, ameaças, itens amaldiçoados e {{sigilos sigilos}}.
@@ -32,7 +32,7 @@ Use os botões acima do editor para inserir blocos prontos:
 Em **Fontes**, escolha uma fonte e ela muda todo o documento. Com um texto selecionado no editor, ela muda só esse trecho. A opção **Sigilos** transforma cada letra digitada no sigilo correspondente.
 
 ### Salvar seu trabalho
-O que você escreve em **novo** fica guardado neste navegador. Para não perder nada ou continuar em outro aparelho, clique em **baixar arquivo** e depois reabra em **novo → de arquivo**.
+Tudo o que você escreve fica salvo automaticamente em **meus casos**, neste navegador. Para guardar uma cópia ou continuar em outro aparelho, clique em **baixar arquivo** e depois reabra em **novo → de arquivo**.
 
 {{note
 ##### Gerar PDF

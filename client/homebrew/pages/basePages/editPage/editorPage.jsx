@@ -13,6 +13,8 @@ import LockNotification from '../../editPage/lockNotification/lockNotification.j
 import loginUrl         from '../../../utils/loginUrl.js';
 import downloadBrew     from '../../../utils/downloadBrew.js';
 import { isPhone }      from '../../../utils/device.js';
+import { saveCurrentCase } from '../../../utils/caseLibrary.js';
+import CasesPanel       from '@navbar/casesPanel.jsx';
 const Meta = Headtags.Meta;
 
 //===---- Navbar
@@ -36,6 +38,7 @@ const SNIPKEY        = 'HB_newPage_snippets';
 const METAKEY        = 'HB_newPage_meta';
 const SAVEKEY_PREFIX = 'HB_editor_defaultSave_';
 
+const CASE_SAVE_DELAY               = 800;    //Copy to the case library shortly after the last change
 const SAVE_TIMEOUT                  = 10000;  //Autosave 10 seconds after last change
 const UNSAVED_WARNING_TIMEOUT       = 900000; //Warn user afer 15 minutes of unsaved changes
 const UNSAVED_WARNING_POPUP_TIMEOUT = 4000;   //Show the warning for 4 seconds
@@ -60,10 +63,12 @@ const EditorPage = (props)=>{
 	const [warnUnsavedChanges, setWarnUnsavedChanges] = useState(true);
 	const [unsavedChanges, setUnsavedChanges]         = useState(false);
 	const [themeBundle, setThemeBundle]               = useState({});
+	const isStaticHome = global.config?.staticSite && pageName == 'homePage'; // Showcase only: nothing typed here would be kept
 	const [workspace, setWorkspace]                   = useState(()=>{
-		if(!isPhone()) return 'both';
-		return pageName == 'homePage' ? 'read' : 'write';
+		if(isStaticHome) return 'read';
+		return isPhone() ? 'write' : 'both';
 	});
+	const [casesOpen, setCasesOpen]                   = useState(false);
 	const [phoneMenuOpen, setPhoneMenuOpen]           = useState(false);
 	const [phoneBlocksOpen, setPhoneBlocksOpen]       = useState(false);
 	const [HTMLErrors, setHTMLErrors]                 = useState(hbfm.validate(currentBrew.text));
@@ -86,6 +91,8 @@ const EditorPage = (props)=>{
 	const editorRef          = useRef(null);
 	const latestBrew         = useRef(currentBrew);    // keyboard shortcut lives outside React and needs the current brew
 	const isStaticSite       = global.config?.staticSite;
+	const caseSaveTimeout    = useRef(null);
+	const warnedNoSpace      = useRef(false);
 
 	latestBrew.current = currentBrew;
 
@@ -116,6 +123,15 @@ const EditorPage = (props)=>{
 			window.onbeforeunload = null;
 		};
 	}, []);
+
+	const saveCaseSoon = ()=>{
+		clearTimeout(caseSaveTimeout.current);
+		caseSaveTimeout.current = setTimeout(()=>{
+			if(saveCurrentCase() || warnedNoSpace.current) return;
+			warnedNoSpace.current = true;
+			alert('O navegador ficou sem espaço para os seus casos. Clique em "baixar arquivo" para não perder este documento e apague casos antigos em "meus casos".');
+		}, CASE_SAVE_DELAY);
+	};
 
 	const loadBrewFromLocalStorage = ()=>{
 		const brew = { ...currentBrew };
@@ -149,6 +165,7 @@ const EditorPage = (props)=>{
 		localStorage.setItem(METAKEY, JSON.stringify({ title: brew.title, description: brew.description, tags: brew.tags, renderer: brew.renderer, theme: brew.theme, lang: brew.lang }));
 		if(window.location.pathname !== '/new')
 			window.history.replaceState({}, window.location.title, '/new/');
+		if(isStaticSite) saveCaseSoon();
 	};
 
 	const clearLocalStorage = ()=>{
@@ -200,6 +217,7 @@ const EditorPage = (props)=>{
 				theme       : value.theme,
 				lang        : value.lang
 			}));
+			if(isStaticSite) saveCaseSoon();
 		}
 	};
 
@@ -378,6 +396,8 @@ const EditorPage = (props)=>{
 
 	//======----- Navbar -----======
 	const renderSaveArea = ()=>{
+		if(isStaticHome) return null;
+
 		if(isStaticSite)
 			return <Nav.item color='blue' icon='fas fa-download' onClick={()=>downloadBrew(currentBrew)}>baixar arquivo</Nav.item>;
 
@@ -433,7 +453,7 @@ const EditorPage = (props)=>{
 		<Navbar>
 			<Nav.section>
 				<Nav.item className='brewTitle'>{currentBrew.title}</Nav.item>
-				{renderWorkspaceSwitch()}
+				{!isStaticHome && renderWorkspaceSwitch()}
 			</Nav.section>
 			<button className='phoneMenuButton' aria-label='Menu' aria-expanded={phoneMenuOpen} onClick={()=>setPhoneMenuOpen(!phoneMenuOpen)}>
 				<i className={phoneMenuOpen ? 'fas fa-times' : 'fas fa-bars'} />
@@ -441,8 +461,9 @@ const EditorPage = (props)=>{
 			<Nav.section className={phoneMenuOpen ? 'navActions open' : 'navActions'}>
 				{(pageName == 'editPage') && renderGoogleDriveIcon()}
 				{renderSaveArea()}
+				{isStaticSite && <Nav.item color='blue' icon='fas fa-folder-open' onClick={()=>{ setCasesOpen(true); setPhoneMenuOpen(false); }}>meus casos</Nav.item>}
 				<NewBrewItem />
-				<PrintNavItem />
+				{!isStaticHome && <PrintNavItem />}
 				{!isStaticSite && <HelpNavItem />}
 				{!isStaticSite && <VaultNavItem />}
 				{(pageName == 'editPage') && <ShareNavItem brew={currentBrew} currentPage={currentBrewRendererPageNum} />}
@@ -508,7 +529,8 @@ const EditorPage = (props)=>{
 				</SplitPane>
 			</div>
 			{showFloatingButtons && renderFloatingSaveButtons()}
-			{renderPhoneTabs()}
+			{!isStaticHome && renderPhoneTabs()}
+			{casesOpen && <CasesPanel onClose={()=>setCasesOpen(false)} />}
 		</div>
 	);
 };

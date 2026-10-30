@@ -205,7 +205,8 @@ const MetadataEditor = ({
 		};
 
 		const currentRenderer = metadata.renderer;
-		const currentThemeDisplay = themeBundle?.name ? `${themeBundle.author ?? currentRenderer} : ${themeBundle.name}` : 'No Theme Selected';
+		const themeLabel = global.config?.staticSite ? Themes[currentRenderer]?.[themeBundle?.name]?.name : `${themeBundle?.author ?? currentRenderer} : ${themeBundle?.name}`;
+		const currentThemeDisplay = themeBundle?.name ? themeLabel : 'Nenhum tema selecionado';
 		let dropdown;
 
 		if(currentRenderer == 'legacy') {
@@ -215,12 +216,12 @@ const MetadataEditor = ({
 				</div>;
 		} else {
 			dropdown =
-				<div className='value' data-tooltip-top='Select from the list below (built-in themes and brews you have tagged "meta:theme"), or paste in the Share URL or Share ID of any brew.'>
+				<div className='value' data-tooltip-top='Escolha um tema da lista abaixo.'>
 					<Combobox trigger='click'
 						id='combobox-themes'
 						className='themes-dropdown'
 						default={currentThemeDisplay}
-						placeholder='Select from below, or enter the Share URL or ID of a brew with the meta:theme tag'
+						placeholder='Escolha um tema da lista'
 						onSelect={(value)=>handleTheme(value)}
 						onEntry={(e)=>{
 							e.target.setCustomValidity('');	//Clear the validation popup while typing
@@ -238,12 +239,12 @@ const MetadataEditor = ({
 		}
 
 		return <div className='field themes'>
-			<label htmlFor='combobox-themes'>theme</label>
+			<label htmlFor='combobox-themes'>tema</label>
 			{dropdown}
 		</div>;
 	};
 	const renderLanguageDropdown = ()=>{
-		const langCodes = ['en', 'de', 'de-ch', 'fr', 'ja', 'es', 'it', 'sv', 'ru', 'zh-Hans', 'zh-Hant'];
+		const langCodes = ['pt-BR', 'en', 'de', 'de-ch', 'fr', 'ja', 'es', 'it', 'sv', 'ru', 'zh-Hans', 'zh-Hant'];
 		const listLanguages = ()=>{
 			return _.map(langCodes.sort(), (code, index)=>{
 				const localName = new Intl.DisplayNames([code], { type: 'language' });
@@ -256,8 +257,8 @@ const MetadataEditor = ({
 		};
 
 		return <div className='field language'>
-			<label htmlFor='combobox-language'>language</label>
-			<div className='value' data-tooltip-right='Sets the HTML Lang property for your brew. May affect hyphenation or spellcheck.'>
+			<label htmlFor='combobox-language'>idioma</label>
+			<div className='value' data-tooltip-right='Define o idioma do documento. Pode afetar a hifenização e o corretor.'>
 				<Combobox trigger='click'
 					id='combobox-language'
 					className='language-dropdown'
@@ -308,10 +309,10 @@ const MetadataEditor = ({
 
 	return (
 		<div className='metadataEditor uiEditor'>
-			<h1>Properties Editor</h1>
+			<h1>Propriedades</h1>
 
 			<div className='field title'>
-				<label htmlFor='title_field'>title</label>
+				<label htmlFor='title_field'>título</label>
 				<input
 					type='text'
 					id='title_field'
@@ -323,7 +324,7 @@ const MetadataEditor = ({
 			<fieldset className='field-group'>
 				<div className='field-column'>
 					<div className='field description'>
-						<label htmlFor='description_field'>description</label>
+						<label htmlFor='description_field'>descrição</label>
 						<textarea
 							id='description_field'
 							defaultValue={metadata.description}
@@ -331,7 +332,7 @@ const MetadataEditor = ({
 							onChange={(e)=>handleFieldChange('description', e)}
 						/>
 					</div>
-					<div className='field thumbnail'>
+					{!global.config?.staticSite && <div className='field thumbnail'>
 						<label htmlFor='thumbnail_field'>thumbnail</label>
 						<input
 							type='text'
@@ -347,9 +348,9 @@ const MetadataEditor = ({
 							aria-label={`${showThumbnail ? 'hide thumbnail' : 'show thumbnail'}`}>
 							<i className={`fas fa-caret-${showThumbnail ? 'right' : 'left'}`} />
 						</button>
-					</div>
+					</div>}
 				</div>
-				{showThumbnail && <img className='thumbnail-preview' src={metadata.thumbnail || homebreweryThumbnail}></img>}
+				{showThumbnail && !global.config?.staticSite && <img className='thumbnail-preview' src={metadata.thumbnail || homebreweryThumbnail}></img>}
 			</fieldset>
 			<div className='field tags'>
 				<label htmlFor='combobox-tags'>Tags</label>
@@ -358,18 +359,19 @@ const MetadataEditor = ({
 						id='combobox-tags'
 						label='tags'
 						valuePatterns={/^\s*(?:(?:group|meta|system|type)\s*:\s*)?[A-Za-z0-9][A-Za-z0-9 \/\\.&_\-]{0,40}\s*$/}
-						placeholder='add tag'
+						placeholder='adicionar tag'
 						unique={true}
 						values={metadata.tags}
 						onChange={(e)=>handleFieldChange('tags', e)}
-						tooltip='You may start tags with "type", "system", "group" or "meta" followed by a colon ":", these will be colored in your userpage.'
+						tooltip='Use tags para organizar seus documentos.'
 					/>
 				</div>
 			</div>
 			{renderLanguageDropdown()}
 			{renderThemeDropdown()}
-			{renderRenderOptions()}
+			{!global.config?.staticSite && renderRenderOptions()}
 
+			{!global.config?.staticSite && <>
 			<h2>Authors</h2>
 			{renderAuthors()}
 			<div className='field invitedAuthors'>
@@ -410,6 +412,7 @@ const MetadataEditor = ({
 					</button>
 				</div>
 			</div>}
+			</>}
 		</div>
 	);
 };
