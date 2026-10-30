@@ -394,6 +394,10 @@ const CodeEditor = forwardRef(
 				view.focus();
 			},
 			getCursorPosition : ()=>viewRef.current.state.selection.main.head,
+			getSelectedText   : ()=>{
+				const { state } = viewRef.current;
+				return state.sliceDoc(state.selection.main.from, state.selection.main.to);
+			},
 
 			scrollToPage : (pageNumber, smooth = true)=>{
 				const view = viewRef.current;

@@ -29,7 +29,7 @@ Use os botões acima do editor para inserir blocos prontos:
 - {{fas,fa-folder-open}} **Caso:** capa, documentos, notas e texto para leitura.
 
 ### Fontes e sigilos
-Em **Fontes**, escolha uma fonte e ela muda todo o documento. A opção **Sigilos** transforma cada letra digitada no sigilo correspondente. Para usar só em um trecho, escolha **Outro Lado → Texto em Sigilos**.
+Em **Fontes**, escolha uma fonte e ela muda todo o documento. Com um texto selecionado no editor, ela muda só esse trecho. A opção **Sigilos** transforma cada letra digitada no sigilo correspondente.
 
 ### Salvar seu trabalho
 O que você escreve em **novo** fica guardado neste navegador. Para não perder nada ou continuar em outro aparelho, clique em **baixar arquivo** e depois reabra em **novo → de arquivo**.

@@ -1,4 +1,4 @@
-import { applyDocumentFont, fontFromSnippet } from '../../client/homebrew/utils/documentFont.js';
+import { applyDocumentFont, wrapWithFont, fontFromSnippet } from '../../client/homebrew/utils/documentFont.js';
 
 describe('applyDocumentFont', ()=>{
 	it('keeps the existing style', ()=>{
@@ -19,6 +19,16 @@ describe('applyDocumentFont', ()=>{
 
 	it('works when the brew has no style yet', ()=>{
 		expect(applyDocumentFont(undefined, 'Sigilos')).toContain('Sigilos');
+	});
+});
+
+describe('wrapWithFont', ()=>{
+	it('uses a span for text in one line', ()=>{
+		expect(wrapWithFont('o Outro Lado', 'Sigilos')).toBe('{{font-family:Sigilos o Outro Lado}}');
+	});
+
+	it('uses a block for text across lines', ()=>{
+		expect(wrapWithFont('um\ndois', '"Times New Roman"')).toBe('{{font-family:"Times New Roman"\num\ndois\n}}');
 	});
 });
 

@@ -14,7 +14,7 @@ const EDITOR_SETTINGS_KEY = 'HB_edit_settings';
 
 import defaultCM5Theme from '@themes/codeMirror/default.js';
 import darkbrewery from '@themes/codeMirror/darkbrewery.js';
-import { applyDocumentFont } from '../utils/documentFont.js';
+import { applyDocumentFont, wrapWithFont } from '../utils/documentFont.js';
 import cm5Themes from 'codemirror-5-themes';
 
 const themes = { default: defaultCM5Theme, ...cm5Themes, darkbrewery };
@@ -169,7 +169,12 @@ const Editor = forwardRef(
 			codeEditor.current?.injectText(injectText);
 		};
 
-		const handleFontSelect = (font)=>onBrewChange('style')(applyDocumentFont(brew.style, font));
+		// With text selected the font changes only that text, otherwise the whole document
+		const handleFontSelect = (font)=>{
+			const selected = isText() && font !== 'unset' && codeEditor.current?.getSelectedText();
+			if(selected) return handleInject(wrapWithFont(selected, font));
+			onBrewChange('style')(applyDocumentFont(brew.style, font));
+		};
 
 		const handleViewChange = (newView)=>{
 			setMoveArrows(newView === 'text');
