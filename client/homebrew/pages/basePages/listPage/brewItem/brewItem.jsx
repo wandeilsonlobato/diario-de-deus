@@ -104,7 +104,7 @@ const BrewItem = ({
 			);
 		}
 		return (
-			<span className='storage' title='Homebrewery Storage'>
+			<span className='storage' title='Armazenado no Diário de Deus'>
 				<img className='homebreweryIcon' src={theme === 'light' ? homebreweryIconBlack : homebreweryIconWhite} alt='Homebrewery Storage' />
 			</span>
 		);

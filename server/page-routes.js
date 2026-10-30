@@ -39,7 +39,7 @@ export default function pageRoutes({
 		req.brew = {
 			text     : welcomeText,
 			renderer : 'V3',
-			theme    : '5ePHB'
+			theme    : 'OrdemParanormal'
 		},
 
 		req.ogMeta = { ...defaultMetaTags,
@@ -56,7 +56,7 @@ export default function pageRoutes({
 		req.brew = {
 			text     : welcomeTextLegacy,
 			renderer : 'legacy',
-			theme    : '5ePHB'
+			theme    : 'OrdemParanormal'
 		},
 
 		req.ogMeta = { ...defaultMetaTags,
@@ -73,7 +73,7 @@ export default function pageRoutes({
 		req.brew = {
 			text     : migrateText,
 			renderer : 'V3',
-			theme    : '5ePHB'
+			theme    : 'OrdemParanormal'
 		},
 
 		req.ogMeta = { ...defaultMetaTags,
@@ -91,7 +91,7 @@ export default function pageRoutes({
 			title    : 'Changelog',
 			text     : changelogText,
 			renderer : 'V3',
-			theme    : '5ePHB'
+			theme    : 'OrdemParanormal'
 		},
 
 		req.ogMeta = { ...defaultMetaTags,
@@ -109,7 +109,7 @@ export default function pageRoutes({
 			title    : 'FAQ',
 			text     : faqText,
 			renderer : 'V3',
-			theme    : '5ePHB'
+			theme    : 'OrdemParanormal'
 		},
 
 		req.ogMeta = { ...defaultMetaTags,
@@ -163,7 +163,7 @@ export default function pageRoutes({
 
 		req.ogMeta = { ...defaultMetaTags,
 			title       : `${req.params.username}'s Collection`,
-			description : 'View my collection of homebrew on the Homebrewery.'
+			description : 'Veja minha coleção no Diário de Deus.'
 			// type        :  could be 'profile'?
 		};
 
@@ -267,7 +267,7 @@ export default function pageRoutes({
 
 		req.ogMeta = { ...defaultMetaTags,
 			title       : 'New',
-			description : 'Start crafting your homebrew on the Homebrewery!'
+			description : 'Comece a escrever no Diário de Deus!'
 		};
 
 		return next();
@@ -279,7 +279,7 @@ export default function pageRoutes({
 
 		req.ogMeta = { ...defaultMetaTags,
 			title       : 'New',
-			description : 'Start crafting your homebrew on the Homebrewery!'
+			description : 'Comece a escrever no Diário de Deus!'
 		};
 
 		return next();

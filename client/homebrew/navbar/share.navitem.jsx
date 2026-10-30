@@ -12,7 +12,7 @@ const getRedditLink = (brew)=>{
 	const text = dedent`
 			Hey guys! I've been working on this homebrew. I'd love your feedback. Check it out.
 
-			**[Homebrewery Link](${global.config.baseUrl}/share/${getShareId(brew)})**`;
+			**[Link do Diário de Deus](${global.config.baseUrl}/share/${getShareId(brew)})**`;
 
 	return `https://www.reddit.com/r/UnearthedArcana/submit?title=${encodeURIComponent(brew.title.toWellFormed())}&text=${encodeURIComponent(text)}`;
 };
@@ -20,13 +20,13 @@ const getRedditLink = (brew)=>{
 export default ({ brew, currentPage })=>(
 	<Nav.dropdown>
 		<Nav.item color='teal' icon='fas fa-share-alt'>
-			share
+			compartilhar
 		</Nav.item>
 		<Nav.item color='blue' href={`/share/${getShareId(brew)}`}>
-			view
+			ver
 		</Nav.item>
 		<Nav.item color='blue' onClick={()=>{navigator.clipboard.writeText(`${global.config.baseUrl}/share/${getShareId(brew)}`);}}>
-			copy url
+			copiar link
 		</Nav.item>
 		{currentPage > 1 &&
 			<Nav.item

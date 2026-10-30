@@ -10,7 +10,7 @@ import dedent           from 'dedent';
 
 export default [
 	{
-		groupName : 'Style Editor',
+		groupName : 'Editor de Estilo',
 		icon      : 'fas fa-pencil-alt',
 		view      : 'style',
 		snippets  : [
@@ -155,7 +155,7 @@ export default [
 	/*********************  TABLES *********************/
 
 	{
-		groupName : 'Tables',
+		groupName : 'Tabelas',
 		icon      : 'fas fa-table',
 		view      : 'text',
 		snippets  : [
@@ -234,7 +234,7 @@ export default [
 	/**************** PAGE *************/
 
 	{
-		groupName : 'Print',
+		groupName : 'Impressão',
 		icon      : 'fas fa-print',
 		view      : 'style',
 		snippets  : [

@@ -154,11 +154,11 @@ const RecentItems = createReactClass({
 
 		return <>
 			{(this.props.showEdit && this.props.showView) ?
-				<Nav.item className='header'>edited</Nav.item> : null }
+				<Nav.item className='header'>editados</Nav.item> : null }
 			{this.props.showEdit ?
 				makeItems(this.state.edit) : null }
 			{(this.props.showEdit && this.props.showView) ?
-				<Nav.item className='header'>viewed</Nav.item>	: null }
+				<Nav.item className='header'>vistos</Nav.item>	: null }
 			{this.props.showView ?
 				makeItems(this.state.view) : null }
 		</>;
@@ -181,7 +181,7 @@ export default {
 		return <RecentItems
 			brew={props.brew}
 			storageKey={props.storageKey}
-			text='recently edited'
+			text='editados recentemente'
 			showEdit={true}
 		/>;
 	},
@@ -190,7 +190,7 @@ export default {
 		return <RecentItems
 			brew={props.brew}
 			storageKey={props.storageKey}
-			text='recently viewed'
+			text='vistos recentemente'
 			showView={true}
 		/>;
 	},
@@ -199,7 +199,7 @@ export default {
 		return <RecentItems
 			brew={props.brew}
 			storageKey={props.storageKey}
-			text='recent brews'
+			text='casos recentes'
 			showEdit={true}
 			showView={true}
 		/>;

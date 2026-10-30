@@ -3,8 +3,8 @@ import { EditorView } from '@codemirror/view';
 
 export default EditorView.theme({
 	'&' : {
-		backgroundColor : '#293134',
-		color           : '#91a6aa',
+		backgroundColor : '#0C0B0E',
+		color           : '#C9C2B6',
 	},
 	'.cm-content' : {
 		padding    : '4px 0',
@@ -16,25 +16,25 @@ export default EditorView.theme({
 		padding : '0 4px',
 	},
 	'.cm-gutters' : {
-		borderRight     : '1px solid #555',
-		backgroundColor : '#293134',
+		borderRight     : '1px solid #2E2935',
+		backgroundColor : '#0C0B0E',
 		whiteSpace      : 'nowrap',
 	},
 	'.cm-foldGutter' : {
-		borderLeft      : '1px solid #555',
-		backgroundColor : '#293134',
+		borderLeft      : '1px solid #2E2935',
+		backgroundColor : '#0C0B0E',
 	},
 	'.cm-foldGutter:hover' : {
-		backgroundColor : '#555',
+		backgroundColor : '#2E2935',
 	},
 	'.cm-gutterElement' : {
-		color : '#81969a',
+		color : '#6F6876',
 	},
 	'.cm-linenumber' : {
 		padding    : '0 3px 0 5px',
 		minWidth   : '20px',
 		textAlign  : 'right',
-		color      : '#999',
+		color      : '#6F6876',
 		whiteSpace : 'nowrap',
 	},
 	'.cm-cursor' : {
@@ -55,24 +55,24 @@ export default EditorView.theme({
 		backgroundColor : '#868c9323',
 	},
 	'.cm-selectionBackground' : {
-		backgroundColor : '#d7d4f0',
+		backgroundColor : '#5A1020',
 	},
 	'&.cm-focused .cm-selectionBackground' : {
-		backgroundColor : '#d7d4f0 !important',
+		backgroundColor : '#5A1020 !important',
 	},
 	'.cm-pageLine' : {
-		backgroundColor : '#7ca97c',
-		color           : '#000',
+		backgroundColor : '#1C1921',
+		color           : '#E0263F',
 		fontWeight      : 'bold',
 		letterSpacing   : '.5px',
-		borderTop       : '1px solid #ff0',
+		borderTop       : '1px solid #C2152F',
 	},
 	'.cm-columnSplit' : {
-		backgroundColor : '#7ca97c',
-		color           : 'black',
+		backgroundColor : '#1C1921',
+		color           : '#958D9C',
 		fontWeight      : 'bold',
 		letterSpacing   : '1px',
-		borderBottom    : '1px solid #ff0',
+		borderBottom    : '1px solid #2E2935',
 	},
 	'.cm-line.cm-block, .cm-line .cm-inline-block' : {
 		color : '#E3E3E3',
@@ -82,30 +82,30 @@ export default EditorView.theme({
 	},
 	'.cm-definitionList .cm-definitionColon' : {
 		backgroundColor : '#0000',
-		color           : '#e3FF00',
+		color           : '#958D9C',
 	},
 	'.cm-definitionList .cm-definitionDesc' : {
-		color : '#b5858d',
+		color : '#E8E2D6',
 	},
 
 	// Semantic classes
-	'.cm-header'                         : { color: '#C51B1B', fontWeight: 'bold' },
-	'.cm-strong'                         : { color: '#309dd2', fontWeight: 'bold' },
+	'.cm-header'                         : { color: '#F0566B', fontWeight: 'bold' },
+	'.cm-strong'                         : { color: '#FFFFFF', fontWeight: 'bold' },
 	'.cm-em'                             : { fontStyle: 'italic' },
 	'.cm-keyword'                        : { color: '#fff' },
 	'.cm-atom, .cm-value, .cm-color'     : { color: '#c1939a' },
 	'.cm-number'                         : { color: '#2986cc' },
 	'.cm-def'                            : { color: '#2986cc' },
-	'.cm-list'                           : { color: '#3cbf30' },
+	'.cm-list'                           : { color: '#E0B13A' },
 	'.cm-variable, .cm-type'             : { color: '#085' },
 	'.cm-comment'                        : { color: '#bbc700' },
-	'.cm-link'                           : { color: '#DD6300', textDecoration: 'underline' },
+	'.cm-link'                           : { color: '#A45BEF', textDecoration: 'underline' },
 	'.cm-string'                         : { color: '#AA8261', textDecoration: 'none'  },
 	'.cm-string-2'                       : { color: '#f50', textDecoration: 'none'  },
 	'.cm-meta, .cm-qualifier, .cm-class' : { color: '#19ee2b' },
 	'.cm-builtin'                        : { color: '#fff' },
 	'.cm-bracket'                        : { color: '#997' },
-	'.cm-tag, .cm-attribute'             : { color: '#e3ff00' },
+	'.cm-tag, .cm-attribute'             : { color: '#E0B13A' },
 	'.cm-hr'                             : { color: '#999' },
 	'.cm-negative'                       : { color: '#d44' },
 	'.cm-positive'                       : { color: '#292' },
@@ -113,5 +113,5 @@ export default EditorView.theme({
 	'.cm-matchingbracket'                : { color: '#0b0' },
 	'.cm-nonmatchingbracket'             : { color: '#a22' },
 	'.cm-matchingtag'                    : { backgroundColor: 'rgba(255, 150, 0, 0.3)' },
-	'.cm-quote'                          : { color: '#090' },
+	'.cm-quote'                          : { color: '#958D9C' },
 }, { dark: true });

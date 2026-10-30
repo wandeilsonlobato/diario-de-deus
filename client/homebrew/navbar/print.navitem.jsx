@@ -20,6 +20,6 @@ export default function(){
 	const handlePrintPrepFinished = ()=>{ setPrinting(false);	};
 
 	return <Nav.item onClick={printCurrentBrew} color='purple' icon='far fa-file-pdf'>
-		{printing ? 'loading' : 'get PDF'}
+		{printing ? 'carregando' : 'gerar PDF'}
 	</Nav.item>;
 };

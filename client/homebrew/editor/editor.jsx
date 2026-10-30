@@ -94,7 +94,7 @@ const Editor = forwardRef(
 			activeLineShading : true,
 			lineNumbers       : true,
 			fontSize          : 1,
-			editorTheme       : 'default',
+			editorTheme       : 'darkbrewery',
 		});
 
 		const editor = useRef(null);
@@ -117,7 +117,7 @@ const Editor = forwardRef(
 			const localEditorTheme = window.localStorage.getItem(EDITOR_THEME_KEY);
 			if(localEditorTheme && EditorThemes.includes(localEditorTheme)) {
 				setEditorSettings({ ...editorSettings, editorTheme: localEditorTheme });
-			} else setEditorSettings({ ...editorSettings, editorTheme: 'default' });
+			} else setEditorSettings({ ...editorSettings, editorTheme: 'darkbrewery' });
 			const localEditorSettings = window.localStorage.getItem(EDITOR_SETTINGS_KEY);
 			if(localEditorSettings) setEditorSettings(JSON.parse(localEditorSettings));
 			const snippetBar = document.querySelector('.editor > .snippetBar');

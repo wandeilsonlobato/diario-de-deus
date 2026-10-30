@@ -1,176 +1,64 @@
-```css
-.page #example + table td {
-	border:1px dashed #00000030;
-}
-.page {
-	padding-bottom : 1.1cm;
-}
-```
+{{capa
+![Diário de Deus](/assets/logo.png) {width:11cm}
 
-# The Homebrewery *V3*
-Welcome traveler from an antique land. Please sit and tell us of what you have seen. The unheard of monsters, who slither and bite. Tell us of the wondrous items and and artifacts you have found, their mysteries yet to be unlocked. Of the vexing vocations and surprising skills you have seen.
-
-### Homebrew D&D made easy
-The Homebrewery makes the creation and sharing of authentic looking Fifth-Edition homebrews easy. It uses [Markdown](https://help.github.com/articles/markdown-basics/) with a little CSS magic to make your brews come to life.
-
-**Try it!** Simply edit the text on the left and watch it *update live* on the right. Note that not every button is visible on this demo page. Click New {{fas,fa-plus-square}} in the navbar above to start brewing with all the features!
-
-### Editing and Sharing
-When you create a new homebrew document ("brew"), your document will be given a *edit link* and a *share link*.
-
-The *edit link* is where you write your brew. If you edit a brew while logged in, you are added as one of the brew's authors, and no one else can edit that brew until you add them as a new author via the {{fa,fa-info-circle}} **Properties** tab. Brews without any author can still be edited by anyone with the *edit link*, so be careful about who you share it with if you prefer to work without an account.
-
-Anyone with the *share url* will be able to access a read-only version of your homebrew.
-
-{{note
-##### PDF Creation
-PDF Printing works best in Google Chrome. If you are having quality/consistency issues, try using Chrome to print instead.
-
-After clicking the "Print" item in the navbar a new page will open and a print dialog will pop-up.
-* Set the **Destination** to "Save as PDF"
-* Set **Paper Size** to "Letter"
-* If you are printing on A4 paper, make sure to have the **PRINT → {{far,fa-file}} A4 Pagesize** snippet in your brew
-* In **Options** make sure "Background Images" is selected.
-* Hit print and enjoy! You're done!
-
-If you want to save ink or have a monochrome printer, add the **PRINT → {{fas,fa-tint}} Ink Friendly** snippet to your brew!
-}}
-
-![homebrew mug](https://homebrewery.naturalcrit.com/assets/homebrewerymug.png) {position:absolute,bottom:20px,left:130px,width:220px}
-
-{{artist,bottom:160px,left:100px
-##### Homebrew Mug
-[naturalcrit](https://homebrew.naturalcrit.com)
-}}
-
-{{pageNumber 1}}
-{{footnote PART 1 | FANCINESS}}
-
-\column
-
-## V3 vs Legacy
-The Homebrewery has two renderers: Legacy and V3. The V3 renderer is recommended for all users because it is more powerful, more customizable, and continues to receive new feature updates while Legacy does not. However Legacy mode will remain available for older brews and veteran users.
-	
-At any time, any individual brew can be changed to your renderer of choice via the {{fa,fa-info-circle}} **Properties** tab on your brew. However, converting between Legacy and V3 may require heavily tweaking the document; while both renderers can use raw HTML, V3 prefers a streamlined curly bracket syntax that avoids the complex HTML structures required by Legacy.
-
-
-Scroll down to the next page for a brief summary of the changes and features available in V3!
-#### New Things All The Time!
-Check out the latest updates in the full changelog [here](/changelog).
-
-### Helping out
-Like this tool? Head over to our [Patreon](https://www.patreon.com/Naturalcrit) to help us keep the servers running.
-
-
-This tool will **always** be free, never have ads, and we will never offer any "premium" features or whatever.
-
-### Bugs, Issues, Suggestions?
-- Check the [Frequently Asked Questions](/faq) page first for quick answers.
-- Get help or the right look for your brew by posting on [r/Homebrewery](https://www.reddit.com/r/homebrewery/submit?selftext=true&title=%5BIssue%5D%20Describe%20Your%20Issue%20Here) or joining the [Discord Of Many Things](https://discord.gg/by3deKx).
-- Report technical issues or provide feedback on the [GitHub Repo](https://github.com/naturalcrit/homebrewery/).
-
-### Legal Junk
-The Homebrewery is licensed using the [MIT License](https://github.com/naturalcrit/homebrewery/blob/master/license). Which means you are free to use The Homebrewery codebase any way that you want, except for claiming that you made it yourself.
-
-If you wish to sell or in some way gain profit for what's created on this site, it's your responsibility to ensure you have the proper licenses/rights for any images or resources used.
-#### Crediting Us
-If you'd like to credit us in your brew, we'd be flattered! Just reference that you made it with The Homebrewery.
-
-### More Homebrew Resources
-[![Discord](https://homebrewery.naturalcrit.com/assets/discordOfManyThings.svg){width:50px,float:right,padding-left:10px}](https://discord.gg/by3deKx)
-
-If you are looking for more 5e Homebrew resources check out [r/UnearthedArcana](https://www.reddit.com/r/UnearthedArcana/) and their list of useful resources [here](https://www.reddit.com/r/UnearthedArcana/wiki/resources). The [Discord Of Many Things](https://discord.gg/by3deKx) is another great resource to connect with fellow homebrewers for help and feedback.
-
-
-{{position:absolute;top:20px;right:20px;width:auto
-[![Discord](https://homebrewery.naturalcrit.com/assets/discord.png){height:30px}](https://discord.gg/by3deKx)
-[![Github](https://homebrewery.naturalcrit.com/assets/github.png){height:30px}](https://github.com/naturalcrit/homebrewery)
-[![Patreon](https://homebrewery.naturalcrit.com/assets/patreon.png){height:30px}](https://patreon.com/NaturalCrit)
-[![Reddit](https://homebrewery.naturalcrit.com/assets/reddit.png){height:30px}](https://www.reddit.com/r/homebrewery/)
+## Crie casos, rituais e ameaças para Ordem Paranormal RPG
+{{classificado Acesso Liberado}}
 }}
 
 \page
 
-## Markdown+
-The Homebrewery aims to make homebrewing as simple as possible, providing a live editor with Markdown syntax that is more human-readable and faster to write with than raw HTML.
+# Bem-vindo, agente
+A realidade está mais frágil do que parece. Registre aqui o que você viu: as criaturas que atravessaram a Membrana, os rituais que nunca deveriam ter sido escritos e os casos que a Ordem preferiria manter em segredo.
 
-From version 3.0.0, with a goal of adding maximum flexibility without users resorting to complex HTML to accomplish simple tasks, Homebrewery provides an extended verision of Markdown with additional syntax.
+### O que é isto?
+**Diário de Deus** é um editor para criar material de fã para *Ordem Paranormal RPG*. Você escreve em [Markdown](https://help.github.com/articles/markdown-basics/) à esquerda e vê o documento pronto à direita, *atualizado em tempo real*.
 
-### Curly Brackets
-Standard Markdown lacks several equivalences to HTML. Hence, we have introduced `{{ }}` as a replacement for `<span></span>` and `<div></div>` for a cleaner custom formatting. Inline spans and block elements can be created and given ID's and Classes, as well as CSS properties, each of which are comma separated with no spaces. Use double quotes if a value requires spaces. Spans and Blocks start the same:
+**Experimente!** Edite o texto ao lado. Para começar um documento seu, clique em **novo** {{fas,fa-plus-square}} na barra superior.
 
-#### Span
-My favorite author is {{pen,#author,color:orange,font-family:"trebuchet ms" Brandon Sanderson}}.  The orange text has a class of `pen`, an id of `author`, is colored orange, and given a new font. The first space outside of quotes marks the beginning of the content.
+### Como criar
+Use os botões acima do editor para inserir blocos prontos:
 
+- {{fas,fa-user-secret}} **Agentes:** dossiê, trilha, origem e tabela de NEX.
+- {{fas,fa-eye}} **Outro Lado:** rituais, ameaças e itens amaldiçoados.
+- {{fas,fa-folder-open}} **Caso:** capa, documentos, notas e texto para leitura.
 
-#### Block
-{{purple,#book,text-align:center,background:#aa88aa55
-My favorite book is Wheel of Time. This block has a class of `purple`, an id of `book`, and centered text with a colored background. The opening and closing brackets are on lines separate from the block contents.
+### Editar e compartilhar
+Cada documento tem um *link de edição*, que permite alterá-lo, e um *link de compartilhamento*, somente leitura. Sem login, qualquer pessoa com o link de edição pode alterar o documento, então cuidado com quem o recebe.
+
+{{note
+##### Gerar PDF
+Clique em **gerar PDF** na barra superior e, na janela de impressão:
+* Escolha **Salvar como PDF** como destino.
+* Ative **Gráficos de plano de fundo**.
+
+Para gastar menos tinta, use **Impressão → Economizar Tinta** na aba de estilo.
 }}
 
-#### Injection
-For any element not inside a span or block, you can *inject* attributes using the same syntax but with single brackets in a single line immediately after the element.
-
-Inline elements like *italics* {color:#D35400} or images require the injection on the same line.
-
-Block elements like headers require the injection to start on the line immediately following.
-
-##### A Purple Header
-{color:purple,text-align:center}
-
-\* *this does not currently work for tables yet*
-
-### Vertical Spacing
-A blank line can be achieved with a run of one or more `:` alone on a line. More `:`'s will create more space.
-
-::
-
-
-Much nicer than `<br><br><br><br><br>`
-
-### Definition Lists
-**Example** :: V3 uses HTML *definition lists* to create "lists" with hanging indents.
-
-
-
-### Column Breaks
-Column and page breaks with `\column` and `\page`.
-
 \column
-### Tables
-Tables now allow column & row spanning between cells. This is included in some updated snippets, but a simplified example is given below.
 
-A cell can be spanned across columns by grouping multiple pipe `|` characters at the end of a cell.
+### Os cinco elementos
+{{sangue Sangue}} é paixão e obsessão, {{morte Morte}} é o tempo e o fim, {{conhecimento Conhecimento}} é a verdade e a mente, {{energia Energia}} é o caos e a mudança. O {{medo Medo}} é o que existe por trás de todos eles.
 
-Row spanning is achieved by adding a `^` at the end of a cell just before the `|`.  
+{{ritual,sangue
+#### Exemplo de Ritual
+*Ritual de Sangue, 1º círculo (1 PE)*
 
-These can be combined to span a cell across both columns and rows. Cells must have the same colspan if they are to be rowspan'd.
+**Execução** :: padrão
+**Alcance** :: toque
+**Alvo** :: 1 ser
+**Duração** :: cena
 
-##### Example
-| Head A | Spanned Header ||
-| Head B | Head C | Head D |
-|:-------|:------:|:------:|
-| 1A     |    1B  |    1C  |
-| 2A    ^|    2B  |    2C  |
-| 3A    ^|    3B       3C ||
-| 4A     |    4B       4C^||
-| 5A    ^|    5B  |    5C  |
-| 6A     |    6B ^|    6C  |
+Assim fica um ritual gerado pelo botão **Outro Lado → Ritual**.
+}}
 
-## Images
-Images must be hosted online somewhere, like [Imgur](https://www.imgur.com). You use the address to that image to reference it in your brew\*.
+{{documento
+{{carimbo Sigiloso}}
+##### RELATÓRIO DE MISSÃO
+Blocos de documento servem para pistas e arquivos entregues aos jogadores.
+}}
 
-Using *Curly Injection* you can assign an id, classes, or inline CSS properties to the Markdown image syntax.
+### Aviso legal
+Projeto de fã, não oficial, baseado no código aberto do [The Homebrewery](https://github.com/naturalcrit/homebrewery) (licença MIT). *Ordem Paranormal* pertence aos seus respectivos autores e não tem relação com este projeto.
 
-![alt-text](https://homebrewery.naturalcrit.com/assets/catwarrior.jpg) {width:100px,border:"2px solid",border-radius:10px}
-
-\* *When using Imgur-hosted images, use the "direct link", which can be found when you click into your image in the Imgur interface.*
-
-## Snippets
-Homebrewery comes with a series of *code snippets* found at the top of the editor pane that make it easy to create brews as quickly as possible.  Just set your cursor where you want the code to appear in the editor pane, choose a snippet, and make the adjustments you need.
-
-## Style Editor Panel
-{{fa,fa-paint-brush}} Usually overlooked or unused by some users, the **Style Editor** tab is located on the right side of the Snippet bar. This editor accepts CSS for styling without requiring `<style>` tags-- anything that would have gone inside style tags before can now be placed here, and snippets that insert CSS styles are now located on that tab.
-
-{{pageNumber 2}}
-{{footnote PART 2 | BORING STUFF}}
+{{pageNumber 1}}
+{{footnote DIÁRIO DE DEUS}}

@@ -74,7 +74,7 @@ const Account = createReactClass({
 					color='yellow'
 					icon='fas fa-beer'
 				>
-					brews
+					meus casos
 				</Nav.item>
 				<Nav.item
 					className='account'
@@ -82,7 +82,7 @@ const Account = createReactClass({
 					icon='fas fa-user'
 					href='/account'
 				>
-					account
+					conta
 				</Nav.item>
 				<Nav.item
 					className='logout'
@@ -90,7 +90,7 @@ const Account = createReactClass({
 					icon='fas fa-power-off'
 					onClick={this.handleLogout}
 				>
-					logout
+					sair
 				</Nav.item>
 			</Nav.dropdown>;
 		}
@@ -99,14 +99,14 @@ const Account = createReactClass({
 		//  LOCAL ONLY
 		if(global.config?.local) {
 			return <Nav.item color='teal' icon='fas fa-sign-in-alt' onClick={this.localLogin}>
-				login
+				entrar
 			</Nav.item>;
 		};
 
 		// Logged out
 		// Production site
 		return <Nav.item href={`https://www.naturalcrit.com/login?redirect=${this.state.url}`} color='teal' icon='fas fa-sign-in-alt'>
-			login
+			entrar
 		</Nav.item>;
 	}
 });

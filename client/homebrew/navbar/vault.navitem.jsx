@@ -11,7 +11,7 @@ export default function (props) {
 			newTab={false}
 			rel='noopener noreferrer'
 		>
-			Vault
+			Acervo
 		</Nav.item>
 	);
 };

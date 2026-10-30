@@ -16,22 +16,22 @@ const domain = window.location.origin;
 export default [
 
 	{
-		groupName : 'Text Editor',
+		groupName : 'Editor de Texto',
 		icon      : 'fas fa-pencil-alt',
 		view      : 'text',
 		snippets  : [
 			{
-				name : 'Column Break',
+				name : 'Quebra de Coluna',
 				icon : 'fas fa-columns',
 				gen  : '\n\\column\n'
 			},
 			{
-				name : 'New Page',
+				name : 'Nova Página',
 				icon : 'fas fa-file-alt',
 				gen  : '\n\\page\n'
 			},
 			{
-				name        : 'Page Numbering',
+				name        : 'Numeração de Página',
 				icon        : 'fas fa-bookmark',
 				subsnippets : [
 					{
@@ -62,7 +62,7 @@ export default [
 				]
 			},
 			{
-				name        : 'Footer',
+				name        : 'Rodapé',
 				icon        : 'fas fa-shoe-prints',
 				gen         : FooterGen.createFooterFunc(),
 				subsnippets : [
@@ -99,17 +99,17 @@ export default [
 				]
 			},
 			{
-				name : 'Vertical Spacing',
+				name : 'Espaço Vertical',
 				icon : 'fas fa-arrows-alt-v',
 				gen  : '\n::::\n'
 			},
 			{
-				name : 'Horizontal Spacing',
+				name : 'Espaço Horizontal',
 				icon : 'fas fa-arrows-alt-h',
 				gen  : ' {{width:100px}} '
 			},
 			{
-				name : 'Wide Block',
+				name : 'Bloco Largo',
 				icon : 'fas fa-window-maximize',
 				gen  : dedent`\n
 					{{wide
@@ -136,7 +136,7 @@ export default [
 				gen  : '[Click here](#p3) to go to page 3\n'
 			},
 			{
-				name : 'Add Comment',
+				name : 'Comentário',
 				icon : 'fas fa-code',
 				gen  : '<!-- This is a comment that will not be rendered into your brew. Hotkey (Ctrl/Cmd + /). -->'
 			},
@@ -156,13 +156,13 @@ export default [
 				},
 			},
 			{
-				name         : 'Table of Contents',
+				name         : 'Sumário',
 				icon         : 'fas fa-book',
 				gen          : TableOfContentsGen,
 				experimental : true,
 				subsnippets  : [
 					{
-						name         : 'Table of Contents',
+						name         : 'Sumário',
 						icon         : 'fas fa-book',
 						gen          : TableOfContentsGen,
 						experimental : true
@@ -195,7 +195,7 @@ export default [
 				]
 			},
 			{
-				name : 'Index',
+				name : 'Índice',
 				icon : 'fas fa-bars',
 				gen  : indexGen,
 			},
@@ -203,7 +203,7 @@ export default [
 		]
 	},
 	{
-		groupName : 'License',
+		groupName : 'Licenças',
 		icon      : 'fas fa-copyright',
 		view      : 'text',
 		snippets  : [
@@ -624,12 +624,12 @@ export default [
 		]
 	},
 	{
-		groupName : 'Style Editor',
+		groupName : 'Editor de Estilo',
 		icon      : 'fas fa-pencil-alt',
 		view      : 'style',
 		snippets  : [
 			{
-				name : 'Add Comment',
+				name : 'Comentário',
 				icon : 'fas fa-code',
 				gen  : '/* This is a comment that will not be rendered into your brew. */'
 			}
@@ -637,12 +637,12 @@ export default [
 	},
 	/*********************** IMAGES *******************/
 	{
-		groupName : 'Images',
+		groupName : 'Imagens',
 		icon      : 'fas fa-images',
 		view      : 'text',
 		snippets  : [
 			{
-				name : 'Image',
+				name : 'Imagem',
 				icon : 'fas fa-image',
 				gen  : dedent`
 					![Bird with autumn foliage by L. Prang & Co.](${domain}/assets/bird.webp) {width:325px}`
@@ -744,12 +744,12 @@ export default [
 	/*********************  TABLES *********************/
 
 	{
-		groupName : 'Tables',
+		groupName : 'Tabelas',
 		icon      : 'fas fa-table',
 		view      : 'text',
 		snippets  : [
 			{
-				name : 'Table',
+				name : 'Tabela',
 				icon : 'fas fa-th-list',
 				gen  : function(){
 					return dedent`
@@ -766,7 +766,7 @@ export default [
 				}
 			},
 			{
-				name : 'Wide Table',
+				name : 'Tabela Larga',
 				icon : 'fas fa-list',
 				gen  : function(){
 					return dedent`
@@ -812,7 +812,7 @@ export default [
 	},
 	/**************** FONTS *************/
 	{
-		groupName : 'Fonts',
+		groupName : 'Fontes',
 		icon   	  : 'fas fa-keyboard',
 		view   	  : 'text',
 		snippets  : [
@@ -912,7 +912,7 @@ export default [
 	/**************** LAYOUT *************/
 
 	{
-		groupName : 'Print',
+		groupName : 'Impressão',
 		icon      : 'fas fa-print',
 		view      : 'style',
 		snippets  : [
@@ -935,7 +935,7 @@ export default [
 					}\n\n`,
 			},
 			{
-				name : 'A4 Page Size',
+				name : 'Página A4',
 				icon : 'far fa-file',
 				gen  : dedent`/* A4 Page Size */
 					.page {
@@ -975,7 +975,7 @@ export default [
 					}\n\n`
 			},
 			{
-				name : 'Ink Friendly',
+				name : 'Economizar Tinta',
 				icon : 'fas fa-tint',
 				gen  : dedent`
 					/* Ink Friendly */

@@ -30,7 +30,7 @@ const MetadataEditor = ({
 		authors     : [],
 		published   : false,
 		thumbnail   : '',
-		theme       : '5ePHB',
+		theme       : 'OrdemParanormal',
 	},
 	onChange = ()=>{},
 	reportError = ()=>{},

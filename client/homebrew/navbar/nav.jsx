@@ -2,8 +2,6 @@ import './navbar.less';
 import React, { useState, useRef, useEffect } from 'react';
 import cx from 'classnames';
 
-import NaturalCritIcon from '@components/svg/naturalcrit-d20.svg.jsx';
-
 const Nav = {
 	base : ({ children, className, ...props })=>{
 		return <nav className={className}>
@@ -11,11 +9,9 @@ const Nav = {
 		</nav>;
 	},
 	logo : ()=>{
-		return <a className='navLogo' href='https://www.naturalcrit.com'>
-			<NaturalCritIcon />
-			<span className='name'>
-				Natural<span className='crit'>Crit</span>
-			</span>
+		return <a className='navLogo' href='/'>
+			<img src='/assets/emblema.png' alt='' />
+			<span className='name'>Diário de Deus</span>
 		</a>;
 	},
 

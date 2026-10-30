@@ -70,7 +70,7 @@ const NewBrew = ()=>{
 				className='new'
 				color='purple'
 				icon='fa-solid fa-plus-square'>
-					new
+					novo
 			</Nav.item>
 			<Nav.item
 				className='new'
@@ -78,7 +78,7 @@ const NewBrew = ()=>{
 				newTab={true}
 				color='purple'
 				icon='fa-solid fa-file'>
-					resume draft
+					retomar rascunho
 			</Nav.item>
 			<Nav.item
 				className='fromBlank'
@@ -86,7 +86,7 @@ const NewBrew = ()=>{
 				color='yellow'
 				icon='fa-solid fa-file-circle-plus'
 				onClick={()=>{ clearLocalStorage(); }}>
-					from blank
+					em branco
 			</Nav.item>
 			<Nav.item
 				className='fromFile'
@@ -94,7 +94,7 @@ const NewBrew = ()=>{
 				icon='fa-solid fa-upload'
 				onClick={()=>{ document.getElementById('uploadTxt').click(); }}>
 				<input id='uploadTxt' className='newFromLocal' type='file' onChange={handleFileChange} style={{ display: 'none' }} />
-					from file
+					de arquivo
 			</Nav.item>
 		</Nav.dropdown>
 	);

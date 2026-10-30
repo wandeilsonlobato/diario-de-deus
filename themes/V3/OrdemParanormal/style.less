@@ -1,0 +1,311 @@
+@import (less) './themes/assets/assets.less';
+
+:root {
+	//Colors
+	--HB_Color_Background      : #0F0E12; // Quase preto
+	--HB_Color_Paper           : #1B191F; // Grafite
+	--HB_Color_Text            : #E6E1D8; // Papel envelhecido
+	--HB_Color_Heading         : #FFFFFF; // Branco
+	--HB_Color_TextMuted       : #A39C90; // Cinza quente
+	--HB_Color_Accent          : #C2152F; // Vermelho Sangue
+	--HB_Color_Border          : #4A4450; // Cinza arroxeado
+	--HB_Color_WatercolorStain : #5A1020; // Mancha de sangue
+
+	//Elementos
+	--OP_Sangue       : #E0263F;
+	--OP_Morte        : #8C8C96;
+	--OP_Conhecimento : #E0B13A;
+	--OP_Energia      : #A45BEF;
+	--OP_Medo         : #F5F5F5;
+}
+
+.useMono() {
+	font-family : 'Courier New', Courier, monospace;
+	font-size   : 0.3cm;
+	line-height : 1.3em;
+}
+
+.useStatLines() {
+	dl {
+		margin      : 0.15cm 0;
+		white-space : normal;
+	}
+	dt {
+		display     : inline;
+		font-weight : bold;
+		color       : var(--HB_Color_Heading);
+	}
+	dd {
+		display : inline;
+		margin  : 0;
+		&::after {
+			display : block;
+			content : '';
+		}
+	}
+}
+
+.page {
+	padding          : 1.4cm 1.9cm 1.7cm;
+	font-family      : 'Overpass', sans-serif;
+	font-size        : 0.34cm;
+	line-height      : 1.4em;
+	color            : var(--HB_Color_Text);
+	background-color : var(--HB_Color_Background);
+	column-gap       : 0.9cm;
+
+	p + * { margin-top : 0.3cm; }
+	p + p { margin-top : 0.2cm; }
+	strong { color : var(--HB_Color_Heading); }
+	a { color : var(--OP_Energia); }
+	ul, ol {
+		padding-left  : 1.2em;
+		margin-bottom : 0.3cm;
+	}
+
+	//*****************************
+	// *           HEADERS
+	// *****************************/
+	h1, h2, h3, h4, h5, h6 {
+		font-family : 'FrederickaTheGreat', serif;
+		font-weight : normal;
+		color       : var(--HB_Color_Heading);
+	}
+	h1 {
+		margin-bottom : 0.3cm;
+		font-size     : 1.25cm;
+		line-height   : 1em;
+		color         : var(--HB_Color_Accent);
+		column-span   : all;
+	}
+	h2 {
+		margin-top  : 0.3cm;
+		font-size   : 0.85cm;
+		line-height : 1.05em;
+	}
+	h3 {
+		padding-bottom : 0.05cm;
+		margin-top     : 0.3cm;
+		font-size      : 0.62cm;
+		border-bottom  : 2px solid var(--HB_Color_Accent);
+	}
+	h4 {
+		font-size : 0.5cm;
+		color     : var(--HB_Color_Accent);
+	}
+	h5 { font-size : 0.42cm; }
+	h6 {
+		.useMono();
+		font-weight    : bold;
+		text-transform : uppercase;
+	}
+
+	hr {
+		margin     : 0.2cm 0;
+		border     : none;
+		border-top : 1px solid var(--HB_Color_Border);
+	}
+
+	//*****************************
+	// *           TABLES
+	// *****************************/
+	table {
+		width           : 100%;
+		margin-bottom   : 0.3cm;
+		font-size       : 0.31cm;
+		border-collapse : collapse;
+		th {
+			padding        : 0.08cm 0.15cm;
+			color          : #FFFFFF;
+			text-transform : uppercase;
+			background     : var(--HB_Color_Accent);
+		}
+		td {
+			padding       : 0.08cm 0.15cm;
+			border-bottom : 1px solid var(--HB_Color_Border);
+		}
+		tbody tr:nth-child(even) td { background : var(--HB_Color_Paper); }
+	}
+
+	code {
+		padding    : 0 0.08cm;
+		color      : var(--OP_Conhecimento);
+		background : var(--HB_Color_Paper);
+	}
+
+	//*****************************
+	// *       ELEMENTOS (SPANS)
+	// *****************************/
+	span.sangue, span.morte, span.conhecimento, span.energia, span.medo { font-weight : bold; }
+	span.sangue { color : var(--OP_Sangue); }
+	span.morte { color : var(--OP_Morte); }
+	span.conhecimento { color : var(--OP_Conhecimento); }
+	span.energia { color : var(--OP_Energia); }
+	span.medo {
+		color       : var(--OP_Medo);
+		text-shadow : 0 0 4px #FFFFFF;
+	}
+
+	//*****************************
+	// *            BLOCOS
+	// *****************************/
+	.note, .descriptive, .documento, .ritual, .ameaca, .trilha, .origem, .item {
+		box-sizing    : border-box;
+		padding       : 0.25cm 0.3cm;
+		margin-bottom : 0.35cm;
+		h4, h5 { margin-top : 0; }
+	}
+	.note {
+		background  : var(--HB_Color_Paper);
+		border-left : 4px solid var(--HB_Color_Accent);
+		h5 { color : var(--HB_Color_Accent); }
+	}
+	.descriptive {
+		font-style : italic;
+		background : #17121C;
+		border     : 1px dashed var(--OP_Energia);
+		h5 {
+			font-style : normal;
+			color      : var(--OP_Energia);
+		}
+	}
+	.documento {
+		position   : relative;
+		.useMono();
+		color      : #231F1A;
+		background : #D9CFB8;
+		box-shadow : 0 0 8px #000000;
+		h4, h5, h6 {
+			font-family : inherit;
+			font-weight : bold;
+			color       : #231F1A;
+		}
+		strong { color : #000000; }
+		.carimbo {
+			position       : absolute;
+			top            : 0.2cm;
+			right          : 0.25cm;
+			padding        : 0.03cm 0.15cm;
+			font-family    : 'PermanentMarker', sans-serif;
+			font-size      : 0.36cm;
+			color          : #A3101F;
+			text-transform : uppercase;
+			border         : 2px solid #A3101F;
+			transform      : rotate(6deg);
+		}
+	}
+	.quote {
+		margin-bottom : 0.35cm;
+		font-style    : italic;
+		color         : var(--HB_Color_TextMuted);
+		.attribution {
+			display    : block;
+			margin-top : 0.1cm;
+			font-style : normal;
+			text-align : right;
+		}
+	}
+
+	.ritual, .trilha, .origem, .item {
+		--OP_Cor   : var(--HB_Color_Accent);
+		background : var(--HB_Color_Paper);
+		border-top : 3px solid var(--OP_Cor);
+		.useStatLines();
+		h4 {
+			margin-bottom : 0.1cm;
+			color         : var(--OP_Cor);
+		}
+		&.sangue { --OP_Cor : var(--OP_Sangue); }
+		&.morte { --OP_Cor : var(--OP_Morte); }
+		&.conhecimento { --OP_Cor : var(--OP_Conhecimento); }
+		&.energia { --OP_Cor : var(--OP_Energia); }
+		&.medo { --OP_Cor : var(--OP_Medo); }
+	}
+	.trilha { --OP_Cor : var(--OP_Energia); }
+	.origem { --OP_Cor : var(--OP_Conhecimento); }
+
+	.ameaca {
+		font-size  : 0.32cm;
+		background : var(--HB_Color_Paper);
+		border     : 1px solid var(--HB_Color_Border);
+		.useStatLines();
+		h2 {
+			margin-top : 0;
+			font-size  : 0.7cm;
+			color      : var(--HB_Color_Accent);
+		}
+		h3 { font-size : 0.45cm; }
+		table {
+			margin     : 0.1cm 0;
+			text-align : center;
+			th { text-align : center; }
+		}
+		&.frame {
+			border     : 2px solid var(--HB_Color_Accent);
+			box-shadow : 0 0 10px #5A102080;
+		}
+	}
+
+	//*****************************
+	// *        CAPA / RODAPÉ
+	// *****************************/
+	.capa {
+		position        : absolute;
+		inset           : 0;
+		z-index         : 2;
+		display         : flex;
+		flex-flow       : column;
+		align-items     : center;
+		justify-content : center;
+		box-sizing      : border-box;
+		padding         : 2cm;
+		text-align      : center;
+		h1 { font-size : 1.9cm; }
+		h2 {
+			font-size : 0.7cm;
+			color     : var(--HB_Color_TextMuted);
+		}
+		.selo {
+			display        : block;
+			width          : 4cm;
+			height         : 4cm;
+			margin-bottom  : 1cm;
+			border         : 3px solid var(--HB_Color_Accent);
+			border-radius  : 50%;
+			outline        : 3px solid var(--HB_Color_Accent);
+			outline-offset : -1cm;
+			transform      : rotate(45deg);
+		}
+		.classificado {
+			padding        : 0.05cm 0.3cm;
+			margin-top     : 1.5cm;
+			font-family    : 'PermanentMarker', sans-serif;
+			font-size      : 0.6cm;
+			color          : var(--HB_Color_Accent);
+			text-transform : uppercase;
+			border         : 3px solid var(--HB_Color_Accent);
+			transform      : rotate(-5deg);
+		}
+	}
+
+	.pageNumber { color : var(--HB_Color_TextMuted); }
+	.footnote {
+		position       : absolute;
+		bottom         : 0.75cm;
+		left           : 1.9cm;
+		.useMono();
+		color          : var(--HB_Color_TextMuted);
+		text-transform : uppercase;
+	}
+	&:nth-of-type(2n) .footnote {
+		right : 1.9cm;
+		left  : auto;
+	}
+	.artist {
+		position   : absolute;
+		font-size  : 0.25cm;
+		color      : var(--HB_Color_TextMuted);
+		text-align : center;
+		h5 { font-size : 0.3cm; }
+	}
+}

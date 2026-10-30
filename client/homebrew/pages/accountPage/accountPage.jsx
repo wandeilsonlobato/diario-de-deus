@@ -48,7 +48,7 @@ const AccountPage = (props)=>{
 				</div>
 				<div className='dataGroup'>
 					<h3>Homebrewery Information <NaturalCritIcon /></h3>
-					<p><strong>Brews on Homebrewery: </strong>{accountDetails.mongoCount}</p>
+					<p><strong>Documentos no Diário de Deus: </strong>{accountDetails.mongoCount}</p>
 				</div>
 				<div className='dataGroup'>
 					<h3>Google Information <i className='fab fa-google-drive'></i></h3>
@@ -65,7 +65,7 @@ const AccountPage = (props)=>{
 				</div>
 				<div className='dataGroup'>
 					<h4>Default Save Location</h4>
-					{renderSaveLocationButton('Homebrewery', 'HOMEBREWERY')}
+					{renderSaveLocationButton('Diário de Deus', 'HOMEBREWERY')}
 					{renderSaveLocationButton('Google Drive', 'GOOGLE-DRIVE', accountDetails.googleId)}
 				</div>
 			</>

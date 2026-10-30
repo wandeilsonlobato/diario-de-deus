@@ -64,7 +64,7 @@ const brewSnippetsToJSON = (menuTitle, userBrewSnippets, themeBundleSnippets=nul
 	};
 
 	if(full) {
-		returnObj.groupName = 'Brew Snippets';
+		returnObj.groupName = 'Meus Snippets';
 		returnObj.icon = 'fas fa-th-list';
 		returnObj.view = 'text';
 	}

@@ -12,6 +12,7 @@ import NewPage     from './pages/newPage/newPage.jsx';
 import ErrorPage   from './pages/errorPage/errorPage.jsx';
 import VaultPage   from './pages/vaultPage/vaultPage.jsx';
 import AccountPage from './pages/accountPage/accountPage.jsx';
+import './diarioDeDeus.less';
 
 const WithRoute = ({ el: Element, ...rest })=>{
 	const params = useParams();

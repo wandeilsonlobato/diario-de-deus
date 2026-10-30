@@ -8,6 +8,6 @@ export default function(props){
 		href='https://www.patreon.com/NaturalCrit'
 		color='green'
 		icon='fas fa-heart'>
-		help out
+		apoiar
 	</Nav.item>;
 };

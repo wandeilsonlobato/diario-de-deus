@@ -325,7 +325,7 @@ const EditorPage = (props)=>{
 
 			{alertOwnershipToTransfer && (
 				<div className='errorContainer'>
-					You must be the Owner to transfer between the Homebrewery and Google Drive!
+					You must be the Owner to transfer between Diário de Deus and Google Drive!
 					The owner of this file is {currentBrew.authors[0]}.
 					<br></br>
 					<div className='confirm' onClick={closeAlerts}> Okay </div>
@@ -334,7 +334,7 @@ const EditorPage = (props)=>{
 
 			{alertNoGoogleToTransfer && (
 				<div className='errorContainer'>
-					You must be signed in to a Google account to transfer between the Homebrewery and Google Drive!
+					You must be signed in to a Google account to transfer between Diário de Deus and Google Drive!
 					<a target='_blank' rel='noopener noreferrer' href={`https://www.naturalcrit.com/login?redirect=${window.location.href}`}>
 						<div className='confirm' onClick={closeAlerts}> Sign In </div>
 					</a>
@@ -353,8 +353,8 @@ const EditorPage = (props)=>{
 			{confirmGoogleTransfer && (
 				<div className='errorContainer'>
 					{saveGoogle
-						? 'Would you like to transfer this brew from your Google Drive storage back to the Homebrewery?'
-						: 'Would you like to transfer this brew from the Homebrewery to your personal Google Drive storage?'}
+						? 'Would you like to transfer this brew from your Google Drive storage back to Diário de Deus?'
+						: 'Would you like to transfer this brew from Diário de Deus to your personal Google Drive storage?'}
 					<br />
 					<div className='confirm' onClick={toggleGoogleStorage}> Yes </div>
 					<div className='deny' onClick={closeAlerts}>                                  No  </div>
@@ -397,10 +397,10 @@ const EditorPage = (props)=>{
 	const renderFloatingSaveButtons = ()=>(
 		<>
 			<div className={`floatingSaveButton${unsavedChanges ? ' show' : ''}`} onClick={()=>trySave(true, true, saveGoogle)}>
-				Save current <i className='fas fa-save' />
+				Salvar agora <i className='fas fa-save' />
 			</div>
 			<a href='/new' className='floatingNewButton'>
-				Create your own <i className='fas fa-magic' />
+				Criar o seu <i className='fas fa-magic' />
 			</a>
 		</>
 	);

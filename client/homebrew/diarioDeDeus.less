@@ -1,0 +1,184 @@
+// Identidade visual do Diário de Deus. Carregado depois dos estilos das páginas,
+// sobrescrevendo a aparência padrão da interface.
+@import (less) '@themes/fonts/5e/fonts.less';
+@import (less) '@themes/fonts/Journal/fonts.less';
+
+@tinta    : #0C0B0E;
+@capa     : #131116;
+@painel   : #1C1921;
+@linha    : #2E2935;
+@osso     : #E8E2D6;
+@cinza    : #958D9C;
+@sangue   : #C2152F;
+@sangueC  : #E0263F;
+@navAltura : 46px;
+
+body .homebrew {
+	font-family      : 'Overpass', 'Open Sans', sans-serif;
+	background-color : #24202A;
+
+	.sitePage .content { height : calc(~'100% - @{navAltura}'); }
+
+	//*****************************
+	// *        BARRA SUPERIOR
+	// *****************************/
+	nav {
+		min-height       : @navAltura;
+		background-color : @capa;
+		border-bottom    : 1px solid @linha;
+
+		.navSection:last-child .navItem { border-left : none; }
+
+		.navLogo {
+			display         : flex;
+			gap             : 10px;
+			align-items     : center;
+			margin          : 0 12px 0 16px;
+			color           : @osso;
+			img {
+				width  : 34px;
+				height : 34px;
+			}
+			.name {
+				font-family : 'FrederickaTheGreat', serif;
+				font-size   : 21px;
+				line-height : 1;
+				white-space : nowrap;
+			}
+			&:hover .name { color : @sangueC; }
+		}
+
+		.navItem {
+			flex-direction   : row-reverse;
+			gap              : 7px;
+			padding          : 0 13px;
+			font-family      : 'Overpass', sans-serif;
+			font-size        : 13px;
+			font-weight      : 500;
+			color            : @osso;
+			text-transform   : none;
+			background-color : transparent;
+			box-shadow       : inset 0 0 0 transparent;
+			transition       : box-shadow 0.15s, color 0.15s;
+			i {
+				margin    : 0;
+				font-size : 13px;
+				color     : @cinza;
+			}
+			&:not(.error, .warning):hover {
+				color            : #FFFFFF;
+				background-color : transparent !important;
+				box-shadow       : inset 0 -2px 0 @sangueC;
+				i { color : @sangueC; }
+			}
+			&.brewTitle {
+				font-size   : 14px;
+				font-weight : 500;
+				color       : @cinza;
+			}
+			&.metadata .window {
+				background-color : @capa;
+				border-color     : @linha;
+				.row:nth-of-type(even) { background-color : @painel; }
+			}
+		}
+
+		.navDropdownContainer .navDropdown {
+			gap              : 0;
+			padding          : 4px;
+			background-color : @capa;
+			border           : 1px solid @linha;
+			border-radius    : 0 0 6px 6px;
+			.navItem {
+				padding          : 9px 12px;
+				background-color : transparent;
+				border           : none;
+				border-radius    : 4px;
+				animation-name   : none;
+				&:not(.error, .warning):hover {
+					background-color : @painel !important;
+					box-shadow       : none;
+				}
+			}
+		}
+		.navDropdownContainer.recent .navDropdown .navItem {
+			background-color : transparent;
+			border           : none;
+			&.header {
+				color            : @cinza;
+				background-color : transparent !important;
+			}
+		}
+	}
+
+	//*****************************
+	// *      ÁREA DE TRABALHO
+	// *****************************/
+	.splitPane {
+		.divider {
+			width            : 5px;
+			background-color : @linha;
+			.dots { display : none; }
+			&:hover, &.dragging { background-color : @sangue; }
+		}
+		.arrow {
+			color            : @osso;
+			background-color : @painel;
+			border           : 1px solid @linha;
+			box-shadow       : none;
+			&:hover { background-color : @sangue; }
+		}
+	}
+
+	.editor .snippetBar {
+		--menuColor      : @capa;
+		--textColor      : @osso;
+		--hoverMenuColor : @painel;
+		font-family      : 'Overpass', sans-serif;
+		font-size        : 0.76rem;
+		font-weight      : 500;
+		text-transform   : none;
+		border-bottom    : 1px solid @linha;
+	}
+
+	.editor .uiEditor {
+		--bg-clr                : @tinta;
+		--bg-image              : none;
+		--h1-clr                : @sangueC;
+		--h2-clr                : @osso;
+		--label-clr             : @osso;
+		--input-bg              : @painel;
+		--input-bg-hover        : @linha;
+		--input-text-clr        : @osso;
+		--input-placeholder-clr : @cinza;
+	}
+
+	.toolBar {
+		font-family      : 'Overpass', sans-serif;
+		color            : @cinza;
+		background-color : @capa;
+		border-bottom    : 1px solid @linha;
+		.active, [aria-checked='true'] { background-color : @painel; }
+	}
+
+	.homePage {
+		a.floatingNewButton, .floatingSaveButton {
+			border-radius : 4px;
+			box-shadow    : none;
+			font-family   : 'Overpass', sans-serif;
+		}
+		a.floatingNewButton {
+			padding          : 0.6em 1em;
+			font-size        : 1.05em;
+			font-weight      : 600;
+			background-color : @sangue;
+			&:hover { background-color : @sangueC; }
+		}
+		.floatingSaveButton {
+			color            : @osso;
+			background-color : @painel;
+			border           : 1px solid @linha;
+			&:hover { background-color : @linha; }
+		}
+	}
+}
