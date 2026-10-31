@@ -3,6 +3,7 @@ import React from 'react';
 // Replaces the blank page of a crash with what happened and a way out. Saved cases are never touched.
 const RESET_KEYS = ['HB_newPage_content', 'HB_newPage_style', 'HB_newPage_snippets', 'HB_newPage_meta', 'DD_caso_atual', 'HB_renderer_toolbarState', 'HB_edit_settings'];
 
+// eslint-disable-next-line react/prefer-es6-class -- React only catches render errors in class components
 class ErrorBoundary extends React.Component {
 	constructor(props) {
 		super(props);
