@@ -41,6 +41,16 @@ const home = {
 };
 splitTextStyleAndMetadata(home);
 
+const LEGAL_STYLE = `body { max-width : 720px; padding : 32px 20px 60px; margin : 0 auto; font : 16px/1.6 system-ui, sans-serif; color : #E8E2D6; background : #0C0B0E; }
+h1, h2 { color : #FFFFFF; } h1 { color : #E0263F; } a { color : #E0263F; }`;
+
+const writeLegalPage = (slug, title)=>{
+	const body = fs.readFileSync(`client/legal/${slug}.html`, 'utf8');
+	fs.outputFileSync(`${BUILD_DIR}/${slug}/index.html`, `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${title} - Diário de Deus</title><link rel="icon" href="/assets/favicon.png"><style>${LEGAL_STYLE}</style></head><body>${body}<p><a href="/">Voltar ao Diário de Deus</a></p></body></html>`);
+};
+
+writeLegalPage('privacidade', 'Política de Privacidade');
+writeLegalPage('termos', 'Termos de Uso');
 writePage(`${BUILD_DIR}/new`, '/new', undefined);
 writePage(BUILD_DIR, '/', home);
 
