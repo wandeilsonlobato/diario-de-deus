@@ -54,7 +54,7 @@ const renderGoogleButton = async (element)=>{
 			window.location.reload();
 		},
 	});
-	window.google.accounts.id.renderButton(element, { theme: 'filled_black', size: 'medium', shape: 'pill', text: 'signin_with', locale: 'pt-BR' });
+	window.google.accounts.id.renderButton(element, { theme: 'filled_black', size: 'small', shape: 'pill', text: 'signin', width: 110, locale: 'pt-BR' });
 };
 
 // Fallback for when the Google script is blocked
