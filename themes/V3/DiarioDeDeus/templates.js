@@ -1,7 +1,7 @@
 // Ready-made documents offered when starting a case. All text is original: book text can't be reproduced under the license.
-const SELO_LICENCA = '{{licenca\n![Selo da Licença da Comunidade](/assets/selo-licenca.png)\n\nContém material gerado por inteligência artificial\n}}';
+const SELO_LICENCA = '{{licenca\n![Selo da Licença da Comunidade](/assets/selo-licenca.png)\n}}';
 
-const capa = (titulo, subtitulo)=>`{{capa\n{{selo}}\n# ${titulo}\n## ${subtitulo}\n{{classificado Confidencial}}\n\n${SELO_LICENCA}\n}}\n\n\\page\n\n`;
+const capa = (titulo, subtitulo)=>`{{capa\n![](COLE_O_LINK_DA_IMAGEM_AQUI) {capaImagem}\n\n# ${titulo}\n## ${subtitulo}\n{{autores Escrito por Seu Nome}}\n\n${SELO_LICENCA}\n}}\n\n\\page\n\n`;
 
 const AVISO = '{{note\n##### Aviso de conteúdo\nEste material contém horror e violência. Combine os limites com a sua mesa antes de jogar.\n}}';
 
@@ -169,6 +169,8 @@ ${FINAL}
 		title       : 'Dossiê de Agentes',
 		text        : `${capa('Dossiê de Agentes', 'Acesso Restrito')}# Equipe
 Descreva a equipe e a sua primeira missão.
+
+${AVISO}
 
 {{documento
 {{carimbo Confidencial}}

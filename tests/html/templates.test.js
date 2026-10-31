@@ -7,7 +7,7 @@ describe('templates', ()=>{
 			expect(hbfm.render(page, index)).not.toMatch(/\{\{|\}\}/);
 		});
 		expect(template.text).toContain('/assets/selo-licenca.png');
-		expect(template.text).toContain('Contém material gerado por inteligência artificial');
+		expect(template.text).toContain('{capaImagem}');
 		expect(template.text).toContain('Este é um conteúdo não oficial, publicado sob a Licença da Comunidade de Ordem Paranormal.');
 	});
 

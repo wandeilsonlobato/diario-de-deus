@@ -6,8 +6,6 @@
 
 {{licenca
 ![Selo da Licença da Comunidade](/assets/selo-licenca.png)
-
-Contém material gerado por inteligência artificial
 }}
 }}
 
@@ -27,6 +25,9 @@ Use a barra lateral do editor (no celular, a aba **Blocos**) para inserir blocos
 - {{fas,fa-user-secret}} **Agentes:** dossiê, trilha, origem e tabela de NEX.
 - {{fas,fa-eye}} **Outro Lado:** rituais, ameaças, itens amaldiçoados e {{sigilos sigilos}}.
 - {{fas,fa-folder-open}} **Caso:** capa, documentos, notas e texto para leitura.
+
+### Imagem da capa
+Na capa do seu caso, troque `COLE_O_LINK_DA_IMAGEM_AQUI` pelo link direto de uma imagem hospedada na internet. Ela preenche a capa inteira, e os títulos ficam por cima.
 
 ### Fontes e sigilos
 Em **Fontes**, escolha uma fonte e ela muda todo o documento. Com um texto selecionado no editor, ela muda só esse trecho. A opção **Sigilos** transforma cada letra digitada no sigilo correspondente.
@@ -70,7 +71,7 @@ Blocos de documento servem para pistas e arquivos entregues aos jogadores.
 Montagem e criação de **Wander**: [@w.ander7 no Instagram](https://www.instagram.com/w.ander7/) e [@fluxo_naruto no Twitter](https://x.com/fluxo_naruto).
 
 ### Aviso legal
-Este é um conteúdo não oficial, publicado sob a [Licença da Comunidade de Ordem Paranormal](https://ordemparanormal.com.br/licenca). Contém material gerado por inteligência artificial.
+Este é um conteúdo não oficial, publicado sob a [Licença da Comunidade de Ordem Paranormal](https://ordemparanormal.com.br/licenca).
 
 **Aviso de conteúdo:** este site trata de horror e violência.
 
