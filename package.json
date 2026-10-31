@@ -109,6 +109,7 @@
     "@lezer/highlight": "^1.2.4",
     "@oddbird/css-anchor-positioning": "^0.10.2",
     "@sanity/diff-match-patch": "^3.2.1",
+    "@supabase/supabase-js": "^2.118.0",
     "@vitejs/plugin-react": "^6.1.2",
     "body-parser": "^2.4.0",
     "classnames": "^2.5.1",

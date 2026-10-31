@@ -1,0 +1,6 @@
+project_id = "ticqudncbhkpmyjtenvx"
+
+[auth]
+site_url = "https://diariodedeus.vercel.app"
+additional_redirect_urls = ["https://diariodedeus.vercel.app/**", "http://localhost:8003/**"]
+enable_signup = true

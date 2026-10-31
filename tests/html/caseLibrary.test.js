@@ -1,4 +1,4 @@
-import { caseTitle, currentCaseId, deleteCase, listCases, openCase, saveCurrentCase, startFromTemplate, startNewCase } from '../../client/homebrew/utils/caseLibrary.js';
+import { applyRemoteCases, caseTitle, currentCaseId, deleteCase, forgetSyncedCases, listCases, markSynced, openCase, saveCurrentCase, startFromTemplate, startNewCase } from '../../client/homebrew/utils/caseLibrary.js';
 
 const BREWKEY = 'HB_newPage_content';
 const METAKEY = 'HB_newPage_meta';
@@ -118,6 +118,60 @@ describe('caseLibrary', ()=>{
 	it('survives corrupted data', ()=>{
 		localStorage.setItem('DD_casos', '{quebrado');
 		expect(listCases()).toEqual([]);
+	});
+});
+
+describe('sync with the account', ()=>{
+	const row = (id, updated_at, text = 'da nuvem')=>({ id, title: id, text, style: '', snippets: '', meta: { title: id }, updated_at });
+
+	it('brings cases from the account and uploads local ones', ()=>{
+		write('local', 'Local');
+		const { toPush } = applyRemoteCases([row('remoto', 5)]);
+		expect(toPush.map((c)=>c.title)).toEqual(['Local']);
+		expect(listCases().map((c)=>c.title).sort()).toEqual(['Local', 'remoto']);
+	});
+
+	it('keeps the newest copy of a case', ()=>{
+		write('antigo', 'A');
+		const id = currentCaseId();
+		const { currentChanged, toPush } = applyRemoteCases([row(id, Date.now() + 1000, 'novo')]);
+		expect(currentChanged).toBe(true);
+		expect(toPush).toEqual([]);
+		expect(localStorage.getItem(BREWKEY)).toBe('novo');
+	});
+
+	it('uploads the local copy when it is newer', ()=>{
+		write('recente', 'A');
+		const id = currentCaseId();
+		const { toPush, currentChanged } = applyRemoteCases([row(id, 1, 'velho')]);
+		expect(toPush.map((c)=>c.text)).toEqual(['recente']);
+		expect(currentChanged).toBe(false);
+	});
+
+	it('removes a synced case deleted on another device', ()=>{
+		write('caso', 'A');
+		markSynced([currentCaseId()]);
+		const { currentChanged } = applyRemoteCases([]);
+		expect(listCases()).toEqual([]);
+		expect(currentChanged).toBe(true);
+		expect(localStorage.getItem(BREWKEY)).toBeNull();
+	});
+
+	it('keeps the synced mark when the case is edited', ()=>{
+		write('caso', 'A');
+		markSynced([currentCaseId()]);
+		write('caso editado', 'A');
+		expect(listCases()[0].synced).toBe(true);
+	});
+
+	it('removes only account cases on sign out', ()=>{
+		write('da conta', 'Conta');
+		markSynced([currentCaseId()]);
+		startNewCase();
+		write('só daqui', 'Local');
+		forgetSyncedCases();
+		expect(listCases().map((c)=>c.title)).toEqual(['Local']);
+		expect(localStorage.getItem(BREWKEY)).toBe('só daqui');
 	});
 });
 

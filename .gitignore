@@ -18,3 +18,5 @@ startMViewer.bat
 .vscode
 
 coverage
+supabase/.temp
+supabase/.branches

@@ -40,8 +40,10 @@ const saveCurrentCase = ()=>{
 	if(!id && !text.trim() && !style.trim() && !meta.title) return true;
 
 	id ??= `caso-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-	const saved = { id, title: caseTitle(meta, text), updatedAt: Date.now(), text, style, snippets, meta };
-	const others = readLibrary().filter((item)=>item.id !== id);
+	const library = readLibrary();
+	const synced = library.find((item)=>item.id === id)?.synced;
+	const saved = { id, title: caseTitle(meta, text), updatedAt: Date.now(), text, style, snippets, meta, synced };
+	const others = library.filter((item)=>item.id !== id);
 
 	try {
 		localStorage.setItem(LIBRARY_KEY, JSON.stringify([saved, ...others]));
@@ -52,6 +54,76 @@ const saveCurrentCase = ()=>{
 	}
 };
 
+const writeDraft = (item)=>{
+	clearDraft();
+	localStorage.setItem(BREWKEY, item.text);
+	if(item.style) localStorage.setItem(STYLEKEY, item.style);
+	if(item.snippets) localStorage.setItem(SNIPKEY, item.snippets);
+	localStorage.setItem(METAKEY, JSON.stringify(item.meta));
+	localStorage.setItem(CURRENT_KEY, item.id);
+};
+
+const fromRow = (row)=>({
+	id        : row.id,
+	title     : row.title,
+	updatedAt : row.updated_at,
+	text      : row.text,
+	style     : row.style,
+	snippets  : row.snippets,
+	meta      : row.meta,
+	synced    : true,
+});
+
+// Merges the cases from the account into this browser, keeping the most recent copy of each one.
+// A case that was uploaded before and is gone from the account was deleted on another device.
+const applyRemoteCases = (rows)=>{
+	const remote = new Map(rows.map((row)=>[row.id, row]));
+	const current = currentCaseId();
+	const merged = [];
+	const toPush = [];
+	let currentChanged = false;
+
+	for (const local of readLibrary()) {
+		const row = remote.get(local.id);
+		remote.delete(local.id);
+
+		if(!row && local.synced) {
+			if(local.id === current) {
+				clearDraft();
+				currentChanged = true;
+			}
+		} else if(!row) {
+			merged.push(local);
+			toPush.push(local);
+		} else if(row.updated_at > local.updatedAt) {
+			const newer = fromRow(row);
+			merged.push(newer);
+			if(local.id === current) {
+				writeDraft(newer);
+				currentChanged = true;
+			}
+		} else {
+			merged.push({ ...local, synced: true });
+			if(local.updatedAt > row.updated_at) toPush.push(local);
+		}
+	}
+
+	localStorage.setItem(LIBRARY_KEY, JSON.stringify([...merged, ...[...remote.values()].map(fromRow)]));
+	return { toPush, currentChanged };
+};
+
+const markSynced = (ids)=>{
+	const library = readLibrary().map((item)=>(ids.includes(item.id) ? { ...item, synced: true } : item));
+	localStorage.setItem(LIBRARY_KEY, JSON.stringify(library));
+};
+
+// On sign out, what belongs to the account leaves this browser
+const forgetSyncedCases = ()=>{
+	const library = readLibrary();
+	if(library.find((item)=>item.id === currentCaseId())?.synced) clearDraft();
+	localStorage.setItem(LIBRARY_KEY, JSON.stringify(library.filter((item)=>!item.synced)));
+};
+
 const listCases = ()=>readLibrary().sort((a, b)=>b.updatedAt - a.updatedAt);
 
 const currentCaseId = ()=>localStorage.getItem(CURRENT_KEY);
@@ -60,12 +132,7 @@ const openCase = (id)=>{
 	saveCurrentCase();
 	const item = readLibrary().find((entry)=>entry.id === id);
 	if(!item) return false;
-	clearDraft();
-	localStorage.setItem(BREWKEY, item.text);
-	if(item.style) localStorage.setItem(STYLEKEY, item.style);
-	if(item.snippets) localStorage.setItem(SNIPKEY, item.snippets);
-	localStorage.setItem(METAKEY, JSON.stringify(item.meta));
-	localStorage.setItem(CURRENT_KEY, id);
+	writeDraft(item);
 	return true;
 };
 
@@ -86,4 +153,4 @@ const deleteCase = (id)=>{
 	localStorage.setItem(LIBRARY_KEY, JSON.stringify(readLibrary().filter((item)=>item.id !== id)));
 };
 
-export { caseTitle, currentCaseId, deleteCase, listCases, openCase, saveCurrentCase, startFromTemplate, startNewCase };
+export { applyRemoteCases, caseTitle, currentCaseId, deleteCase, forgetSyncedCases, listCases, markSynced, openCase, saveCurrentCase, startFromTemplate, startNewCase };

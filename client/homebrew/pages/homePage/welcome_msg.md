@@ -67,6 +67,9 @@ Assim fica um ritual gerado pelo botão **Outro Lado → Ritual**.
 Blocos de documento servem para pistas e arquivos entregues aos jogadores.
 }}
 
+### Privacidade
+Sem entrar, tudo fica só no seu navegador. Se você entrar com Google, guardamos seu nome, seu e-mail e os seus casos para que apareçam nos seus aparelhos. Esses dados não são vendidos nem compartilhados, e só você acessa os seus casos. Para apagar a sua conta, fale comigo pelos perfis abaixo.
+
 ### Criado por
 Montagem e criação de **Wander**: [@w.ander7 no Instagram](https://www.instagram.com/w.ander7/) e [@fluxo_naruto no Twitter](https://x.com/fluxo_naruto).
 

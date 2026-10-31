@@ -15,6 +15,8 @@ import downloadBrew     from '../../../utils/downloadBrew.js';
 import { isPhone }      from '../../../utils/device.js';
 import { listCases, saveCurrentCase } from '../../../utils/caseLibrary.js';
 import CasesPanel       from '@navbar/casesPanel.jsx';
+import CloudNavItem     from '@navbar/cloud.navitem.jsx';
+import { pushCurrentCase } from '../../../utils/cloud.js';
 const Meta = Headtags.Meta;
 
 //===---- Navbar
@@ -127,7 +129,8 @@ const EditorPage = (props)=>{
 	const saveCaseSoon = ()=>{
 		clearTimeout(caseSaveTimeout.current);
 		caseSaveTimeout.current = setTimeout(()=>{
-			if(saveCurrentCase() || warnedNoSpace.current) return;
+			if(saveCurrentCase()) return pushCurrentCase();
+			if(warnedNoSpace.current) return;
 			warnedNoSpace.current = true;
 			alert('O navegador ficou sem espaço para os seus casos. Clique em "baixar arquivo" para não perder este documento e apague casos antigos em "meus casos".');
 		}, CASE_SAVE_DELAY);
@@ -472,6 +475,7 @@ const EditorPage = (props)=>{
 				{(pageName == 'editPage') && <ShareNavItem brew={currentBrew} currentPage={currentBrewRendererPageNum} />}
 				{!isStaticSite && <RecentNavItem brew={currentBrew} storageKey={(pageName == 'editPage') ? 'edit' : undefined} />}
 				{!isStaticSite && <AccountNavItem />}
+				{isStaticSite && <CloudNavItem />}
 				<Credits />
 			</Nav.section>
 		</Navbar>
