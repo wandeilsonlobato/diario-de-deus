@@ -344,6 +344,7 @@ body .homebrew {
 		max-width     : 560px;
 		max-height    : 100%;
 		padding       : 18px 20px;
+		overflow-y    : auto;
 		color         : @osso;
 		background    : @capa;
 		border        : 1px solid @linha;
@@ -414,9 +415,9 @@ body .homebrew {
 			&:hover { border-color : @sangueC; }
 		}
 		ul {
+			flex-shrink : 0;
 			padding    : 0;
 			margin     : 0;
-			overflow-y : auto;
 			list-style : none;
 		}
 		li {

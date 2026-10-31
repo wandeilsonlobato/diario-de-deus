@@ -200,6 +200,37 @@
 			transform      : rotate(6deg);
 		}
 	}
+	.diario, .carta {
+		box-sizing    : border-box;
+		padding       : 0.35cm 0.4cm;
+		margin-bottom : 0.35cm;
+		color         : #2A2118;
+		background    : #D9CFB8;
+		box-shadow    : 0 0 8px #000000;
+		strong { color : #000000; }
+	}
+	.diario {
+		font-family : 'ReenieBeanie', cursive;
+		font-size   : 0.56cm;
+		line-height : 1.05em;
+		h5 {
+			margin-top     : 0.2cm;
+			font-family    : 'Courier New', Courier, monospace;
+			font-size      : 0.3cm;
+			font-weight    : bold;
+			color          : #7A1020;
+			text-transform : uppercase;
+		}
+		h5:first-child { margin-top : 0; }
+	}
+	.carta {
+		font-family : 'Courier New', Courier, monospace;
+		font-size   : 0.31cm;
+		line-height : 1.35em;
+		p + p { margin-top : 0.2cm; }
+		em { display : block; text-align : right; }
+	}
+
 	.quote {
 		margin-bottom : 0.35cm;
 		font-style    : italic;

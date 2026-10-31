@@ -8,7 +8,13 @@ describe('templates', ()=>{
 		});
 		expect(template.text).toContain('/assets/selo-licenca.png');
 		expect(template.text).toContain('{capaImagem}');
+		expect(template.text).toContain('Aviso de conteúdo');
 		expect(template.text).toContain('Este é um conteúdo não oficial, publicado sob a Licença da Comunidade de Ordem Paranormal.');
+	});
+
+	it('keep the complete sheet where there is one', ()=>{
+		const arquivo = templates.find((t)=>t.id === 'arquivo').text;
+		['**Sentidos**', 'machucado', '**Resistências**', '**Perícias**', '**Reação:', '**Livre:'].forEach((field)=>expect(arquivo).toContain(field));
 	});
 
 	it('have unique ids', ()=>{

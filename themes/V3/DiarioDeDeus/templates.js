@@ -5,6 +5,118 @@ const capa = (titulo, subtitulo)=>`{{capa\n![](COLE_O_LINK_DA_IMAGEM_AQUI) {capa
 
 const AVISO = '{{note\n##### Aviso de conteúdo\nEste material contém horror e violência. Combine os limites com a sua mesa antes de jogar.\n}}';
 
+// Stat block with every field a threat or character sheet needs
+const ficha = (nome, tipo, classes = 'ameaca,frame')=>`{{${classes}
+## ${nome}
+*${tipo}*
+___
+**Sentidos** :: Percepção 2d20+5, visão no escuro
+**Iniciativa** :: 2d20+5
+**Presença Perturbadora** :: DT 14, 1d6 de dano mental (NEX 10% imune)
+___
+**Defesa** :: 19
+**Fortitude** :: 2d20+5
+**Reflexos** :: 1d20+5
+**Vontade** :: 1d20+5
+**Pontos de Vida** :: 100 (machucado 50)
+**Resistências** :: balístico 5, corte 5
+**Vulnerabilidades** :: morte
+**Deslocamento** :: 9m
+___
+| AGI | FOR | INT | PRE | VIG |
+|:---:|:---:|:---:|:---:|:---:|
+| 2 | 3 | 1 | 1 | 3 |
+___
+**Perícias** :: Atletismo 2d20+5, Furtividade 2d20+5
+
+### Habilidades
+**Nome da Habilidade.** Descreva uma habilidade passiva.
+
+### Ações
+**Padrão: Agredir.** Corpo a corpo x2. Teste 2d20+10, crítico 19. Dano 2d8+5 de corte.
+
+**Reação: Nome da Reação.** Descreva quando ela acontece e o efeito.
+
+**Livre: Nome da Ação.** Descreva o efeito e o limite de uso.
+
+**Enigma de Medo.** Descreva o que é preciso fazer para derrotar a criatura.
+}}`;
+
+const diario = `{{diario
+##### 12 de março
+Escreva aqui a primeira entrada. Comece com algo comum, antes de tudo dar errado.
+
+##### 19 de março
+Mostre o primeiro detalhe estranho. Quem escreve ainda tenta explicar o que viu.
+
+##### 2 de abril
+A letra muda. Termine com uma frase que deixe os jogadores inquietos.
+}}`;
+
+const carta = `{{carta
+Cidade, data.
+
+Prezado(a) destinatário(a),
+
+Escreva a carta aqui. Conte o que o remetente sabe, o que ele esconde e o que pede.
+
+Com pesar,
+
+*Nome de quem assina*
+}}`;
+
+const regras = `### Origem
+{{origem
+#### Nome da Origem
+*O que o personagem fazia antes de conhecer o paranormal.*
+
+**Perícias Treinadas** :: duas perícias à sua escolha
+**Poder de Origem** :: nome e efeito do poder
+}}
+
+### Trilha
+{{trilha
+#### Nome da Trilha
+*Trilha de Combatente, Especialista ou Ocultista*
+
+Descreva a filosofia da trilha e o tipo de agente que a segue.
+
+**NEX 10% - Nome do Poder.** Descreva o que o agente recebe neste estágio.
+
+**NEX 40% - Nome do Poder.** Descreva o que o agente recebe neste estágio.
+
+**NEX 65% - Nome do Poder.** Descreva o que o agente recebe neste estágio.
+
+**NEX 99% - Nome do Poder.** Descreva o que o agente recebe neste estágio.
+}}
+
+### Ritual
+{{ritual,sangue
+#### Nome do Ritual
+*Ritual de Sangue, 1º círculo (1 PE)*
+
+**Execução** :: padrão
+**Alcance** :: toque
+**Alvo** :: 1 ser
+**Duração** :: cena
+**Resistência** :: nenhuma
+
+Descreva o efeito do ritual.
+
+**Discente.** Descreva o custo adicional e a versão aprimorada.
+
+**Verdadeiro.** Descreva o custo adicional e a versão mais poderosa.
+}}
+
+### Item amaldiçoado
+{{item,sangue
+#### Nome do Item
+*Item paranormal*
+
+**Espaços** :: 1
+**Maldição** :: descreva o efeito e o custo de usar o item.
+}}`;
+
 const FINAL = 'Este é um conteúdo não oficial, publicado sob a Licença da Comunidade de Ordem Paranormal.';
 
 export default [
@@ -69,35 +181,7 @@ Explique o que une estas criaturas: onde surgem e o que as atrai.
 
 ${AVISO}
 
-{{ameaca,frame
-## Nome da Criatura
-*Criatura de Sangue Média, VD 40*
-___
-**Presença Perturbadora** :: DT 14, 1d6 de dano mental (NEX 10% imune)
-**Percepção** :: 1d20+5 (visão no escuro)
-**Iniciativa** :: 2d20+5
-**Fortitude** :: 2d20+5
-**Reflexos** :: 1d20+5
-**Vontade** :: 1d20+5
-___
-| AGI | FOR | INT | PRE | VIG |
-|:---:|:---:|:---:|:---:|:---:|
-| 2 | 3 | 1 | 1 | 3 |
-___
-**Defesa** :: 19
-**Pontos de Vida** :: 100
-**Deslocamento** :: 9m
-**Imunidades** :: sangue
-**Vulnerabilidades** :: morte
-
-### Habilidades
-**Nome da Habilidade.** Descreva uma habilidade passiva.
-
-### Ações
-**Padrão: Agredir.** Corpo a corpo. Descreva o ataque e o dano.
-
-**Enigma de Medo.** Descreva o que é preciso fazer para derrotar a criatura.
-}}
+${ficha('Nome da Criatura', 'Criatura de Sangue Média, VD 40')}
 
 \\column
 
@@ -200,6 +284,160 @@ ${FINAL}
 
 {{pageNumber 1}}
 {{footnote DOSSIÊ DE AGENTES}}
+`,
+	},
+	{
+		id          : 'arquivo',
+		name        : 'Arquivo Secreto',
+		icon        : 'fas fa-archive',
+		description : 'Pacote completo: história em documentos, fichas e regras.',
+		title       : 'Arquivo Secreto',
+		text        : `${capa('Nome do Arquivo', 'Pacote de Conteúdo')}# Boas-vindas, agente
+Apresente o arquivo em poucas linhas: o que foi encontrado e por que estava escondido.
+
+${AVISO}
+
+### O que há neste pacote
+- **História:** os documentos que contam o que aconteceu.
+- **Fichas:** as pessoas e criaturas envolvidas.
+- **Regras:** o que os jogadores podem usar na mesa.
+
+\\column
+
+### Relato
+Conte a história principal como narrador. Termine com uma pergunta sem resposta.
+
+${carta}
+
+\\page
+
+# A história em documentos
+Reúna aqui o que os agentes podem encontrar. Cada documento revela uma parte.
+
+${diario}
+
+\\column
+
+{{documento
+{{carimbo Sigiloso}}
+##### RELATÓRIO DE MISSÃO
+**Local:** ______________
+
+**Data:** ______________
+
+Descreva o que os agentes encontraram no local.
+}}
+
+{{note
+##### Para o mestre
+Explique o que é verdade, o que é boato e como usar estes documentos como pistas.
+}}
+
+\\page
+
+# Fichas
+Apresente as pessoas e criaturas deste arquivo.
+
+${ficha('Nome da Pessoa', 'Pessoa Média, VD 80')}
+
+\\column
+
+${ficha('Nome da Criatura', 'Criatura de Sangue Grande, VD 120')}
+
+\\page
+
+# Regras
+Tudo o que os jogadores podem levar para a mesa.
+
+${regras}
+
+${FINAL}
+
+{{pageNumber 1}}
+{{footnote NOME DO ARQUIVO}}
+`,
+	},
+	{
+		id          : 'personagem',
+		name        : 'Perfil de Personagem',
+		icon        : 'fas fa-user-secret',
+		description : 'História, relações, segredos e ficha de um NPC.',
+		title       : 'Perfil de Personagem',
+		text        : `${capa('Nome do Personagem', 'Perfil Confidencial')}# Quem é
+Em duas frases, diga quem é esta pessoa e por que os agentes deveriam se preocupar.
+
+${AVISO}
+
+### Passado
+Conte a origem do personagem e o momento em que tudo mudou.
+
+### O que quer
+Explique o objetivo e até onde está disposto a ir.
+
+### Relações
+| Nome | Ligação | O que esconde |
+|:-----|:--------|:--------------|
+| Nome | Aliado | Um segredo |
+| Nome | Rival | Um segredo |
+
+### Como usar na mesa
+Sugira como apresentar este personagem e o que muda se ele morrer.
+
+\\column
+
+${ficha('Nome do Personagem', 'Pessoa Média, VD 80')}
+
+${FINAL}
+
+{{pageNumber 1}}
+{{footnote PERFIL CONFIDENCIAL}}
+`,
+	},
+	{
+		id          : 'diario',
+		name        : 'Diário Encontrado',
+		icon        : 'fas fa-book-dead',
+		description : 'Conte uma história por entradas datadas e cartas.',
+		title       : 'Diário Encontrado',
+		text        : `${capa('Diário de Alguém', 'Encontrado no Local')}# Sobre este diário
+Conte onde o diário foi encontrado, em que estado e quem o escreveu.
+
+${AVISO}
+
+${diario}
+
+\\column
+
+${carta}
+
+{{note
+##### Para o mestre
+Marque quais trechos entregar aos jogadores e o que cada um revela.
+}}
+
+${FINAL}
+
+{{pageNumber 1}}
+{{footnote DIÁRIO ENCONTRADO}}
+`,
+	},
+	{
+		id          : 'regras',
+		name        : 'Pacote de Regras',
+		icon        : 'fas fa-dice-d20',
+		description : 'Origem, trilha, ritual e item para a sua mesa.',
+		title       : 'Pacote de Regras',
+		text        : `${capa('Pacote de Regras', 'Regras Opcionais')}# Regras
+Explique o tema deste pacote e como incluir estas regras em uma campanha.
+
+${AVISO}
+
+${regras}
+
+${FINAL}
+
+{{pageNumber 1}}
+{{footnote PACOTE DE REGRAS}}
 `,
 	},
 ];

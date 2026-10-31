@@ -68,6 +68,11 @@ export default [
 				gen  : AmeacaGen.ameaca('ameaca'),
 			},
 			{
+				name : 'Ficha de NPC',
+				icon : 'fas fa-user-tie',
+				gen  : AmeacaGen.pessoa,
+			},
+			{
 				name : 'Item Amaldiçoado',
 				icon : 'fas fa-skull',
 				gen  : AgenteGen.item,
@@ -110,6 +115,16 @@ export default [
 					Descreva o que os agentes encontraram no local.
 					}}
 					\n`,
+			},
+			{
+				name : 'Diário',
+				icon : 'fas fa-book-dead',
+				gen  : '{{diario\n##### 12 de março\nEscreva aqui a entrada do diário.\n\n##### 19 de março\nContinue a história. A letra pode mudar quando tudo piora.\n}}\n\n',
+			},
+			{
+				name : 'Carta',
+				icon : 'fas fa-envelope-open-text',
+				gen  : '{{carta\nCidade, data.\n\nPrezado(a) destinatário(a),\n\nEscreva a carta aqui.\n\n*Nome de quem assina*\n}}\n\n',
 			},
 			{
 				name : 'Nota',

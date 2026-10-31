@@ -23,8 +23,8 @@ A realidade está mais frágil do que parece. Registre aqui o que você viu: as 
 Use a barra lateral do editor (no celular, a aba **Blocos**) para inserir blocos prontos:
 
 - {{fas,fa-user-secret}} **Agentes:** dossiê, trilha, origem e tabela de NEX.
-- {{fas,fa-eye}} **Outro Lado:** rituais, ameaças, itens amaldiçoados e {{sigilos sigilos}}.
-- {{fas,fa-folder-open}} **Caso:** capa, documentos, notas e texto para leitura.
+- {{fas,fa-eye}} **Outro Lado:** rituais, ameaças, fichas de NPC, itens amaldiçoados e {{sigilos sigilos}}.
+- {{fas,fa-folder-open}} **Caso:** capa, documentos, diários, cartas, notas e texto para leitura.
 
 ### Imagem da capa
 Na capa do seu caso, troque `COLE_O_LINK_DA_IMAGEM_AQUI` pelo link direto de uma imagem hospedada na internet. Ela preenche a capa inteira, e os títulos ficam por cima.
