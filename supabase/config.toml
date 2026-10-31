@@ -4,3 +4,8 @@ project_id = "ticqudncbhkpmyjtenvx"
 site_url = "https://diariodedeus.vercel.app"
 additional_redirect_urls = ["https://diariodedeus.vercel.app/**", "http://localhost:8003/**"]
 enable_signup = true
+
+[auth.external.google]
+enabled = true
+client_id = "80415887449-o35djm6fdtkqerhrohnsnh14gh7cc2n1.apps.googleusercontent.com"
+secret = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET)"
