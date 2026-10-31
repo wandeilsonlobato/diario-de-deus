@@ -19,7 +19,7 @@ A realidade está mais frágil do que parece. Registre aqui o que você viu: as 
 ### O que é isto?
 **Diário de Deus** é um editor gratuito para criar material de fã de horror paranormal. Você escreve em [Markdown](https://help.github.com/articles/markdown-basics/) e vê o documento pronto *em tempo real*.
 
-**Experimente!** Clique em **Criar o seu** para abrir o editor.
+**Experimente!** Clique em **Criar o seu** e escolha um modelo pronto ou comece em branco.
 
 ### Como criar
 Use a barra lateral do editor (no celular, a aba **Blocos**) para inserir blocos prontos:

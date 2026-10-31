@@ -382,6 +382,37 @@ body .homebrew {
 			border-radius : 6px;
 			&:hover { background : @sangueC; }
 		}
+		h3 {
+			margin    : 6px 0 8px;
+			font-size : 14px;
+			color     : @cinza;
+		}
+		.modelos {
+			display               : grid;
+			flex-shrink           : 0;
+			grid-template-columns : repeat(2, 1fr);
+			gap                   : 8px;
+			margin-bottom         : 12px;
+		}
+		.modelo {
+			display       : grid;
+			grid-template-columns : 26px 1fr;
+			gap           : 2px 8px;
+			align-items   : center;
+			padding       : 10px;
+			text-align    : left;
+			background    : @painel;
+			border        : 1px solid @linha;
+			border-radius : 6px;
+			i { color : @sangueC; font-size : 16px; }
+			strong { font-size : 14px; }
+			small {
+				grid-column : 2;
+				font-size   : 12px;
+				color       : @cinza;
+			}
+			&:hover { border-color : @sangueC; }
+		}
 		ul {
 			padding    : 0;
 			margin     : 0;
@@ -566,5 +597,6 @@ body .homebrew {
 			bottom : 20px;
 		}
 		.casesOverlay { padding : 54px 8px 8px; }
+		.casesPanel .modelos { grid-template-columns : 1fr; }
 	}
 }

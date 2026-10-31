@@ -1,4 +1,4 @@
-import { caseTitle, currentCaseId, deleteCase, listCases, openCase, saveCurrentCase, startNewCase } from '../../client/homebrew/utils/caseLibrary.js';
+import { caseTitle, currentCaseId, deleteCase, listCases, openCase, saveCurrentCase, startFromTemplate, startNewCase } from '../../client/homebrew/utils/caseLibrary.js';
 
 const BREWKEY = 'HB_newPage_content';
 const METAKEY = 'HB_newPage_meta';
@@ -106,6 +106,13 @@ describe('caseLibrary', ()=>{
 			setItem(key, value);
 		};
 		expect(write('caso maior', 'Um')).toBe(false);
+	});
+
+	it('starts a template as a new case and keeps the open one', ()=>{
+		write('caso um', 'Um');
+		startFromTemplate({ title: 'Bestiário', text: '# Ameaças' });
+		expect(localStorage.getItem(BREWKEY)).toBe('# Ameaças');
+		expect(listCases().map((c)=>c.title).sort()).toEqual(['Bestiário', 'Um']);
 	});
 
 	it('survives corrupted data', ()=>{

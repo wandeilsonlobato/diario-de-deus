@@ -13,7 +13,7 @@ import LockNotification from '../../editPage/lockNotification/lockNotification.j
 import loginUrl         from '../../../utils/loginUrl.js';
 import downloadBrew     from '../../../utils/downloadBrew.js';
 import { isPhone }      from '../../../utils/device.js';
-import { saveCurrentCase } from '../../../utils/caseLibrary.js';
+import { listCases, saveCurrentCase } from '../../../utils/caseLibrary.js';
 import CasesPanel       from '@navbar/casesPanel.jsx';
 const Meta = Headtags.Meta;
 
@@ -165,7 +165,10 @@ const EditorPage = (props)=>{
 		localStorage.setItem(METAKEY, JSON.stringify({ title: brew.title, description: brew.description, tags: brew.tags, renderer: brew.renderer, theme: brew.theme, lang: brew.lang }));
 		if(window.location.pathname !== '/new')
 			window.history.replaceState({}, window.location.title, '/new/');
-		if(isStaticSite) saveCaseSoon();
+		if(isStaticSite) {
+			saveCaseSoon();
+			if(!brew.text?.trim() && !listCases().length) setCasesOpen(true); // First visit: offer the templates
+		}
 	};
 
 	const clearLocalStorage = ()=>{

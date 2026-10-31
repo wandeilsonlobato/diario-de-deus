@@ -74,9 +74,16 @@ const startNewCase = ()=>{
 	clearDraft();
 };
 
+const startFromTemplate = (template)=>{
+	startNewCase();
+	localStorage.setItem(BREWKEY, template.text);
+	localStorage.setItem(METAKEY, JSON.stringify({ title: template.title, renderer: 'V3', theme: 'DiarioDeDeus', lang: 'pt-BR' }));
+	return saveCurrentCase();
+};
+
 const deleteCase = (id)=>{
 	if(currentCaseId() === id) clearDraft();
 	localStorage.setItem(LIBRARY_KEY, JSON.stringify(readLibrary().filter((item)=>item.id !== id)));
 };
 
-export { caseTitle, currentCaseId, deleteCase, listCases, openCase, saveCurrentCase, startNewCase };
+export { caseTitle, currentCaseId, deleteCase, listCases, openCase, saveCurrentCase, startFromTemplate, startNewCase };
