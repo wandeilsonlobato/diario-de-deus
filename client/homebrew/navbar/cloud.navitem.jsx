@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Nav from './nav.jsx';
-import { CASES_SYNCED, getUser, isGoogleLoginAvailable, signIn, signOut, syncCases } from '../utils/cloud.js';
+import { CASES_SYNCED, getUser, isGoogleLoginAvailable, renderGoogleButton, signIn, signOut, syncCases } from '../utils/cloud.js';
 import { forgetSyncedCases } from '../utils/caseLibrary.js';
 
 const CloudNavItem = ()=>{
 	const [available, setAvailable] = useState(false);
 	const [user, setUser] = useState(null);
 	const [status, setStatus] = useState('');
+	const [buttonFailed, setButtonFailed] = useState(false);
+	const buttonRef = useRef(null);
 
 	useEffect(()=>{
 		isGoogleLoginAvailable().then(setAvailable);
@@ -23,6 +25,10 @@ const CloudNavItem = ()=>{
 			}
 		});
 	}, []);
+
+	useEffect(()=>{
+		if(available && !user && buttonRef.current) renderGoogleButton(buttonRef.current).catch(()=>setButtonFailed(true));
+	}, [available, user]);
 
 	const handleSignOut = async ()=>{
 		if(!confirm('Sair da conta? Seus casos continuam salvos nela, mas saem deste navegador.')) return;
@@ -42,7 +48,9 @@ const CloudNavItem = ()=>{
 
 	if(!available) return null;
 
-	return <Nav.item color='blue' icon='fab fa-google' onClick={()=>signIn()}>entrar com Google</Nav.item>;
+	if(buttonFailed) return <Nav.item color='blue' icon='fab fa-google' onClick={()=>signIn()}>entrar com Google</Nav.item>;
+
+	return <div className='googleButton' ref={buttonRef} />;
 };
 
 export default CloudNavItem;
