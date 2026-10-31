@@ -1,4 +1,4 @@
-import { applyRemoteCases, caseTitle, currentCaseId, deleteCase, forgetSyncedCases, listCases, markSynced, openCase, saveCurrentCase, startFromTemplate, startNewCase } from '../../client/homebrew/utils/caseLibrary.js';
+import { applyRemoteCases, caseTitle, currentCaseId, deleteCase, forgetSyncedCases, listCases, markSynced, openCase, parseMeta, restoreCase, saveCurrentCase, startFromTemplate, startNewCase } from '../../client/homebrew/utils/caseLibrary.js';
 
 const BREWKEY = 'HB_newPage_content';
 const METAKEY = 'HB_newPage_meta';
@@ -113,6 +113,32 @@ describe('caseLibrary', ()=>{
 		startFromTemplate({ title: 'Bestiário', text: '# Ameaças' });
 		expect(localStorage.getItem(BREWKEY)).toBe('# Ameaças');
 		expect(listCases().map((c)=>c.title).sort()).toEqual(['Bestiário', 'Um']);
+	});
+
+	it('keeps a backup when a case with text becomes empty', ()=>{
+		write('texto importante', 'A');
+		const id = currentCaseId();
+		write('', 'A');
+		expect(listCases()[0].backup).toBe('texto importante');
+		expect(restoreCase(id)).toBe(true);
+		expect(localStorage.getItem(BREWKEY)).toBe('texto importante');
+		expect(listCases()[0].text).toBe('texto importante');
+		expect(listCases()[0].backup).toBeUndefined();
+	});
+
+	it('keeps the backup through repeated empty saves and drops it when there is text again', ()=>{
+		write('texto importante', 'A');
+		write('', 'A');
+		write('', 'A');
+		expect(listCases()[0].backup).toBe('texto importante');
+		write('novo texto', 'A');
+		expect(listCases()[0].backup).toBeUndefined();
+	});
+
+	it('does not crash on corrupted metadata', ()=>{
+		expect(parseMeta('undefined')).toEqual({});
+		expect(parseMeta('{quebrado')).toEqual({});
+		expect(parseMeta(null)).toEqual({});
 	});
 
 	it('survives corrupted data', ()=>{

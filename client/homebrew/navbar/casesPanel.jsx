@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { currentCaseId, deleteCase, listCases, openCase, startFromTemplate, startNewCase } from '../utils/caseLibrary.js';
+import { currentCaseId, deleteCase, listCases, openCase, restoreCase, startFromTemplate, startNewCase } from '../utils/caseLibrary.js';
 import templates from '@themes/V3/DiarioDeDeus/templates.js';
 import downloadBrew from '../utils/downloadBrew.js';
 import { CASES_SYNCED, getUser, removeCloudCase } from '../utils/cloud.js';
@@ -27,6 +27,10 @@ const CasesPanel = ({ onClose })=>{
 
 	const handleOpen = (id)=>{
 		if(openCase(id)) goToEditor();
+	};
+
+	const handleRestore = (id)=>{
+		if(restoreCase(id)) goToEditor();
 	};
 
 	const handleNew = ()=>{
@@ -73,6 +77,7 @@ const CasesPanel = ({ onClose })=>{
 							<strong>{item.title}</strong>
 							<small>{item.id === current ? 'Aberto agora · ' : ''}{new Date(item.updatedAt).toLocaleString('pt-BR', DATE_FORMAT)}</small>
 						</button>
+						{item.backup && <button className='restaurar' title='Este caso ficou vazio. Restaurar o texto anterior.' onClick={()=>handleRestore(item.id)}>restaurar</button>}
 						<button aria-label={`Baixar ${item.title}`} title='Baixar arquivo' onClick={()=>downloadBrew({ ...item.meta, text: item.text, style: item.style })}>
 							<i className='fas fa-download' />
 						</button>

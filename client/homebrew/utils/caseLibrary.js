@@ -41,8 +41,10 @@ const saveCurrentCase = ()=>{
 
 	id ??= `caso-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 	const library = readLibrary();
-	const synced = library.find((item)=>item.id === id)?.synced;
-	const saved = { id, title: caseTitle(meta, text), updatedAt: Date.now(), text, style, snippets, meta, synced };
+	const previous = library.find((item)=>item.id === id);
+	// Going from text to empty keeps the old text, so a wiped case can be restored
+	const backup = !text.trim() && previous?.text?.trim() ? previous.text : previous?.backup;
+	const saved = { id, title: caseTitle(meta, text), updatedAt: Date.now(), text, style, snippets, meta, synced: previous?.synced, backup: text.trim() ? undefined : backup };
 	const others = library.filter((item)=>item.id !== id);
 
 	try {
@@ -59,7 +61,7 @@ const writeDraft = (item)=>{
 	localStorage.setItem(BREWKEY, item.text);
 	if(item.style) localStorage.setItem(STYLEKEY, item.style);
 	if(item.snippets) localStorage.setItem(SNIPKEY, item.snippets);
-	localStorage.setItem(METAKEY, JSON.stringify(item.meta));
+	localStorage.setItem(METAKEY, JSON.stringify(item.meta ?? {}));
 	localStorage.setItem(CURRENT_KEY, item.id);
 };
 
@@ -136,6 +138,15 @@ const openCase = (id)=>{
 	return true;
 };
 
+const restoreCase = (id)=>{
+	const library = readLibrary().map((item)=>(item.id === id && item.backup ? { ...item, text: item.backup, backup: undefined, updatedAt: Date.now() } : item));
+	const restored = library.find((item)=>item.id === id);
+	if(!restored) return false;
+	localStorage.setItem(LIBRARY_KEY, JSON.stringify(library));
+	writeDraft(restored);
+	return true;
+};
+
 const startNewCase = ()=>{
 	saveCurrentCase();
 	clearDraft();
@@ -153,4 +164,4 @@ const deleteCase = (id)=>{
 	localStorage.setItem(LIBRARY_KEY, JSON.stringify(readLibrary().filter((item)=>item.id !== id)));
 };
 
-export { applyRemoteCases, caseTitle, currentCaseId, deleteCase, forgetSyncedCases, listCases, markSynced, openCase, saveCurrentCase, startFromTemplate, startNewCase };
+export { applyRemoteCases, caseTitle, currentCaseId, deleteCase, forgetSyncedCases, listCases, markSynced, openCase, parseMeta, restoreCase, saveCurrentCase, startFromTemplate, startNewCase };

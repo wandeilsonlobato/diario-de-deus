@@ -13,7 +13,7 @@ import LockNotification from '../../editPage/lockNotification/lockNotification.j
 import loginUrl         from '../../../utils/loginUrl.js';
 import downloadBrew     from '../../../utils/downloadBrew.js';
 import { isPhone }      from '../../../utils/device.js';
-import { listCases, saveCurrentCase } from '../../../utils/caseLibrary.js';
+import { listCases, parseMeta, saveCurrentCase } from '../../../utils/caseLibrary.js';
 import CasesPanel       from '@navbar/casesPanel.jsx';
 import CloudNavItem     from '@navbar/cloud.navitem.jsx';
 import { pushCurrentCase } from '../../../utils/cloud.js';
@@ -142,7 +142,7 @@ const EditorPage = (props)=>{
 			const brewStorage  = localStorage.getItem(BREWKEY);
 			const styleStorage = localStorage.getItem(STYLEKEY);
 			const snipStorage  = localStorage.getItem(SNIPKEY);
-			const metaStorage  = JSON.parse(localStorage.getItem(METAKEY));
+			const metaStorage  = parseMeta(localStorage.getItem(METAKEY));
 
 			brew.title       = metaStorage?.title       ?? brew.title;
 			brew.description = metaStorage?.description ?? brew.description;
