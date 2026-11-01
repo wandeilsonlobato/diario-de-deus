@@ -70,7 +70,7 @@ export default function(props){
 
 	return dedent`
 		{{toc,wide
-		# Contents
+		# Sumário
 
 		${TOC}
 		}}

@@ -9,7 +9,7 @@ export default {
 			const markdownTokens = Markdown.marked.lexer(markdownText);
 			const headerToken = markdownTokens.findLast((lexerToken)=>{ return lexerToken.type === 'heading' && lexerToken.depth === headerSize; });
 			const headerText = headerToken?.tokens.map((token)=>{ return token.text; }).join('');
-			const outputText = headerText || 'PART 1 | SECTION NAME';
+			const outputText = headerText || 'PARTE 1 | NOME DA SEÇÃO';
 
 			return `\n{{footnote ${outputText}}}\n`;
 		};

@@ -329,7 +329,7 @@ const BrewRenderer = (props)=>{
 			<ToolBar displayOptions={displayOptions} onDisplayOptionsChange={handleDisplayOptionsChange} visiblePages={visiblePages.length > 0 ? visiblePages : [centerPage]} totalPages={rawPages.length} headerState={headerState} setHeaderState={setHeaderState}/>
 
 			{/*render in iFrame so broken code doesn't crash the site.*/}
-			<Frame id='BrewRenderer'  title='Rendered Brew Content' initialContent={INITIAL_CONTENT}
+			<Frame id='BrewRenderer'  title='Prévia do documento' initialContent={INITIAL_CONTENT}
 				style={{ width: '100%', height: '100%', visibility: state.visibility }}
 				contentDidMount={frameDidMount}
 				onClick={emitClick}

@@ -83,7 +83,7 @@ const SnippetBar = ({
 			}
 		}
 
-		const userSnippetsasJSON = brewSnippetsToJSON(brew.title || 'New Document', brew.snippets, themeBundle.snippets);
+		const userSnippetsasJSON = brewSnippetsToJSON(brew.title || 'Novo documento', brew.snippets, themeBundle.snippets);
 		compiledSnippets.push(userSnippetsasJSON);
 
 		return compiledSnippets;
@@ -125,7 +125,7 @@ const SnippetBar = ({
 		const currentSnippets = snippets.filter((snippetGroup)=>snippetGroup.view === view);
 		if(currentSnippets.length === 0) return null;
 
-		return <ul className='snippets' role='menubar' aria-label='Snippets Menubar'>
+		return <ul className='snippets' role='menubar' aria-label='Menu de blocos'>
 			{_.map(currentSnippets, (snippetGroup)=>{
 				return <SnippetGroup
 					brew={brew}
@@ -148,7 +148,7 @@ const SnippetBar = ({
 	const renderHistoryMenu = ()=>{
 		return (
 			<Dropdown
-				groupName='History'
+				groupName='Histórico'
 				icon='fas fa-clock-rotate-left'
 				className='history'
 				customTrigger={<><i className='fas fa-clock-rotate-left' /></>}

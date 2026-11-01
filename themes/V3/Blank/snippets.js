@@ -113,10 +113,10 @@ export default [
 				icon : 'fas fa-window-maximize',
 				gen  : dedent`\n
 					{{wide
-					Everything in here will be extra wide. Tables, text, everything!
-					Beware though, CSS columns can behave a bit weird sometimes. You may
-					have to manually place column breaks with \`\column\` to make the
-					surrounding text flow with this wide block the way you want.
+					Tudo aqui dentro fica mais largo: tabelas, texto, tudo!
+					Atenção: as colunas podem se comportar de forma estranha. Talvez seja
+					preciso colocar quebras de coluna com \`\column\` para o texto ao
+					redor acompanhar este bloco.
 					}}
 					\n`
 			},
@@ -126,19 +126,19 @@ export default [
 				gen  : (brew)=>{
 					return `![]` +
 							`(https://api.qrserver.com/v1/create-qr-code/?data=` +
-							`https://homebrewery.naturalcrit.com${brew.shareId ? `/share/${brew.shareId}` : ''}` +
+							`${domain}` +
 							`&amp;size=100x100) {width:100px;mix-blend-mode:multiply}`;
 				}
 			},
 			{
 				name : 'Link para página',
 				icon : 'fas fa-link',
-				gen  : '[Click here](#p3) to go to page 3\n'
+				gen  : '[Clique aqui](#p3) para ir à página 3\n'
 			},
 			{
 				name : 'Comentário',
 				icon : 'fas fa-code',
-				gen  : '<!-- This is a comment that will not be rendered into your brew. Hotkey (Ctrl/Cmd + /). -->'
+				gen  : '<!-- Este comentário não aparece no documento. Atalho: Ctrl/Cmd + /. -->'
 			},
 			{
 				name : 'Crédito ao Homebrewery',
@@ -146,7 +146,7 @@ export default [
 				gen  : function(){
 					return dedent`
 						{{homebreweryCredits
-						Made With
+						Feito com
 						
 						{{homebreweryIcon}}
 						
@@ -631,7 +631,7 @@ export default [
 			{
 				name : 'Comentário',
 				icon : 'fas fa-code',
-				gen  : '/* This is a comment that will not be rendered into your brew. */'
+				gen  : '/* Este comentário não aparece no documento. */'
 			}
 		]
 	},
@@ -645,25 +645,25 @@ export default [
 				name : 'Imagem',
 				icon : 'fas fa-image',
 				gen  : dedent`
-					![Bird with autumn foliage by L. Prang & Co.](${domain}/assets/bird.webp) {width:325px}`
+					![Pássaro em folhagem de outono, de L. Prang & Co.](${domain}/assets/bird.webp) {width:325px}`
 			},
 			{
 				name : 'Imagem com texto à esquerda',
 				icon : 'fac image-wrap-left',
 				gen  : dedent`
-					![homebrewery_mug](${domain}/assets/homebrewerymug.png) {width:280px,margin-right:-3cm,wrapLeft}`
+					![Diário de Deus](${domain}/assets/logo.png) {width:280px,margin-right:-3cm,wrapLeft}`
 			},
 			{
 				name : 'Imagem com texto à direita',
 				icon : 'fac image-wrap-right',
 				gen  : dedent`
-					![homebrewery_mug](${domain}/assets/homebrewerymug.png) {width:280px,margin-left:-3cm,wrapRight}`
+					![Diário de Deus](${domain}/assets/logo.png) {width:280px,margin-left:-3cm,wrapRight}`
 			},
 			{
 				name : 'Imagem de fundo',
 				icon : 'fas fa-tree',
 				gen  : dedent`
-					![homebrew mug](${domain}/assets/homebrewerymug.png) {position:absolute,top:50px,right:30px,width:280px}`
+					![Diário de Deus](${domain}/assets/logo.png) {position:absolute,top:50px,right:30px,width:280px}`
 			},
 			{
 				name : 'Mancha de aquarela',
@@ -736,7 +736,7 @@ export default [
 				name : 'Marca-d\'água',
 				icon : 'fas fa-id-card',
 				gen  : dedent`
-				{{watermark Homebrewery}}\n`
+				{{watermark Diário de Deus}}\n`
 			},
 		]
 	},
@@ -753,15 +753,13 @@ export default [
 				icon : 'fas fa-th-list',
 				gen  : function(){
 					return dedent`
-						##### Character Advancement
-						| Experience Points | Level | Proficiency Bonus |
-						|:------------------|:-----:|:-----------------:|
-						| 0                 | 1     | +2                |
-						| 300               | 2     | +2                |
-						| 900               | 3     | +2                |
-						| 2,700             | 4     | +2                |
-						| 6,500             | 5     | +3                |
-						| 14,000            | 6     | +3                |
+						##### Suspeitos do Caso
+						| Nome              | Ocupação   | Álibi                |
+						|:------------------|:-----------|:---------------------|
+						| Nome do suspeito  | Professor  | Estava na biblioteca |
+						| Nome do suspeito  | Vigia      | Fazia a ronda        |
+						| Nome do suspeito  | Médica     | Atendia no hospital  |
+						| Nome do suspeito  | Jornalista | Nenhum confirmado    |
 						\n`;
 				}
 			},
@@ -771,17 +769,15 @@ export default [
 				gen  : function(){
 					return dedent`
 						{{wide
-						##### Weapons
-						| Name                    | Cost  | Damage          | Weight  | Properties |
-						|:------------------------|:-----:|:----------------|--------:|:-----------|
-						| *Simple Melee Weapons*  |       |                 |         |            |
-						| &emsp; Club             | 1 sp  | 1d4 bludgeoning | 2 lb.   | Light      |
-						| &emsp; Dagger           | 2 gp  | 1d4 piercing    | 1 lb.   | Finesse    |
-						| &emsp; Spear            | 1 gp  | 1d6 piercing    | 3 lb.   | Thrown     |
-						| *Simple Ranged Weapons* |       |                 |         |            |
-						| &emsp; Dart             | 5 cp  | 1d4 piercig     | 1/4 lb. | Finesse    |
-						| &emsp; Shortbow         | 25 gp | 1d6 piercing    | 2 lb.   | Ammunition |
-						| &emsp; Sling            | 1 sp  | 1d4 bludgeoning | &mdash; | Ammunition |
+						##### Evidências Encontradas
+						| Item                | Onde estava  | Estado    | Importância | Observação                  |
+						|:--------------------|:-------------|:----------|:------------|:----------------------------|
+						| *Na casa*           |              |           |             |                             |
+						| &emsp; Diário       | Sob o assoalho | Rasgado | Alta        | Faltam as últimas páginas   |
+						| &emsp; Fotografia   | Na escrivaninha | Queimada | Média     | Dá para ver dois rostos     |
+						| *No porão*          |              |           |             |                             |
+						| &emsp; Símbolo      | Na parede    | Recente   | Alta        | Feito com material orgânico |
+						| &emsp; Chave        | No chão      | Enferrujada | Baixa     | Abre uma porta desconhecida |
 						}}
 						\n`;
 				}
@@ -791,19 +787,19 @@ export default [
 				icon : 'fas fa-th-large',
 				gen  : function(){
 					return dedent`
-						##### Typical Difficulty Classes
+						##### Dificuldade dos Testes
 						{{column-count:2
-						| Task Difficulty | DC |
-						|:----------------|:--:|
-						| Very easy       | 5  |
-						| Easy            | 10 |
-						| Medium          | 15 |
+						| Dificuldade | DT |
+						|:------------|:--:|
+						| Muito fácil | 5  |
+						| Fácil       | 10 |
+						| Média       | 15 |
 
-						| Task Difficulty   | DC |
-						|:------------------|:--:|
-						| Hard              | 20 |
-						| Very hard         | 25 |
-						| Nearly impossible | 30 |
+						| Dificuldade     | DT |
+						|:----------------|:--:|
+						| Difícil         | 20 |
+						| Muito difícil   | 25 |
+						| Quase impossível| 30 |
 						}}
 						\n`;
 				}
@@ -929,7 +925,7 @@ export default [
 			{
 				name : 'Página Carta (EUA)',
 				icon : 'far fa-file',
-				gen  : dedent`/* US Letter Page Size */
+				gen  : dedent`/* Página Carta */
 					.page {
 						width  : 215.9mm; /* 8.5in */
 						height : 279.4mm; /* 11in */
@@ -938,7 +934,7 @@ export default [
 			{
 				name : 'Página A3',
 				icon : 'far fa-file',
-				gen  : dedent`/* A3 Page Size */
+				gen  : dedent`/* Página A3 */
 					.page {
 						width  : 297mm;
 						height : 420mm;
@@ -947,7 +943,7 @@ export default [
 			{
 				name : 'Página A4',
 				icon : 'far fa-file',
-				gen  : dedent`/* A4 Page Size */
+				gen  : dedent`/* Página A4 */
 					.page {
 						width  : 210mm;
 						height : 296.8mm;
@@ -956,7 +952,7 @@ export default [
 			{
 				name : 'Página A5',
 				icon : 'far fa-file',
-				gen  : dedent`/* A5 Page Size */
+				gen  : dedent`/* Página A5 */
 					.page {
 						width  : 148mm;
 						height : 210mm;
@@ -965,7 +961,7 @@ export default [
 			{
 				name : 'Página quadrada',
 				icon : 'far fa-file',
-				gen  : dedent`/* Square Page Size */
+				gen  : dedent`/* Página quadrada */
 					.page {
 						width   : 125mm;
 						height  : 125mm;
@@ -976,7 +972,7 @@ export default [
 			{
 				name : 'Página cartão',
 				icon : 'far fa-file',
-				gen  : dedent`/* Card Size */
+				gen  : dedent`/* Página cartão */
 					.page {
 						width     : 63.5mm;
 						height    : 88.9mm;
@@ -988,7 +984,7 @@ export default [
 				name : 'Economizar Tinta',
 				icon : 'fas fa-tint',
 				gen  : dedent`
-					/* Ink Friendly */
+					/* Economizar tinta */
 					*:is(.page) {
 						background : white !important;
 						filter : drop-shadow(0px 0px 3px #888) !important;

@@ -127,7 +127,7 @@ const Dropdown = ({ groupName, className = null, icon, children, color = null, c
 					className='menu-list'
 					popover='auto'
 					role='menu'
-					aria-label={`${groupName} Submenu`}
+					aria-label={`Submenu ${groupName}`}
 					onClick={handleMenuActionClick}
 				>
 					{children}

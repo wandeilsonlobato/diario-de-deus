@@ -40,19 +40,19 @@ const EditorThemeNameList = [
 //const PAGEBREAK_REGEX_V3 = /^(?=\\page(?:break)?(?: *{[^\n{}]*})?$)/m;
 //const SNIPPETBREAK_REGEX_V3 = /^\\snippet\ .*$/;
 const DEFAULT_STYLE_TEXT = dedent`
-				/*=======---  Example CSS styling  ---=======*/
-				/* Any CSS here will apply to your document! */
+				/*=======---  Exemplo de estilo em CSS  ---=======*/
+				/* Todo CSS escrito aqui é aplicado ao seu documento! */
 
 				.myExampleClass {
 					color: black;
 				}`;
 
 const DEFAULT_SNIPPET_TEXT = dedent`
-				\snippet example snippet
+				\snippet bloco de exemplo
 				
-				The text between \`\snippet title\` lines will become a snippet of name \`title\` as this example provides.
+				O texto entre linhas \`\snippet nome\` vira um bloco chamado \`nome\`, como neste exemplo..
 				
-				This snippet is accessible in the brew tab, and will be inherited if the brew is used as a theme.
+				Este bloco aparece no menu do editor e também é herdado se o documento for usado como tema.
 `;
 let isJumping = false;
 let jumpSource = null;

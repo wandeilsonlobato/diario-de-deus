@@ -37,7 +37,7 @@ const brewSnippetsBrewTest = dedent`
 describe(`brewSnippetsToJSON`, ()=>{
 	it('converts raw brew snippets without theme snippets to JSON', function() {
 		const testMenuObject = {
-			groupName : 'Meus Snippets',
+			groupName : 'Meus Blocos',
 			icon      : 'fas fa-th-list',
 			view      : 'text',
 			snippets  : [{
@@ -58,7 +58,7 @@ describe(`brewSnippetsToJSON`, ()=>{
 
 	it('converts raw brew snippets with theme snippets to JSON', function() {
 		const testMenuObject = {
-			groupName : 'Meus Snippets',
+			groupName : 'Meus Blocos',
 			icon 	    : 'fas fa-th-list',
 			view      : 'text',
 			snippets  : [{
